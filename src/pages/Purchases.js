@@ -1,5 +1,5 @@
 export default function Purchases() {
     return (
-        <h1 className="text-4xl">Purchases page</h1>
+        <h1 className="text-7xl font-acier">Purchases page</h1>
     )
 }

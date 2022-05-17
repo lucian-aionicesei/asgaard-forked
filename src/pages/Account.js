@@ -1,5 +1,5 @@
 export default function Account() {
     return (
-        <h1 className="text-4xl">Account page</h1>
+        <h1 className="text-7xl font-acier">Account page</h1>
     )
 }

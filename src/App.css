@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "acier";
+    src: url("../public/fonts/acier-text-gris.ttf");
+  }

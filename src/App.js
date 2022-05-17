@@ -27,7 +27,7 @@ function App() {
   console.log(bandsList);
 
   return (
-    <div className="App">
+    <div className="App bg-gray-200 font-montserrat">
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
