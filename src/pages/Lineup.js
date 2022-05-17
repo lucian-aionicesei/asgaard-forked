@@ -1,5 +1,5 @@
 export default function Lineup() {
-    return (
+   return (
         <h1 className="text-4xl">Lineup page</h1>
     )
 }
