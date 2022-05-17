@@ -11,7 +11,7 @@ export default function useFetch(url) {
 
       try {
         const res = await fetch(url);
-        const json = await res.json;
+        const json = await res.json();
         setData(json);
         setLoading(false);
       } catch (error) {
