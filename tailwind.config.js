@@ -7,6 +7,10 @@ module.exports = {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
         acier: ["acier", "sans-serif"],
+        aciersolid: ["acier-solid", "sans-serif"],
+      },
+      fontSize: {
+        '5.5xl': '3.5rem'
       },
       colors: {
         'concert-yellow': '#FBCE30',
@@ -16,6 +20,9 @@ module.exports = {
         'concert-redish': '#FF7A74',
         'concert-blue': '#05AFF2',
         'concert-yellowish': '#FFF9E7',
+      },
+      spacing: {
+        '26': '6.5rem',
       },
     },
   },

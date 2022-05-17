@@ -6,3 +6,9 @@
     font-family: "acier";
     src: url("../public/fonts/acier-text-gris.ttf");
   }
+
+  @font-face {
+    font-family: "acier-solid";
+    src: url("../public/fonts/acier-text-solid.ttf");
+  }
+  
