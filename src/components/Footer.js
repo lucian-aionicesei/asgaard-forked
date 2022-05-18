@@ -1,5 +1,14 @@
 export default function Footer() {
-    return (
-        <h1>Footer</h1>
-    )
+  return (
+    <div>
+      <h1>Footer</h1>
+      <ul>
+        <li>This is new </li>
+        <li>This is new </li>
+        <li>This is new </li>
+        <li>This is new </li>
+        <li>This is new </li>
+      </ul>
+    </div>
+  );
 }
