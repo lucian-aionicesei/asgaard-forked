@@ -11,7 +11,7 @@ export default function Home() {
           Home page <IoMdBeer />
         </h1>
         <Link to={"/shop"}>
-          <Button1 bgcolor="concert-pink" label="See all arstists" />
+          <Button1 bgcolor="concert-yellow" label="See all arstists" />
         </Link>
       </header>
       <Content>

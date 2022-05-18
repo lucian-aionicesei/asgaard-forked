@@ -48,7 +48,7 @@ export default function Header() {
           </ul>
           <div className="flex items-center leading-8 space-x-12">
             <Link to={"/shop"}>
-              <Button1 bgcolor="concert-yellow" label="Buy ticket" />
+              <Button1 label="Buy ticket" />
             </Link>
             <Link to={"/purchases"}>
               <MdOutlineShoppingCart />
