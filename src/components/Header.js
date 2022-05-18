@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button1 } from "./Buttons";
+import { useState } from "react";
 
 export default function Header() {
+  const [dropDown, setDropDown] = useState(false);
+
   return (
     <>
-      <nav className="font-bold text-lg fixed w-full bg-black">
+      <nav className="z-10 font-bold text-lg fixed w-full bg-black">
         <div className="bg-concert-yellow text-black h-16 justify-between items-center px-8 hidden md:flex">
           <p>
             20-27 JUL / <span>DARUPVEJ 4000 ROSKILDE</span>
@@ -54,12 +57,12 @@ export default function Header() {
             <Link to={"/purchases"}>
               <MdOutlineShoppingCart className="text-3xl phone:text-4xl" />
             </Link>
-            <GiHamburgerMenu className="text-4xl phone:text-5xl md:hidden" />
+            <GiHamburgerMenu onClick={() => { setDropDown(!dropDown)}} className="text-4xl phone:text-5xl md:hidden" />
           </div>
         </div>
       </nav>
       <div className="h-26 md:h-[10.5rem] relative">
-        <DropdownMenu/>
+        {dropDown && <DropdownMenu />}
       </div>
       {/* <nav className="flex justify-around bg-gray-500">
         <Link to={"/"} className="font-montserrat font-bold">Home</Link>
@@ -76,15 +79,37 @@ export default function Header() {
 
 function DropdownMenu({ active }) {
   return (
-    <div className="w-full absolute bg-concert-yellow px-4 phone:px-8 top-26 flex flex-col items-end font-bold">
-      <Link to={"/shop"}>Tickets</Link>
-      <Link to={"/lineup"}>Lineup</Link>
-      <Link to={"/shop"}>Book</Link>
-      <Link to={"/account"}>Account</Link>
-      <p>
-        <span>EN</span>/<span>DK</span>
-      </p>
-      <p>
+    <div className="w-full absolute bg-concert-l-dark px-4 phone:px-8 top-26 flex flex-col items-end font-bold">
+      <div className="w-fit ml-auto flex flex-col space-y-4 items-end ">
+        <Link
+          to={"/shop"}
+          className="w-full px-8 bg-concert-b-green text-center hover:bg-concert-pink"
+        >
+          Tickets
+        </Link>
+        <Link
+          to={"/lineup"}
+          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
+        >
+          Lineup
+        </Link>
+        <Link
+          to={"/shop"}
+          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
+        >
+          Book
+        </Link>
+        <Link
+          to={"/account"}
+          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
+        >
+          Account
+        </Link>
+        <p className="w-full text-center bg-concert-yellow">
+          <span>EN</span>/<span>DK</span>
+        </p>
+      </div>
+      <p className="w-full text-center text-lig text-concert-yellow py-8">
         20-27 JUL / <span>DARUPVEJ 4000 ROSKILDE</span>
       </p>
     </div>
