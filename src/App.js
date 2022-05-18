@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App bg-gray-200 font-montserrat">
-      <Header />
+      <Header bgColor="bg-concert-pink"/>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="lineup" element={<Lineup bands={bandsList} />} />
