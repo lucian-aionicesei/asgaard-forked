@@ -1,5 +1,9 @@
+import Content from "../components/Content";
+
 export default function Artist() {
-    return (
-        <h1 className="text-7xl font-acier">Artist page</h1>
-    )
+  return (
+    <Content>
+      <h1 className="text-7xl font-acier">Artist page</h1>
+    </Content>
+  );
 }
