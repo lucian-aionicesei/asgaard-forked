@@ -1,11 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button1 } from "./Buttons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
+  const [currentPage, setCurrentPage] = useState("")
+
+  // useEffect(() => {    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });/*  */
+
+  const location = useLocation();
+  console.log(location.pathname)
+
+  useEffect (() => {
+
+  }, [location])
 
   return (
     <>
