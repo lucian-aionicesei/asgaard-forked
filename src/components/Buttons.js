@@ -22,3 +22,5 @@ Button2.defaultProps = {
   bgcolor: "concert-b-green",
   textSize: "xl",
 };
+
+console.log(<Button2/>)

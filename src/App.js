@@ -44,7 +44,7 @@ function App() {
   // console.log(schedule);
 
   return (
-    <div className="App bg-black font-montserrat">
+    <div className="App bg-gray-600 font-montserrat">
       <Header bgColor="bg-concert-pink"/>
         <Routes>
           <Route exact path="/" element={<Home />} />
