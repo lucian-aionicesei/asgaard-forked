@@ -23,7 +23,7 @@ export default function Header() {
         </ul>
       </div>
       <nav className="bg-black sticky top-0 z-10 font-bold text-lg w-full text-concert-yellow px-4 phone:px-8 py-3 h-26 flex items-center phone:items-end justify-between">
-        <ul className="flex items-end md:space-x-12">
+        <ul className="flex items-end md:space-x-6 lg:space-x-12">
           <li>
             <Link to={"/"} className=" text-sm phone:text-xl">
               <h2 className="font-acier text-4xl phone:text-5.5xl font-extralight">
@@ -55,7 +55,7 @@ export default function Header() {
           </Link>
           <Link to={"/purchases"}>
             <div className="flex items-center space-x-6 pl-2 bg-red-500">
-              <p> 09:15 to complete order</p>
+              <p className="text-black">09:15 to complete order</p>
               <MdOutlineShoppingCart className="text-3xl phone:text-4xl" />
             </div>
           </Link>
@@ -67,7 +67,10 @@ export default function Header() {
           />
         </div>
       </nav>
-      <div className="relative">{dropDown && <DropdownMenu />}</div>
+      <div className="w-full bg-red-500 leading-8 px-8 font-bold">
+          <p className="text-right">09:15 to complete order</p>
+        </div>
+      <div className="fixed w-full">{dropDown && <DropdownMenu />}</div>
       {/* <nav className="flex justify-around bg-gray-500">
         <Link to={"/"} className="font-montserrat font-bold">Home</Link>
         <Link to={"/lineup"}>Lineup</Link>
