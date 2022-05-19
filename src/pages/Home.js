@@ -1,6 +1,7 @@
 import { IoMdBeer } from "react-icons/io";
 import Content from "../components/Content";
 import Stages from "../components/Stages";
+import Passes from "../components/Passes";
 import { Button2 } from "../components/Buttons";
 import { Link } from "react-router-dom";
 
@@ -37,6 +38,9 @@ export default function Home() {
               stageName="STAGE 3"
             />
           </div>
+        </div>
+        <div>
+          <Passes />
         </div>
       </Content>
     </>
