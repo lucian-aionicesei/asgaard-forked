@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="mt-2 mb-2 md:mt-0 mb-0 ">
           <h3 className="font-acier font-normal text-3xl">NEWSLETTER</h3>
           <input></input>
-          <buton></buton>
+          <button></button>
         </div>
       </div>
 
