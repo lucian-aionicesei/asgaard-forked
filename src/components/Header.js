@@ -6,16 +6,18 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
-  const [currentPage, setCurrentPage] = useState("")
+  const [currentPage, setCurrentPage] = useState("");
+  const [countdown, setCountdown] = useState(true);
 
   // useEffect(() => {    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });/*  */
 
   const location = useLocation();
-  console.log(location.pathname)
+  // console.log(currentPage)
+  // console.log(location.pathname)
 
-  useEffect (() => {
-
-  }, [location])
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location]);
 
   return (
     <>
@@ -24,7 +26,11 @@ export default function Header() {
           20-27 JUL / <span>DARUPVEJ 4000 ROSKILDE</span>
         </p>
         <ul className="hidden md:flex space-x-8">
-          <li>
+          <li
+            className={`${
+              currentPage === "/account" && "underline"
+            } decoration-2`}
+          >
             <Link to={"/account"}>Account</Link>
           </li>
           <li>
@@ -46,7 +52,9 @@ export default function Header() {
             <li className="hidden md:block">
               <Link
                 to={"/shop"}
-                className="underline decoration-2 leading-8 underline-offset-4 hidden md:block"
+                className={`${
+                  currentPage === "/shop" && "underline"
+                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
               >
                 Book
               </Link>
@@ -54,7 +62,9 @@ export default function Header() {
             <li className="hidden md:block">
               <Link
                 to={"/lineup"}
-                className="decoration-2 leading-8 underline-offset-4"
+                className={`${
+                  currentPage === "/lineup" && "underline"
+                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
               >
                 Lineup
               </Link>
@@ -79,11 +89,13 @@ export default function Header() {
             />
           </div>
         </nav>
-        <div className="w-full fidex bg-red-500 leading-8 md:leading-10 px-8 font-bold md:text-xl">
-          <p className="text-center phone:text-right">
-            09:15 to complete order
-          </p>
-        </div>
+        {countdown && (
+          <div className="w-full fidex bg-red-500 leading-8 md:leading-10 px-8 font-bold md:text-xl">
+            <p className="text-center phone:text-right">
+              09:15 to complete order
+            </p>
+          </div>
+        )}
         <div className=" w-full">{dropDown && <DropdownMenu />}</div>
       </div>
       {/* <nav className="flex justify-around bg-gray-500">

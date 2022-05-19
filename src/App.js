@@ -26,7 +26,7 @@ function App() {
     getProducts();
   }, []);
 
-  console.log(bandsList);
+  // console.log(bandsList);
 
   const [schedule, setSchedule] = useState([]);
 
@@ -41,7 +41,7 @@ function App() {
     getLineUp();
   }, []);
 
-  console.log(schedule);
+  // console.log(schedule);
 
   return (
     <div className="App bg-gray-600 font-montserrat">
