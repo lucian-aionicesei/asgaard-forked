@@ -1,11 +1,8 @@
 import { IoMdBeer } from "react-icons/io";
 import Content from "../components/Content";
-<<<<<<< HEAD
 import Stages from "../components/Stages";
-=======
-import { Button2 } from "../components/Buttons"
+import { Button2 } from "../components/Buttons";
 import { Link } from "react-router-dom";
->>>>>>> origin/buttons-and-ui-elements
 
 export default function Home() {
   return (
@@ -28,14 +25,14 @@ export default function Home() {
             />
           </div>
 
-          <div className="y-0 flex gap-x-5 py-4">
+          <div className="flex flex-col md:flex-row gap-x-5">
             <Stages
               bgColor="concert-blue"
               stagesBG="../../images/party2.svg"
               stageName="STAGE 2"
             />
             <Stages
-              bgColor="concert-l-green"
+              bgColor="concert-b-green"
               stagesBG="../../images/party3.svg"
               stageName="STAGE 3"
             />

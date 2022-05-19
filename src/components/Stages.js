@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Stages({ bgColor, stagesBG, stageName }) {
   return (
-    <div
-      className={`border-solid border-2 border-indigo-600 w-full items-center bg-${bgColor}`}
-    >
+    <div className={`bg-${bgColor} w-full items-center`}>
       <Link to={"/lineup"}>
         <img
           className="row-span-3 w-full object-cover"
