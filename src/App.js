@@ -29,8 +29,8 @@ function App() {
   console.log(bandsList);
 
   return (
-    <div className="App bg-gray-200 font-montserrat">
-      <Header />
+    <div className="App bg-gray-600 font-montserrat">
+      <Header bgColor="bg-concert-pink"/>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="lineup" element={<Lineup bands={bandsList} />} />

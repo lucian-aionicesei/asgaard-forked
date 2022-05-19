@@ -11,13 +11,14 @@ module.exports = {
         "5.5xl": "3.5rem",
       },
       colors: {
-        "concert-yellow": "#FBCE30",
-        "concert-pink": "#F280B6",
-        "concert-b-green": "#09E970",
-        "concert-l-green": "#23D398",
-        "concert-redish": "#FF7A74",
-        "concert-blue": "#05AFF2",
-        "concert-yellowish": "#FFF9E7",
+        'concert-yellow': '#FBCE30',
+        'concert-pink': '#F280B6',
+        'concert-b-green': '#09E970',
+        'concert-l-green': '#23D398',
+        'concert-redish': '#FF7A74',
+        'concert-blue': '#05AFF2',
+        'concert-yellowish': '#FFF9E7',
+        'concert-l-dark' : '#171717'
       },
       spacing: {
         26: "6.5rem",
@@ -28,6 +29,12 @@ module.exports = {
         "extra-loose": "0.1rem",
         12: "0.1rem",
       },
+      screens: {
+        'phone': '530px',
+      },
+    },
+    borderWidth: {
+      '3': '3px'
     },
   },
   plugins: [require("@tailwindcss/forms")],
