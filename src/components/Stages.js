@@ -7,12 +7,12 @@ export default function Stages({ bgColor, stagesBG, stageName }) {
     >
       <Link to={"/lineup"}>
         <img
-          className="w-full object-cover h-3/4"
+          className="row-span-3 w-full object-cover"
           src={`${stagesBG}`} /*"../../images/party1.svg"*/
           alt=""
         ></img>
-        <div className="flex w-full h-20 text-center justify-center">
-          <h2 className="flex text-white font-acier text-4xl">
+        <div className="flex w-full h-auto text-center justify-center items-center">
+          <h2 className="flex text-white font-acier text-4xl p-">
             {`${stageName}`}
           </h2>
         </div>

@@ -11,25 +11,27 @@ export default function Home() {
         </h1>
       </header>
       <Content>
-        <div className="py-4">
-          <Stages
-            bgColor="concert-pink"
-            stagesBG="../../images/party1.svg"
-            stageName="STAGE 1"
-          />
-        </div>
+        <div>
+          <div className="py-4">
+            <Stages
+              bgColor="concert-pink"
+              stagesBG="../../images/party1.svg"
+              stageName="STAGE 1"
+            />
+          </div>
 
-        <div className="y-0 flex gap-x-5 py-4">
-          <Stages
-            bgColor="concert-blue"
-            stagesBG="../../images/party2.svg"
-            stageName="STAGE 2"
-          />
-          <Stages
-            bgColor="concert-l-green"
-            stagesBG="../../images/party3.svg"
-            stageName="STAGE 3"
-          />
+          <div className="y-0 flex gap-x-5 py-4">
+            <Stages
+              bgColor="concert-blue"
+              stagesBG="../../images/party2.svg"
+              stageName="STAGE 2"
+            />
+            <Stages
+              bgColor="concert-l-green"
+              stagesBG="../../images/party3.svg"
+              stageName="STAGE 3"
+            />
+          </div>
         </div>
       </Content>
     </>
