@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
-  const [countdown, setCountdown] = useState(true);
+  const [countdown, setCountdown] = useState(false);
 
   // useEffect(() => {    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });/*  */
 
