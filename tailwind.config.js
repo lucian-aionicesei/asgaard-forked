@@ -20,11 +20,18 @@ module.exports = {
         'concert-redish': '#FF7A74',
         'concert-blue': '#05AFF2',
         'concert-yellowish': '#FFF9E7',
+        'concert-l-dark' : '#171717'
       },
       spacing: {
         '26': '6.5rem',
         '40.5': '10.5rem',
       },
+      screens: {
+        'phone': '530px',
+      },
+    },
+    borderWidth: {
+      '3': '3px'
     },
   },
   plugins: [

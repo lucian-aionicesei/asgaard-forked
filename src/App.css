@@ -11,4 +11,7 @@
     font-family: "acier-solid";
     src: url("../public/fonts/acier-text-solid.ttf");
   }
-  
+
+  a {
+    display: block;
+  }
