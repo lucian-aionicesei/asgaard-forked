@@ -42,7 +42,7 @@ export function HomeLineUp({ lineUp }) {
   const lineupRows = lineUp.split("|");
   console.log(lineupRows);
   return (
-    <article className="font-acier">
+    <article className="font-acier bg-concert-yellow text-black h-[30rem]">
       <section>
         {lineupRows.map((row, index) => (
           <li className={`text-${7 - index}xl flex justify-center`}>
@@ -61,7 +61,7 @@ export function BandLink({ bandsString }) {
   return (
     <>
       {bands.map(band => {
-         return <Link className="w-fit" to={`artist/${band}`}>{`${band}/`}</Link>
+         return <Link className="w-fit hover:font-aciersolid" to={`artist/${band}`}>{`${band}/`}</Link>
       })}
     </>
   );
