@@ -28,14 +28,29 @@ function App() {
 
   console.log(bandsList);
 
+  const [schedule, setSchedule] = useState([]);
+
+  useEffect(() => {
+    async function getLineUp() {
+      const res = await fetch(
+        "https://the-javascript-bar-project.herokuapp.com/schedule"
+      );
+      const data = await res.json();
+      setSchedule(data);
+    }
+    getLineUp();
+  }, []);
+
+  console.log(schedule);
+
   return (
     <div className="App bg-gray-600 font-montserrat">
       <Header bgColor="bg-concert-pink"/>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="lineup" element={<Lineup bands={bandsList} />} />
-          <Route path="artist/:id" element={<Artist />} />
-          <Route path="schedule" element={<Schedule />} />
+          <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
+          <Route path="artist/:id" element={<Artist bands={bandsList}/>} />
+          <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList}/>} />
           <Route path="shop" element={<Shop />} />
           <Route path="purchases" element={<Purchases />} />
           <Route path="account" element={<Account />} />
