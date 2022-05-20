@@ -1,13 +1,14 @@
 import Content from "../components/Content";
 import { Link } from "react-router-dom";
+const urlSlugMatch = require('url-slug-match');
 
 export default function Home() {
   const homePageLineup =
-    "Arctic Monkeys | Nothing but thives*Jungle*Futurelands|inhaler*channel*alice meltorn*inhaler*inhale|roosevelt*self esteem*sad night dynamite*self esteem| lea porcelian*Hayes & Y*sad night dynamite*self esteem|lea porcelian*hayes and y*sad night dynamite*self esteem*sad night dynamite|lea porcelian*hayes & y*sad night dynamite*self esteem*sad night dynamite*sad night dynamite";
+    "Led Zeppelin * AC/DC | Terminalist * Tool * The Who | The Beatles * Pink Floyd * Queen * Metallica | The Rolling Stones * Guns N' Roses * Nirvana | Black Sabbath * Raised Fist* Refused * Steuber Group * Simonis Inc | Halvorson, Kertzmann and Predovic * Huels, Ratke and Fritsch * A Perfect Circle | Price, Grant and Bechtelar * Erdman - Casper * Nikolaus Inc * Schowalter, Satterfield and O'Reilly";
 
   return (
     <>
-      <header className="mx-8 mb-14 relative">
+      <header className=" mx-4 phone:mx-8 mb-14 relative">
         <img
           className="w-full object-cover max-h-[30rem]"
           src="./images/concert-main-img.png"
@@ -42,14 +43,14 @@ export function HomeLineUp({ lineUp }) {
   const lineupRows = lineUp.split("|");
   console.log(lineupRows);
   return (
-    <article className="font-acier bg-concert-yellow text-black h-[30rem]">
-      <section>
+    <article className=" font-aciersolid md:font-acier bg-concert-yellow text-black p-8 w-full h h-[30rem]">
+      <ul className="grid">
         {lineupRows.map((row, index) => (
-          <li className={`text-${7 - index}xl flex justify-center`}>
+          <li className={`text-${7 - index}rem flex justify-center whitespace-normal flex flex-wrap`}>
             <BandLink bandsString={row} />
           </li>
         ))}
-      </section>
+      </ul>
     </article>
   );
 }
@@ -61,7 +62,7 @@ export function BandLink({ bandsString }) {
   return (
     <>
       {bands.map(band => {
-         return <Link className="w-fit hover:font-aciersolid" to={`artist/${band}`}>{`${band}/`}</Link>
+         return <Link className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()} /`}</Link>
       })}
     </>
   );

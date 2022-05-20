@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="bg-concert-yellow text-black h-12 justify-between items-center px-8 flex z-10 font-bold text-sm w-full">
+      <div className="bg-concert-yellow text-black h-12 justify-between items-center px-4 phone:px-8 flex z-10 font-bold text-sm w-full">
         <p>
           20-27 JUL / <span>DARUPVEJ 4000 ROSKILDE</span>
         </p>
