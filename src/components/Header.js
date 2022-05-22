@@ -3,18 +3,19 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button1 } from "./Buttons";
 import { useState, useEffect } from "react";
+import useWindowDimensions from "../hooks/getWindowDimensions";
 
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
   const [countdown, setCountdown] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(1200);
-
-  // useEffect(() => {    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });/*  */
 
   const location = useLocation();
-  // console.log(currentPage)
-  // console.log(location.pathname)
+  const windowWidth = useWindowDimensions().width;
+
+  useEffect(() => {
+    (dropDown === true && windowWidth > 768) && setDropDown(false)
+  }, [windowWidth, dropDown]);
 
   useEffect(() => {
     setCurrentPage(location.pathname);
@@ -84,6 +85,7 @@ export default function Header() {
             </Link>
             <GiHamburgerMenu
               onClick={() => {
+
                 setDropDown(!dropDown);
               }}
               className="text-4xl phone:text-5xl md:hidden"
@@ -112,7 +114,7 @@ export default function Header() {
   );
 }
 
-function DropdownMenu({ active }) {
+function DropdownMenu() {
   return (
     <div className="w-full bg-concert-l-dark px-4 pt-4 phone:px-8 top-0 flex flex-col items-end font-bold">
       <div className="w-fit ml-auto flex flex-col space-y-4 items-end ">

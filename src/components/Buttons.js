@@ -23,4 +23,3 @@ Button2.defaultProps = {
   textSize: "xl",
 };
 
-console.log(<Button2 />);

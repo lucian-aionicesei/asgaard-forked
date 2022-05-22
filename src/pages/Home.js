@@ -37,12 +37,12 @@ export default function Home() {
 
 export function HomeLineUp({ lineUp }) {
   const lineupRows = lineUp.split("|");
-  console.log(lineupRows);
+  
   return (
     <article className=" font-aciersolid md:font-acier bg-concert-yellow text-black px-4 phone:px-8 pt-[5vw] pb-[4vw] w-full h-auto space-y-12">
       <ul className="grid">
         {lineupRows.map((row, index) => (
-          <li className={`text-${7 - index}rem justify-center whitespace-normal flex flex-wrap`}>
+          <li key={`row${index}`} className={`text-${7 - index}rem justify-center whitespace-normal flex flex-wrap`}>
             <BandLink bandsString={row} />
           </li>
         ))}
@@ -57,12 +57,11 @@ export function HomeLineUp({ lineUp }) {
 
 export function BandLink({ bandsString }) {
   const bands = bandsString.split("*");
-  console.log(bands);
 
   return (
     <>
-      {bands.map(band => {
-         return <Link className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()}/`}</Link>
+      {bands.map((band, index) => {
+         return <Link key={`artist${index}`} className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()}/`}</Link>
       })}
     </>
   );
