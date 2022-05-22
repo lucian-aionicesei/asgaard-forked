@@ -1,7 +1,7 @@
 export function Button1({ label }) {
   return (
     <div
-      className={`text-black font-montserrat px-4 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-b-green`}
+      className={`text-black font-montserrat px-4 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-b-green hover:bg-black hover:text-concert-yellow`}
     >
       {label}
     </div>
@@ -11,7 +11,7 @@ export function Button1({ label }) {
 export function Button2({ label, bgcolor }) {
   return (
     <div
-      className={`text-black font-montserrat px-4 py-1 w-fit font-bold border-[3px] border-black text-xl bg-${bgcolor}`}
+      className={`text-black font-montserrat px-4 py-1 w-fit font-bold border-[3px] hover:bg-black hover:text-concert-yellow border-black text-sm phone:text-xl bg-${bgcolor}`}
     >
       {label}
     </div>
@@ -23,4 +23,4 @@ Button2.defaultProps = {
   textSize: "xl",
 };
 
-console.log(<Button2/>)
+console.log(<Button2 />);

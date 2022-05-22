@@ -7,7 +7,8 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
-  const [countdown, setCountdown] = useState(false);
+  const [countdown, setCountdown] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(1200);
 
   // useEffect(() => {    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });/*  */
 
@@ -90,7 +91,7 @@ export default function Header() {
           </div>
         </nav>
         {countdown && (
-          <div className="w-full fidex bg-red-500 leading-8 md:leading-10 px-8 font-bold md:text-xl">
+          <div className="w-full fidex bg-concert-pink leading-8 md:leading-10 px-8 font-bold md:text-xl">
             <p className="text-center phone:text-right">
               09:15 to complete order
             </p>

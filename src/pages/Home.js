@@ -1,10 +1,11 @@
+import { Button2 } from "../components/Buttons";
 import Content from "../components/Content";
 import { Link } from "react-router-dom";
 const urlSlugMatch = require('url-slug-match');
 
 export default function Home() {
   const homePageLineup =
-    "Led Zeppelin * AC/DC | Terminalist * Tool * The Who | The Beatles * Pink Floyd * Queen * Metallica | The Rolling Stones * Guns N' Roses * Nirvana | Black Sabbath * Raised Fist* Refused * Steuber Group * Simonis Inc | Halvorson, Kertzmann and Predovic * Huels, Ratke and Fritsch * A Perfect Circle | Price, Grant and Bechtelar * Erdman - Casper * Nikolaus Inc * Schowalter, Satterfield and O'Reilly";
+    "Led Zeppelin * AC/DC | Terminalist * Tool * The Who | The Beatles * Pink Floyd * Queen * Metallica | The Rolling Stones * Guns N' Roses * Nirvana | Black Sabbath * Raised Fist* Refused * Steuber Group * Simonis Inc | Halvorson, Kertzmann and Predovic * Huels, Ratke and Fritsch * A Perfect Circle | Price, Grant and Bechtelar * Erdman - Casper * Nikolaus Inc";
 
   return (
     <>
@@ -34,23 +35,22 @@ export default function Home() {
   );
 }
 
-// const homePageLineup = "Arctic Monkeys | Nothing but thives*Jungle*Futurelands|inhaler*channel*alice meltorn*inhaler*inhale|roosevelt*self esteem*sad night dynamite*self esteem| lea porcelian*Hayes & Y*sad night dynamite*self esteem|lea porcelian*hayes and y*sad night dynamite*self esteem*sad night dynamite|lea porcelian*hayes & y*sad night dynamite*self esteem*sad night dynamite*sad night dynamite";
-
-// const result = HomeLineUp(homePageLineup);
-// console.log(result)
-
 export function HomeLineUp({ lineUp }) {
   const lineupRows = lineUp.split("|");
   console.log(lineupRows);
   return (
-    <article className=" font-aciersolid md:font-acier bg-concert-yellow text-black p-8 w-full h h-[30rem]">
+    <article className=" font-aciersolid md:font-acier bg-concert-yellow text-black px-4 phone:px-8 pt-[5vw] pb-[4vw] w-full h-auto space-y-12">
       <ul className="grid">
         {lineupRows.map((row, index) => (
-          <li className={`text-${7 - index}rem flex justify-center whitespace-normal flex flex-wrap`}>
+          <li className={`text-${7 - index}rem justify-center whitespace-normal flex flex-wrap`}>
             <BandLink bandsString={row} />
           </li>
         ))}
       </ul>
+      <div className="flex phone justify-center space-x-3">
+        <Link to="/lineup"><Button2 label="See all artists" bgcolor="concert-pink"/></Link>
+        <Link to="/schedule"><Button2 label="Dailly schedule" bgcolor="concert-b-green"/></Link>
+      </div>
     </article>
   );
 }
@@ -62,8 +62,9 @@ export function BandLink({ bandsString }) {
   return (
     <>
       {bands.map(band => {
-         return <Link className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()} /`}</Link>
+         return <Link className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()}/`}</Link>
       })}
     </>
   );
 }
+
