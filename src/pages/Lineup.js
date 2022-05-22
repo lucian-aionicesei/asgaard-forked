@@ -1,5 +1,5 @@
 import Content from "../components/Content";
-import { Button2 } from "../components/Buttons";
+import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 export default function Lineup({ bands }) {
@@ -38,19 +38,27 @@ export default function Lineup({ bands }) {
               {" "}
               GENRE <RiArrowDownSLine size={32} />
             </div>
-          </div>
-          <div className="p-4">
-            <input type="text" name="SEARCH" placeholder="This is new"></input>
-          </div>
 
-          <div></div>
+            <div class="form-floating  sm:w-auto xl:w-96">
+              <input
+                type="password"
+                className="form-control block w-full text-base font-normal font-montserrat text-black bg-concert-yellow bg-clip-padding border border-solid border-black border-[3px] border-black  transition ease-in-out m-0 focus:text-black  placeholder-black  text-font-semibold placeholder-blackfocus:bg-concert-yellow  focus:border-concert-pink focus:outline-none placeholder-black"
+                placeholder="SEARCH BY BAND NAME"
+              ></input>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">STAGE 1</h2>
         </div>
 
         <ul className="w-full grid gap-4 grid-cols-3 grid-rows-3 p-4">
           {bands.map((band, index) => (
-            <li key={`band#${index}`} className="bg-gray-600 text-white rounded-md p-4">
+            <div key={`band#${index}`} className="bg-gray-600 text-white rounded-md p-4">
+              <img src={band.logo} alt={band.name} width="500" height="600"></img>
               {band.name}
-            </li>
+            </div>
           ))}
         </ul>
       </Content>
