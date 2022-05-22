@@ -1,5 +1,6 @@
 import Content from "../components/Content";
 import { Button2 } from "../components/Buttons";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 export default function Lineup({ bands }) {
   return (
@@ -26,10 +27,17 @@ export default function Lineup({ bands }) {
           </article>
         </section>
 
-        <div className="bg-concert-yellow flex flex-row">
-          <div className="flex flex-row p-4">
-            <Button2 label="ALPHABETICAL"></Button2>
-            <Button2 label="GENRE">GENRE</Button2>
+        <div className="bg-concert-redish flex flex-row">
+          <div className="flex flex-row p-4 gap">
+            <div className={`flex flex-row justify-center items-center text-black font-montserrat px-2 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2`}>
+              {" "}
+              ALPHABETICAL <RiArrowDownSLine size={32} />
+            </div>
+
+            <div className={`flex flex-row justify-center items-center text-black font-montserrat px-2 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2`}>
+              {" "}
+              GENRE <RiArrowDownSLine size={32} />
+            </div>
           </div>
           <div className="p-4">
             <input type="text" name="SEARCH" placeholder="This is new"></input>
