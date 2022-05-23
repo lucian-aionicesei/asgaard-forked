@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 export default function Stages({ bgColor, stagesBG, stageName }) {
   return (
     <div className={`bg-${bgColor} w-full items-center`}>
