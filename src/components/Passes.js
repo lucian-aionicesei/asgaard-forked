@@ -5,16 +5,16 @@ export default function Passes() {
   return (
     <article className="w-full h-96 bg-concert-pink text-black ">
       <h1 className="font-acier p-5 text-6xl text-black">FESTIVAL PASSES</h1>
-      <section className="w-full p-8 font-bold">
+      <section className="w-full p-2 font-bold">
         <div className="w-full h-14 bg-white border-[3px] border-black flex">
-          <div className="h-full w-10 bg-concert-l-green border-r-[3px] border-black"></div>
+          <div className="h-full w-10 bg-concert-l-green border-r-[2px] border-black"></div>
           <div className="px-2 justify-between w-full flex h-full">
-            <div className="flex items-center space-x-[5vw]">
+            <div className="pt-2 flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
               <div>
-                <h4>GENERAL ACCESS</h4>
+                <h4 className="whitespace-pre">GENERAL ACCESS</h4>
                 <SeeDetailButton label="See Details" />
               </div>
-              <p>241 dkk</p>
+              <p className="pr-2">241 dkk</p>
             </div>
             <div className="flex h-full items-center space-x-2">
               <div className="flex items-center h-fit space-x-2 px-1 bg-concert-yellow border-black border-[3px]">
@@ -22,7 +22,7 @@ export default function Passes() {
                 <p>1</p>
                 <AiOutlinePlusCircle />
               </div>
-              <div className="bg-black h-fit text-bold text-xs whitespace-pre p-1 text-center text-white">
+              <div className="text-xs bg-black h-fit text-bold p-1 text-center text-white">
                 ADD TO CHART
               </div>
             </div>
