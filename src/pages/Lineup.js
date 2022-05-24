@@ -3,6 +3,7 @@ import Content from "../components/Content";
 import { RiArrowDownSLine } from "react-icons/ri";
 // import { act } from "react-dom/test-utils";
 import { Link, useLocation } from "react-router-dom";
+const urlSlugMatch = require("url-slug-match");
 
 export default function Lineup({ bands, schedule }) {
   return (
@@ -58,7 +59,7 @@ export default function Lineup({ bands, schedule }) {
 
         <div>
           <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
-          <TransformIntoAnArray schedule={schedule} />
+          {/* <TransformIntoAnArray schedule={schedule} /> */}
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {bands.map((band, index) => (
@@ -95,14 +96,12 @@ function ImgJPG({ band }) {
 
 function ImgSVG({ band }) {
   return (
-    <Link to={"/lineup"}>
-      <div className="grid gap-x-8">
-        <div className="h-[11rem] lg:h-[18rem] ">
-          <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
-        </div>
-        <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
+    <div className="grid gap-x-8">
+      <div className="h-[11rem] lg:h-[18rem] ">
+        <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
       </div>
-    </Link>
+      <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
+    </div>
   );
 }
 
@@ -138,12 +137,10 @@ function TransformIntoAnArray({ schedule }) {
   }
 }
 
-export function BandLink({ bandsString }) {
+function BandLink({ band }) {
   return (
     <>
-      {bands.map((band, index) => {
-        return <Link key={`artist${index}`} className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()}/`}</Link>;
-      })}
+      <Link to={`artist/${urlSlugMatch(band.name.trim())}`}>{`${band.name.trim()}/`}</Link>;
     </>
   );
 }
