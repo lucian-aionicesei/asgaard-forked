@@ -137,3 +137,13 @@ function TransformIntoAnArray({ schedule }) {
     });
   }
 }
+
+export function BandLink({ bandsString }) {
+  return (
+    <>
+      {bands.map((band, index) => {
+        return <Link key={`artist${index}`} className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()}/`}</Link>;
+      })}
+    </>
+  );
+}
