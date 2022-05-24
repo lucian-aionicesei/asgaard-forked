@@ -1,5 +1,5 @@
 import Content from "../components/Content";
-import { AiOutlineSearch } from "react-icons/ai";
+// import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 export default function Lineup({ bands }) {
@@ -42,7 +42,7 @@ export default function Lineup({ bands }) {
             <div class="form-floating  sm:w-auto xl:w-96">
               <input
                 type="password"
-                className="form-control block w-full text-base font-normal font-montserrat text-black bg-concert-yellow bg-clip-padding border border-solid border-black border-[3px] border-black  transition ease-in-out m-0 focus:text-black  placeholder-black  text-font-semibold placeholder-blackfocus:bg-concert-yellow  focus:border-concert-pink focus:outline-none placeholder-black"
+                className="form-control block w-full text-base font-normal font-montserrat bg-concert-yellow bg-clip-padding border border-solid border-black border-[3px]  transition ease-in-out m-0 focus:text-black  placeholder-black  text-font-semibold placeholder-blackfocus:bg-concert-yellow  focus:border-concert-pink focus:outline-none "
                 placeholder="SEARCH BY BAND NAME"
               ></input>
             </div>
@@ -53,15 +53,42 @@ export default function Lineup({ bands }) {
           <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">STAGE 1</h2>
         </div>
 
-        <ul className="w-full grid gap-4 grid-cols-3 grid-rows-3 p-4">
+        <ul className="w-full grid gap-4 grid-cols-4 grid-rows-4 ">
           {bands.map((band, index) => (
-            <div key={`band#${index}`} className="bg-gray-600 text-white rounded-md p-4">
-              <img src={band.logo} alt={band.name} width="500" height="600"></img>
-              {band.name}
+            <div key={`band#${index}`} className="bg-gray-600 text-white ">
+              <CheckingBands band={band} />
             </div>
           ))}
         </ul>
       </Content>
+    </div>
+  );
+}
+
+function CheckingBands({ band }) {
+  if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
+    return <ImgJPG band={band} />;
+  }
+  return <ImgSVG band={band} />;
+}
+
+function ImgJPG({ band }) {
+  console.log(band);
+  return (
+    <div className="w-full flex flex-col">
+      <div>
+        <img src={`./images/logos/${band.logo}`} alt={band.name} className=""></img>
+      </div>
+      <div className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center">{band.name}</div>
+    </div>
+  );
+}
+
+function ImgSVG({ band }) {
+  return (
+    <div>
+      <img src={band.logo} alt={band.name}></img>
+      <div className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center ">{band.name}</div>
     </div>
   );
 }
