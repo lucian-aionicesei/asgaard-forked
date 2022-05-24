@@ -84,7 +84,7 @@ function CheckingBands({ band }) {
 function ImgJPG({ band }) {
   // console.log(band);
   return (
-    <Link to={`artist/${urlSlugMatch(band.name.trim())}`}>
+    <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       <div className="grid gap-x-8">
         <div className="h-[11rem] lg:h-[18rem] ">
           <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
@@ -98,7 +98,7 @@ function ImgJPG({ band }) {
 
 function ImgSVG({ band }) {
   return (
-    <Link to={`artist/${urlSlugMatch(band.name.trim())}`}>
+    <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       {" "}
       <div className="grid gap-x-8">
         <div className="h-[11rem] lg:h-[18rem] ">
@@ -111,33 +111,33 @@ function ImgSVG({ band }) {
 }
 
 function TransformIntoAnArray({ schedule }) {
-  const Jotunheim = Object.keys(schedule.Jotunheim).map(function (key) {
-    return schedule.Jotunheim[key];
-  });
+  // const Jotunheim = Object.keys(schedule.Jotunheim).map(function (key) {
+  //   return schedule.Jotunheim[key];
+  // });
 
   const Midgard = Object.keys(schedule.Midgard).map(function (key) {
     return schedule.Midgard[key];
   });
+  console.log(schedule);
+  // const Vanaheim = Object.keys(schedule.Jotunheim).map(function (key) {
+  //   return schedule.Vanaheim[key];
+  // });
 
-  const Vanaheim = Object.keys(schedule.Jotunheim).map(function (key) {
-    return schedule.Vanaheim[key];
-  });
-
-  const newArrayNow = Jotunheim.map((day) => {
-    day.map((act) => {
-      <li>{act.act}</li>;
-    });
-  });
-  return newArrayNow;
+  // const newArrayNow = Jotunheim.map((day) => {
+  //   day.map((act) => {
+  //     <li>{act.act}</li>;
+  //   });
+  // });
+  // return newArrayNow;
 
   {
     Midgard.map((day) => {
       day.map((act) => console.log(act.act));
     });
   }
-  {
-    Vanaheim.map((day) => {
-      day.map((act) => console.log(act.act));
-    });
-  }
+  // {
+  //   Vanaheim.map((day) => {
+  //     day.map((act) => console.log(act.act));
+  //   });
+  // }
 }
