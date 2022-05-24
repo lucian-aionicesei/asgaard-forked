@@ -2,7 +2,7 @@ import Content from "../components/Content";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-export default function Lineup({ bands }) {
+export default function Lineup({ bands, schedule }) {
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
@@ -50,10 +50,15 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">STAGE 1</h2>
+          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
+          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Midgard</h2>
+          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Vanaheim</h2>
         </div>
 
-        <ul className="w-full grid gap-4 grid-cols-4 grid-rows-4 ">
+        <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
+          {/* <div>
+            <TransformIntoAnArray schedule={schedule} />
+          </div> */}
           {bands.map((band, index) => (
             <div key={`band#${index}`} className="bg-gray-600 text-white ">
               <CheckingBands band={band} />
@@ -73,22 +78,41 @@ function CheckingBands({ band }) {
 }
 
 function ImgJPG({ band }) {
-  console.log(band);
+  // console.log(band);
   return (
-    <div className="w-full flex flex-col">
-      <div>
-        <img src={`./images/logos/${band.logo}`} alt={band.name} className=""></img>
+    <div className="grid gap-x-8">
+      <div className="h-[11rem] lg:h-[18rem] ">
+        <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
       </div>
-      <div className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center">{band.name}</div>
+
+      <div className="bg-concert-pink font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
     </div>
   );
 }
 
 function ImgSVG({ band }) {
   return (
-    <div>
-      <img src={band.logo} alt={band.name}></img>
-      <div className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center ">{band.name}</div>
+    <div className="grid gap-x-8">
+      <div className="h-[11rem] lg:h-[18rem] ">
+        <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+      </div>
+      <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
     </div>
   );
+}
+
+function TransformIntoAnArray({ schedule }) {
+  // const Newname = schedule.constructor.name;
+  // console.log(schedule.Jotunheim);
+  // console.log(schedule.Midgard);
+  const Jotunheim = Object.keys(schedule).map(function (key) {
+    return schedule[key];
+  });
+  console.log(Jotunheim);
+
+  // console.log(Jotunheim[0].mon[0].act);
+
+  // {
+  //   Jotunheim.map((Jotunheim) => <li>{Jotunheim}</li>);
+  // }
 }
