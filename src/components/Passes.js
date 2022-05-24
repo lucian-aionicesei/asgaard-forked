@@ -1,78 +1,35 @@
-import { SeeDetailButton } from "./Buttons";
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
+import PassesLines from "./PassesLines";
 
 export default function Passes() {
   return (
-    <article className="w-full h-96 bg-concert-pink text-black ">
+    <article className="w-full h-auto bg-concert-pink text-black ">
       <h1 className="font-acier p-5 text-6xl text-black">FESTIVAL PASSES</h1>
-      <section className="w-full p-2 font-bold">
-        <div className="w-full h-14 bg-white border-[3px] border-black flex">
-          <div className="h-full w-10 bg-concert-l-green border-r-[2px] border-black"></div>
-          <div className="px-2 justify-between w-full flex h-full">
-            <div className="pt-2 flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
-              <div>
-                <h4 className="whitespace-pre">GENERAL ACCESS</h4>
-                <SeeDetailButton label="See Details" />
-              </div>
-              <p className="pr-2">241 dkk</p>
-            </div>
-            <div className="flex h-full items-center space-x-2">
-              <div className="flex items-center h-fit space-x-2 px-1 bg-concert-yellow border-black border-[3px]">
-                <AiOutlineMinusCircle />
-                <p>1</p>
-                <AiOutlinePlusCircle />
-              </div>
-              <div className="text-xs bg-black h-fit text-bold p-1 text-center text-white">
-                ADD TO CHART
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PassesLines
+        passName="GENERAL ACCESS"
+        passPrice="140$"
+        bgPasses="concert-l-green"
+      />
+
+      <PassesLines
+        passName="VIP"
+        passPrice="140$"
+        bgPasses="concert-yellowish"
+      />
+      <PassesLines
+        passName="PREMIUM PASS"
+        passPrice="140$"
+        bgPasses="concert-redish"
+      />
+      <PassesLines
+        passName="DAY PASS"
+        passPrice="50$"
+        bgPasses="concert-red-dark"
+      />
+      <PassesLines
+        passName="3 DAY PASS"
+        passPrice="120$"
+        bgPasses="concert-b-green"
+      />
     </article>
   );
 }
-
-/* <div className="w-full h-96 bg-concert-pink">
-      <h3 className="font-acier p-5 text-6xl text-black">FESTIVAL PASSES</h3>
-      <div className="flex box-border flex-col gap-6 pl-12 pr-10">
-        <div className="flex relative h-auto phone:h-14 w-full bg-white border-[3px] border-black">
-          <div className="flex h-auto w-10 bg-concert-l-green border-r-[2px] border-black"></div>
-          <div className="flex ml-10 items-center">
-            <div className="flex flex-col sm:flex-row">
-              <div className="text-xs pl-4 md:text-sm pl-4 text-black font-bold">
-                GENERAL ACCES
-              </div>
-              <div className="text-xs pl-4 md:pl-10 pr-10 mr-auto text-black font-bold">
-                140$
-              </div>
-            </div>
-            <div className=" flex flex-col ml-auto justify-end align-center sm:flex-row">
-              <div className="flex justify-center ml-auto mr-5 justify-around items-center text-center w-20 h-3/5 bg-concert-yellow border-black border-[2px]">
-                <div className="w-4 h-4 bg-concert-yellow border-black border-[1px] rounded-full"></div>
-                <div className="align-middle text-black">1</div>
-                <div className="w-4 h-4 bg-concert-yellow border-black border-[1px] rounded-full"></div>
-              </div>
-              <div className="mr-4 md:flex items-center w-26 h-3/5 bg-black mr-16">
-                <div className="text-bold text-xs whitespace-pre p-1 text-center text-white">
-                  ADD TO CHART
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex w-5/6 h-14 whitespace-nowrap bg-white border-[3px] border-black">
-          <div>GENRERAL ACCES</div>
-          <div> 140</div>
-          <div>Button</div>
-          <div>Button</div>
-        </div>
-        <div className="flex w-5/6 h-14 bg-white border-[3px] border-black">
-          <div>GENRERAL ACCES</div>
-          <div> 140</div>
-          <div>Button</div>
-          <div>Button</div>
-        </div>
-      </div>
-    </div>
-  );*/

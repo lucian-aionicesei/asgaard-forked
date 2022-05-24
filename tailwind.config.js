@@ -20,6 +20,8 @@ module.exports = {
         "concert-blue": "#05AFF2",
         "concert-yellowish": "#FFF9E7",
         "concert-l-dark": "#171717",
+        "concert-red-dark": "#975072",
+        "concert-bg": "#FFF9E7",
       },
       spacing: {
         26: "6.5rem",
