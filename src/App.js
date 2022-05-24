@@ -39,6 +39,19 @@ function App() {
 
   console.log(schedule);
 
+  const [bandsListID, setProductsID] = useState([]);
+
+  useEffect(() => {
+    async function getProductsID() {
+      const res = await fetch(`https://the-javascript-bar-project.herokuapp.com/bands?q={"name:"${_id}}`);
+      const data = await res.json();
+      setProductsID(data);
+    }
+    getProductsID();
+  }, []);
+
+  console.log(bandsListID);
+
   return (
     <div className="App bg-black font-montserrat">
       <Header bgColor="bg-concert-pink" />

@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 const urlSlugMatch = require("url-slug-match");
 
 export default function Lineup({ bands, schedule }) {
+  // bands.map((band) => console.log(band));
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
