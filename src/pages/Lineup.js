@@ -84,24 +84,29 @@ function CheckingBands({ band }) {
 function ImgJPG({ band }) {
   // console.log(band);
   return (
-    <div className="grid gap-x-8">
-      <div className="h-[11rem] lg:h-[18rem] ">
-        <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
-      </div>
+    <Link to={`artist/${urlSlugMatch(band.name.trim())}`}>
+      <div className="grid gap-x-8">
+        <div className="h-[11rem] lg:h-[18rem] ">
+          <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+        </div>
 
-      <div className="bg-concert-pink font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
-    </div>
+        <div className="bg-concert-pink font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
+      </div>
+    </Link>
   );
 }
 
 function ImgSVG({ band }) {
   return (
-    <div className="grid gap-x-8">
-      <div className="h-[11rem] lg:h-[18rem] ">
-        <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+    <Link to={`artist/${urlSlugMatch(band.name.trim())}`}>
+      {" "}
+      <div className="grid gap-x-8">
+        <div className="h-[11rem] lg:h-[18rem] ">
+          <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+        </div>
+        <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
       </div>
-      <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
-    </div>
+    </Link>
   );
 }
 
@@ -135,12 +140,4 @@ function TransformIntoAnArray({ schedule }) {
       day.map((act) => console.log(act.act));
     });
   }
-}
-
-function BandLink({ band }) {
-  return (
-    <>
-      <Link to={`artist/${urlSlugMatch(band.name.trim())}`}>{`${band.name.trim()}/`}</Link>;
-    </>
-  );
 }
