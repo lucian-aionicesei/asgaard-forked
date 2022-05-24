@@ -1,6 +1,8 @@
 import Content from "../components/Content";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDownSLine } from "react-icons/ri";
+// import { act } from "react-dom/test-utils";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Lineup({ bands, schedule }) {
   return (
@@ -50,21 +52,22 @@ export default function Lineup({ bands, schedule }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
-          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Midgard</h2>
-          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Vanaheim</h2>
+          {/* <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Midgard</h2>
+          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Vanaheim</h2> */}
         </div>
 
-        <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
-          {/* <div>
-            <TransformIntoAnArray schedule={schedule} />
-          </div> */}
-          {bands.map((band, index) => (
-            <div key={`band#${index}`} className="bg-gray-600 text-white ">
-              <CheckingBands band={band} />
-            </div>
-          ))}
-        </ul>
+        <div>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
+          <TransformIntoAnArray schedule={schedule} />
+
+          <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
+            {bands.map((band, index) => (
+              <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                <CheckingBands band={band} />
+              </div>
+            ))}
+          </ul>
+        </div>
       </Content>
     </div>
   );
@@ -92,27 +95,45 @@ function ImgJPG({ band }) {
 
 function ImgSVG({ band }) {
   return (
-    <div className="grid gap-x-8">
-      <div className="h-[11rem] lg:h-[18rem] ">
-        <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+    <Link to={"/lineup"}>
+      <div className="grid gap-x-8">
+        <div className="h-[11rem] lg:h-[18rem] ">
+          <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+        </div>
+        <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
       </div>
-      <div className="bg-concert-pink font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]">{band.name}</div>
-    </div>
+    </Link>
   );
 }
 
 function TransformIntoAnArray({ schedule }) {
-  // const Newname = schedule.constructor.name;
-  // console.log(schedule.Jotunheim);
-  // console.log(schedule.Midgard);
-  const Jotunheim = Object.keys(schedule).map(function (key) {
-    return schedule[key];
+  const Jotunheim = Object.keys(schedule.Jotunheim).map(function (key) {
+    return schedule.Jotunheim[key];
   });
-  console.log(Jotunheim);
 
-  // console.log(Jotunheim[0].mon[0].act);
+  const Midgard = Object.keys(schedule.Midgard).map(function (key) {
+    return schedule.Midgard[key];
+  });
 
-  // {
-  //   Jotunheim.map((Jotunheim) => <li>{Jotunheim}</li>);
-  // }
+  const Vanaheim = Object.keys(schedule.Jotunheim).map(function (key) {
+    return schedule.Vanaheim[key];
+  });
+
+  const newArrayNow = Jotunheim.map((day) => {
+    day.map((act) => {
+      <li>{act.act}</li>;
+    });
+  });
+  return newArrayNow;
+
+  {
+    Midgard.map((day) => {
+      day.map((act) => console.log(act.act));
+    });
+  }
+  {
+    Vanaheim.map((day) => {
+      day.map((act) => console.log(act.act));
+    });
+  }
 }
