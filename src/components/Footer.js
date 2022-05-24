@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button2 } from "../components/Buttons";
 
 export default function Footer() {
   return (
@@ -42,7 +43,9 @@ export default function Footer() {
         <div className="mt-2 mb-2 md:mt-0 mb-0 ">
           <h3 className="font-acier font-normal text-3xl">NEWSLETTER</h3>
           <input></input>
-          <buton></buton>
+          <Link to="/artist/2" className="py-3.5">
+            <Button2 label="SUBSCRIBE" bgcolor="concert-pink" />
+          </Link>
         </div>
       </div>
 

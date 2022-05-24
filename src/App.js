@@ -17,9 +17,7 @@ function App() {
 
   useEffect(() => {
     async function getProducts() {
-      const res = await fetch(
-        "https://the-javascript-bar-project.herokuapp.com/bands"
-      );
+      const res = await fetch("https://the-javascript-bar-project.herokuapp.com/bands");
       const data = await res.json();
       setProducts(data);
     }
@@ -32,9 +30,7 @@ function App() {
 
   useEffect(() => {
     async function getLineUp() {
-      const res = await fetch(
-        "https://the-javascript-bar-project.herokuapp.com/schedule"
-      );
+      const res = await fetch("https://the-javascript-bar-project.herokuapp.com/schedule");
       const data = await res.json();
       setSchedule(data);
     }
