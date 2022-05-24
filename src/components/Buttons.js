@@ -1,3 +1,5 @@
+import { AiOutlineArrowDown } from "react-icons/ai";
+
 export function Button1({ label }) {
   return (
     <div
@@ -23,3 +25,29 @@ Button2.defaultProps = {
   textSize: "xl",
 };
 
+export function SeeDetailButton({label, bgcolor}) {
+  return (
+    <div className={`text-black font-montserrat w-fit font-bold border-[3px] border-black text-sm bg-${bgcolor}`}>
+      <ul className="flex items-center space-x-1">
+      <li><AiOutlineArrowDown/></li>
+      <li>{label}</li>
+      </ul>
+    </div>
+  );
+}
+
+SeeDetailButton.defaultProps = {
+  bgcolor: "concert-b-green"
+};
+
+export function DetailButton({label, bgcolor}) {
+  return(
+    <div className={`text-black font-montserrat px-7 w-fit font-bold border-[3px] border-black text-lg bg-${bgcolor}`}>
+    <div className="flex items-center">{label}</div >
+    </div>
+  )
+}
+
+DetailButton.defaultProps = {
+  bgcolor: "concert-pink"
+};
