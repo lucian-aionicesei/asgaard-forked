@@ -14,7 +14,7 @@ export default function Passes() {
                 <h4>GENERAL ACCESS</h4>
                 <SeeDetailButton label="See Details" />
               </div>
-              <p>240 dkk</p>
+              <p>241 dkk</p>
             </div>
             <div className="flex h-full items-center space-x-2">
               <div className="flex items-center h-fit space-x-2 px-1 bg-concert-yellow border-black border-[3px]">
