@@ -67,7 +67,7 @@ export function CampContainer({ bgcolor }) {
           <div className="flex justify-center">
             <ul className="p-2">
               <li>
-                <img src={camp} className="h-36"></img>
+                <img src={camp} className="h-36" alt=""></img>
               </li>
               <li>
                 <h2 className="text-xl pt-2">2 Persons Tent</h2>
@@ -84,7 +84,7 @@ export function CampContainer({ bgcolor }) {
           <div className="flex justify-center">
             <ul className="p-2">
               <li>
-                <img src={camp} className="h-36"></img>
+                <img src={camp} className="h-36" alt=""></img>
               </li>
               <li>
                 <h2 className="text-xl pt-2">3 Persons Tent</h2>

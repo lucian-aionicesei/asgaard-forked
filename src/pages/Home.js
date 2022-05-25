@@ -4,7 +4,10 @@ import Stages from "../components/Stages";
 import Passes from "../components/Passes";
 import { Button2 } from "../components/Buttons";
 import { Link } from "react-router-dom";
-import MerchBio from "../components/MerchBio";
+import GetHere from "../components/GetHere";
+import ThisIsUs from "../components/ThisIsUs";
+import Merchandise from "../components/Merchandise";
+import LogoComp from "../components/LogoComp";
 
 export default function Home() {
   return (
@@ -44,7 +47,16 @@ export default function Home() {
           <Passes />
         </div>
         <div>
-          <MerchBio />
+          <GetHere />
+        </div>
+        <div>
+          <ThisIsUs />
+        </div>
+        <div>
+          <Merchandise />
+        </div>
+        <div>
+          <LogoComp />
         </div>
       </Content>
     </>
