@@ -17,7 +17,7 @@ export default function PassesLines({
         ></div>
         <div className="px-2 justify-between w-full flex h-full">
           <div className="pt-2 flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
-            <div className="w-28">
+            <div className="w-24">
               <h4 className="whitespace-pre">{`${passName}`}</h4>
 
               <button
@@ -32,12 +32,12 @@ export default function PassesLines({
             <p className="pr-2">{`${passPrice}`}</p>
           </div>
           <div className="flex h-full items-center space-x-2">
-            <div className="flex items-center h-fit space-x-2 px-1 bg-concert-yellow border-black border-[3px]">
+            <div className="flex items-center h-fit space-x-1 px-1 bg-concert-yellow border-black border-[3px] phone:space-x-2">
               <AiOutlineMinusCircle />
               <p>1</p>
               <AiOutlinePlusCircle />
             </div>
-            <div className="text-[0.4rem] bg-black h-fit text-bold p-1 text-center text-white sm:text-xs">
+            <div className="text-[0.3rem] bg-black h-fit text-bold p-1 text-center text-white sm:text-xs">
               ADD TO CHART
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function PassesLines({
           onClick={() => {
             setShow(!show);
           }}
-          className="h-28 bg-yellow-50"
+          className="h-auto bg-yellow-50"
         >
           <p className="p-4 text-xs cursor-pointer sm:text-base">
             {`${dropText}`}
