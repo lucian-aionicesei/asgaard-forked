@@ -20,43 +20,36 @@ export default function Artist({ bands }) {
   console.log(bands);
 
   bands.map((band) => {
-    // console.log(band);
     if (band.name == MakeIDCapialLetter) {
       console.log(band);
       return band;
     }
   });
-  // console.log(newArray);
-
-  // console.log("this is the new one :", newArray[0]);
 
   return (
     <Content>
       <CheckingBandPage bands={bands} />
       <div className="flex justify-center items-center ">
         <div className="w-2/3 lg:w-3/4 xl:w-4/5 ">
-          <h1 className="text-2xl font-acier text-center xl:text-7xl">this is {MakeIDCapialLetter}</h1>
-          <div className="flex flex-row justify-between">
+          <h1 className="text-2xl font-acier text-center xl:text-7xl border-[2px] border-b-[0px] border-concert-yellow">this is {MakeIDCapialLetter}</h1>
+          <div className="flex flex-row justify-between border-[2px] border-concert-yellow">
             <div>
               <div className="flex justify-center items-center text-black font-montserrat px-8 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2 lg:text-4xl">POP</div>
             </div>
-            <div className="flex flex-row ">
-              <BsInstagram />
-              <BsSpotify />
-              <ImSoundcloud />
+            <div className="flex flex-row  items-center m-2 ">
+              <BsInstagram className="m-2" />
+              <BsSpotify className="m-2" />
+              <ImSoundcloud className="m-2" />
             </div>
-            <div className="border-t-4 border-concert-yellow">STAGE 1</div>
+            <div className=" flex items-center">STAGE 1</div>
           </div>
           <div>
             <img></img>
           </div>
           <div>Spotify</div>
-          <div>
+          <div className="border-[2px] border-concert-yellow">
             <section>
-              <p>
-                Loremm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor{" "}
-              </p>
+              {/* <p>{band.bio}</p> */}
               <p>
                 Loremm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor{" "}
