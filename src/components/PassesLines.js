@@ -37,7 +37,7 @@ export default function PassesLines({
               <p>1</p>
               <AiOutlinePlusCircle />
             </div>
-            <div className="text-xs bg-black h-fit text-bold p-1 text-center text-white">
+            <div className="text-[0.4rem] bg-black h-fit text-bold p-1 text-center text-white sm:text-xs">
               ADD TO CHART
             </div>
           </div>

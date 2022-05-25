@@ -4,6 +4,7 @@ import Stages from "../components/Stages";
 import Passes from "../components/Passes";
 import { Button2 } from "../components/Buttons";
 import { Link } from "react-router-dom";
+import MerchBio from "../components/MerchBio";
 
 export default function Home() {
   return (
@@ -41,6 +42,9 @@ export default function Home() {
         </div>
         <div>
           <Passes />
+        </div>
+        <div>
+          <MerchBio />
         </div>
       </Content>
     </>

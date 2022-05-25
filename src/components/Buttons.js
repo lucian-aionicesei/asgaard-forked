@@ -25,6 +25,21 @@ Button2.defaultProps = {
   textSize: "xl",
 };
 
+export function Button3({ label, buttonThreeBg }) {
+  return (
+    <div
+      className={`text-[0.6rem] text-black bg-${buttonThreeBg} whitespace-pre font-montserrat px-4 py-1 w-fit font-bold border-[3px] border-black text-sm sm:text-sm`}
+    >
+      {label}
+    </div>
+  );
+}
+
+Button3.defaultProps = {
+  bgcolor: "concert-b-green",
+  textSize: "xl",
+};
+
 export function SeeDetailButton({ label, bgcolor }) {
   return (
     <div
