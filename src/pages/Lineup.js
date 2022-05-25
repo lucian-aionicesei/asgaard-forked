@@ -3,10 +3,53 @@ import Content from "../components/Content";
 import { RiArrowDownSLine } from "react-icons/ri";
 // import { act } from "react-dom/test-utils";
 import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
+import { act } from "@testing-library/react";
+
 const urlSlugMatch = require("url-slug-match");
 
-export default function Lineup({ bands, schedule }) {
-  // bands.map((band) => console.log(band));
+export default function Lineup({ bands }) {
+  // const [bands, setBands] = useState([]);
+  const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/schedule");
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p> Error </p>;
+  let NewMidgard = [];
+  let DisplayMidgard = [];
+
+  if (data) {
+    const dataArray = Object.values(data);
+    console.log(dataArray);
+
+    const stageMidgard = Object.values(dataArray[0]);
+    console.log("this is Midgard", stageMidgard);
+    // let ActMidgard;
+
+    stageMidgard.map((dayMidgard) => {
+      dayMidgard = Object.values(dayMidgard);
+      // console.log("this is Midgard days", dayMidgard);
+      dayMidgard.map((actMidgard) => {
+        // console.log(actMidgard.act);
+        actMidgard.act !== "break" && (NewMidgard = [...NewMidgard, actMidgard.act]);
+        // actMidgard = actMidgard.act;
+      });
+      // console.log(ActMidgard);
+      // return ActMidgard;
+    });
+  }
+
+  console.log(NewMidgard);
+
+  // NewMidgard.forEach(element => {
+
+  // });
+  NewMidgard.map((bandMidgard) => {
+    const thisBand = bands.find((elem) => elem.name === bandMidgard);
+    DisplayMidgard = [...DisplayMidgard, thisBand];
+  });
+  console.log(DisplayMidgard);
+
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
@@ -60,7 +103,6 @@ export default function Lineup({ bands, schedule }) {
 
         <div>
           <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
-          {/* <TransformIntoAnArray schedule={schedule} /> */}
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {bands.map((band, index) => (
@@ -83,7 +125,6 @@ function CheckingBands({ band }) {
 }
 
 function ImgJPG({ band }) {
-  // console.log(band);
   return (
     <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       <div className="grid gap-x-8">
@@ -109,36 +150,4 @@ function ImgSVG({ band }) {
       </div>
     </Link>
   );
-}
-
-function TransformIntoAnArray({ schedule }) {
-  // const Jotunheim = Object.keys(schedule.Jotunheim).map(function (key) {
-  //   return schedule.Jotunheim[key];
-  // });
-
-  const Midgard = Object.keys(schedule.Midgard).map(function (key) {
-    return schedule.Midgard[key];
-  });
-  console.log(schedule);
-  // const Vanaheim = Object.keys(schedule.Jotunheim).map(function (key) {
-  //   return schedule.Vanaheim[key];
-  // });
-
-  // const newArrayNow = Jotunheim.map((day) => {
-  //   day.map((act) => {
-  //     <li>{act.act}</li>;
-  //   });
-  // });
-  // return newArrayNow;
-
-  {
-    Midgard.map((day) => {
-      day.map((act) => console.log(act.act));
-    });
-  }
-  // {
-  //   Vanaheim.map((day) => {
-  //     day.map((act) => console.log(act.act));
-  //   });
-  // }
 }

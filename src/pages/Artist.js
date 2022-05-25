@@ -8,6 +8,7 @@ import { Button2 } from "../components/Buttons";
 export default function Artist({ bands }) {
   let { id } = useParams();
 
+  const NewArray = [];
   const MakeIDCapialLetter = id
     .toLowerCase()
     .replaceAll("-", " ")
@@ -47,7 +48,7 @@ export default function Artist({ bands }) {
             <img></img>
           </div>
           <div>Spotify</div>
-          <div className="border-[2px] border-concert-yellow">
+          <div className="">
             <section>
               {/* <p>{band.bio}</p> */}
               <p>

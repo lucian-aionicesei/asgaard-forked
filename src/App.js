@@ -24,7 +24,7 @@ function App() {
     getProducts();
   }, []);
 
-  console.log(bandsList);
+  // console.log(bandsList);
 
   const [schedule, setSchedule] = useState([]);
 
@@ -37,14 +37,14 @@ function App() {
     getLineUp();
   }, []);
 
-  console.log(schedule);
+  // console.log(schedule);
 
   return (
     <div className="App bg-black font-montserrat">
       <Header bgColor="bg-concert-pink" />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
+        <Route path="lineup" element={<Lineup schedule={schedule} />} />
         <Route path="artist/:id" element={<Artist bands={bandsList} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
         <Route path="shop" element={<Shop />} />
