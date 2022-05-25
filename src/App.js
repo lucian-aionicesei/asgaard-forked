@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [bandsList, setProducts] = useState([]);
+  const [userAuthenticated, setUserAuthenticated] = useState([false])
 
   useEffect(() => {
     async function getProducts() {

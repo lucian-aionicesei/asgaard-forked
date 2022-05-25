@@ -31,6 +31,7 @@ module.exports = {
         12: "0.1rem",
       },
       screens: {
+        tablet: "860px",
         phone: "530px",
       },
     },
