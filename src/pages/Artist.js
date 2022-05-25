@@ -4,11 +4,15 @@ import { BsInstagram } from "react-icons/bs";
 import { BsSpotify } from "react-icons/bs";
 import { ImSoundcloud } from "react-icons/im";
 import { Button2 } from "../components/Buttons";
+import { CheckingBands } from "./Lineup";
 
 export default function Artist({ bands }) {
   let { id } = useParams();
+  const thisBand = bands.find((elem) => elem.id === id);
 
-  const NewArray = [];
+  console.log(thisBand);
+
+  const NewArrayBands = [bands];
   const MakeIDCapialLetter = id
     .toLowerCase()
     .replaceAll("-", " ")
@@ -20,12 +24,12 @@ export default function Artist({ bands }) {
 
   console.log(bands);
 
-  bands.map((band) => {
-    if (band.name == MakeIDCapialLetter) {
-      console.log(band);
-      return band;
-    }
-  });
+  // bands.map((band) => {
+  //   if (band.name == MakeIDCapialLetter) {
+  //     console.log(band);
+  //     return band;
+  //   }
+  // });
 
   return (
     <Content>
@@ -45,16 +49,14 @@ export default function Artist({ bands }) {
             <div className=" flex items-center">STAGE 1</div>
           </div>
           <div>
-            <img></img>
+            <div className="h-[11rem] lg:h-[18rem] ">
+              <img src={`./images/logos/${thisBand.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={thisBand.name}></img>
+            </div>
           </div>
           <div>Spotify</div>
           <div className="">
             <section>
-              {/* <p>{band.bio}</p> */}
-              <p>
-                Loremm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor{" "}
-              </p>
+              <p>{thisBand.bio}</p>
             </section>
           </div>
         </div>

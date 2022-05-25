@@ -1,11 +1,8 @@
 import Content from "../components/Content";
-// import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDownSLine } from "react-icons/ri";
-// import { act } from "react-dom/test-utils";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
-import { act } from "@testing-library/react";
 
 const urlSlugMatch = require("url-slug-match");
 
@@ -166,14 +163,14 @@ export default function Lineup({ bands }) {
   );
 }
 
-function CheckingBands({ band, bgColor }) {
+export function CheckingBands({ band, bgColor }) {
   if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
     return <ImgJPG band={band} bgColor={bgColor} />;
   }
   return <ImgSVG band={band} bgColor={bgColor} />;
 }
 
-function ImgJPG({ band, bgColor }) {
+export function ImgJPG({ band, bgColor }) {
   return (
     <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       <div className="grid gap-x-8">
@@ -187,7 +184,7 @@ function ImgJPG({ band, bgColor }) {
   );
 }
 
-function ImgSVG({ band, bgColor }) {
+export function ImgSVG({ band, bgColor }) {
   return (
     <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       {" "}
