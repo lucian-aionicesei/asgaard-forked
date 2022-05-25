@@ -41,9 +41,6 @@ export default function Lineup({ bands }) {
 
   console.log(NewMidgard);
 
-  // NewMidgard.forEach(element => {
-
-  // });
   NewMidgard.map((bandMidgard) => {
     const thisBand = bands.find((elem) => elem.name === bandMidgard);
     DisplayMidgard = [...DisplayMidgard, thisBand];
