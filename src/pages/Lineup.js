@@ -1,8 +1,82 @@
 import Content from "../components/Content";
-// import { AiOutlineSearch } from "react-icons/ai";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
+
+const urlSlugMatch = require("url-slug-match");
 
 export default function Lineup({ bands }) {
+  // const [bands, setBands] = useState([]);
+  const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/schedule");
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p> Error </p>;
+
+  let NewMidgard = [];
+  let NewVanaheim = [];
+  let NewJotunheim = [];
+
+  let DisplayMidgard = [];
+  let DisplayVanaheim = [];
+  let DisplayJotunheim = [];
+
+  if (data) {
+    const dataArray = Object.values(data);
+    console.log(dataArray);
+
+    const stageMidgard = Object.values(dataArray[0]);
+    const stageVanaheim = Object.values(dataArray[1]);
+    const stageJotunheim = Object.values(dataArray[2]);
+    // console.log("this is Midgard", stageMidgard);
+
+    stageMidgard.map((dayMidgard) => {
+      dayMidgard = Object.values(dayMidgard);
+      // console.log("this is Midgard days", dayMidgard);
+      dayMidgard.map((actMidgard) => {
+        // console.log(actMidgard.act);
+        actMidgard.act !== "break" && (NewMidgard = [...NewMidgard, actMidgard.act]);
+        // actMidgard = actMidgard.act;
+      });
+      // console.log(ActMidgard);
+      // return ActMidgard;
+    });
+
+    stageVanaheim.map((dayVanaheim) => {
+      dayVanaheim = Object.values(dayVanaheim);
+      dayVanaheim.map((actVanaheim) => {
+        actVanaheim.act !== "break" && (NewVanaheim = [...NewVanaheim, actVanaheim.act]);
+      });
+    });
+
+    stageJotunheim.map((dayJotunheim) => {
+      dayJotunheim = Object.values(dayJotunheim);
+      dayJotunheim.map((actJotunheim) => {
+        actJotunheim.act !== "break" && (NewJotunheim = [...NewJotunheim, actJotunheim.act]);
+      });
+    });
+  }
+
+  console.log(NewMidgard);
+
+  NewMidgard.map((bandMidgard) => {
+    const thisBand = bands.find((elem) => elem.name === bandMidgard);
+    DisplayMidgard = [...DisplayMidgard, thisBand];
+  });
+  console.log(DisplayMidgard);
+
+  NewVanaheim.map((bandVanaheim) => {
+    const thisBandVanaheim = bands.find((elem) => elem.name === bandVanaheim);
+    DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
+  });
+  console.log(DisplayVanaheim);
+
+  NewJotunheim.map((bandJotunheim) => {
+    const thisBandJotunheim = bands.find((elem) => elem.name === bandJotunheim);
+    DisplayJotunheim = [...DisplayJotunheim, thisBandJotunheim];
+  });
+  console.log(DisplayJotunheim);
+
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
@@ -50,45 +124,76 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">STAGE 1</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Midgard</h2>
+
+          <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
+            {DisplayMidgard.map((band, index) => (
+              <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                <CheckingBands bgColor="concert-pink" band={band} />
+              </div>
+            ))}
+          </ul>
         </div>
 
-        <ul className="w-full grid gap-4 grid-cols-4 grid-rows-4 ">
-          {bands.map((band, index) => (
-            <div key={`band#${index}`} className="bg-gray-600 text-white ">
-              <CheckingBands band={band} />
-            </div>
-          ))}
-        </ul>
+        <div>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Vanaheim</h2>
+
+          <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
+            {DisplayVanaheim.map((band, index) => (
+              <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                <CheckingBands bgColor="concert-b-green" band={band} />
+              </div>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
+
+          <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
+            {DisplayJotunheim.map((band, index) => (
+              <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                <CheckingBands bgColor="concert-blue" band={band} />
+              </div>
+            ))}
+          </ul>
+        </div>
       </Content>
     </div>
   );
 }
 
-function CheckingBands({ band }) {
+export function CheckingBands({ band, bgColor }) {
   if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
-    return <ImgJPG band={band} />;
+    return <ImgJPG band={band} bgColor={bgColor} />;
   }
-  return <ImgSVG band={band} />;
+  return <ImgSVG band={band} bgColor={bgColor} />;
 }
 
-function ImgJPG({ band }) {
-  console.log(band);
+export function ImgJPG({ band, bgColor }) {
   return (
-    <div className="w-full flex flex-col">
-      <div>
-        <img src={`./images/logos/${band.logo}`} alt={band.name} className=""></img>
+    <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
+      <div className="grid gap-x-8">
+        <div className="h-[11rem] lg:h-[18rem] ">
+          <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+        </div>
+
+        <div className={`bg-${bgColor} font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}>{band.name}</div>
       </div>
-      <div className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center">{band.name}</div>
-    </div>
+    </Link>
   );
 }
 
-function ImgSVG({ band }) {
+export function ImgSVG({ band, bgColor }) {
   return (
-    <div>
-      <img src={band.logo} alt={band.name}></img>
-      <div className="text-7xl text-black sm:text-7xl  font-acier bg-concert-pink flex justify-center ">{band.name}</div>
-    </div>
+    <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
+      {" "}
+      <div className="grid gap-x-8">
+        <div className="h-[11rem] lg:h-[18rem] ">
+          <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+        </div>
+        <div className={`bg-${bgColor} font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}>{band.name}</div>
+      </div>
+    </Link>
   );
 }
