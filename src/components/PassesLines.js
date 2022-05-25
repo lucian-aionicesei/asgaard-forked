@@ -2,7 +2,12 @@ import { SeeDetailButton } from "./Buttons";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import React, { useState } from "react";
 
-export default function PassesLines({ passName, passPrice, bgPasses }) {
+export default function PassesLines({
+  passName,
+  passPrice,
+  bgPasses,
+  dropText,
+}) {
   const [show, setShow] = useState(false);
   return (
     <section className="w-full p-2 font-bold">
@@ -12,7 +17,7 @@ export default function PassesLines({ passName, passPrice, bgPasses }) {
         ></div>
         <div className="px-2 justify-between w-full flex h-full">
           <div className="pt-2 flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
-            <div>
+            <div className="w-28">
               <h4 className="whitespace-pre">{`${passName}`}</h4>
 
               <button
@@ -46,10 +51,7 @@ export default function PassesLines({ passName, passPrice, bgPasses }) {
           className="h-28 bg-yellow-50"
         >
           <p className="p-4 text-xs cursor-pointer sm:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.{" "}
+            {`${dropText}`}
           </p>
         </div>
       )}
