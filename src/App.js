@@ -44,7 +44,7 @@ function App() {
       <Header bgColor="bg-concert-pink" />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="lineup" element={<Lineup schedule={schedule} />} />
+        <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
         <Route path="artist/:id" element={<Artist bands={bandsList} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
         <Route path="shop" element={<Shop />} />
