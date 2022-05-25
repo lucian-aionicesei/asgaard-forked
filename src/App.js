@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 import { useState, useEffect } from "react";
+const urlSlugMatch = require("url-slug-match");
 
 function App() {
   const [bandsList, setProducts] = useState([]);
@@ -24,7 +25,17 @@ function App() {
     getProducts();
   }, []);
 
-  // console.log(bandsList);
+  let updatedBandList = [];
+
+  console.log(bandsList);
+  bandsList.map((band) => {
+    // console.log(band.name);
+    let thisBand = band;
+    thisBand.id = urlSlugMatch(band.name.trim());
+    updatedBandList = [...updatedBandList, thisBand];
+  });
+
+  console.log(updatedBandList);
 
   const [schedule, setSchedule] = useState([]);
 
@@ -45,7 +56,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
-        <Route path="artist/:id" element={<Artist bands={bandsList} />} />
+        <Route path="artist/:id" element={<Artist bands={updatedBandList} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
         <Route path="shop" element={<Shop />} />
         <Route path="purchases" element={<Purchases />} />
