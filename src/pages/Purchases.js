@@ -23,7 +23,7 @@ export function UserLogin(props) {
 
 export function UserCart(props) {
   return (
-    <section className="w-full phone:min-w-[400px] max-w-[420px] h-fit text-black bg-concert-yellowish p-6 border-[3px] border-black">
+    <section className="w-full phone:min-w-[400px] max-w-[500px] h-fit text-black bg-concert-yellowish p-6 border-[3px] border-black">
       <h3 className="text-center text-2xl font-bold">YOUR ORDER</h3>
       <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
         <CartItem/>
