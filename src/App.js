@@ -13,8 +13,49 @@ import "./App.css";
 import { useState, useEffect } from "react";
 const urlSlugMatch = require("url-slug-match");
 
+const cart = {
+  tickets: {
+    regular: {
+      label: "Regular Pass - ticket",
+      price: 799,
+      quantity: 2,
+    },
+    vip: {
+      label: "VIP Pass - ticket",
+      price: 1299,
+      quantity: 2,
+    }
+  },
+  accomodation: {
+    Svartheim: {
+      twoPersonTent: 2,
+      onePersonTent: 0
+    },
+    Nilfheim: {
+      twoPersonTent: 0,
+      threePersonTent: 0
+    },
+    Helheim: {
+      twoPersonTent: 0,
+      threePersonTent: 0
+    },
+    MuspelHeim: {
+      twoPersonTent: 2,
+      threePersonTent: 0
+    },
+    Alfheim: {
+      twoPersonTent: 0,
+      threePersonTent: 0
+    }
+  }
+}
+
 function App() {
   const [bandsList, setProducts] = useState([]);
+  const [userAuthenticated, setUserAuthenticated] = useState(false);
+  const [userCart, setUserCart] = useState(cart);
+
+  console.log(userCart);
 
   useEffect(() => {
     async function getProducts() {
