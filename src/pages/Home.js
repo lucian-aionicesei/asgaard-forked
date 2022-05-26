@@ -1,3 +1,7 @@
+import GetHere from "../components/GetHere";
+import ThisIsUs from "../components/ThisIsUs";
+import Merchandise from "../components/Merchandise";
+import LogoComp from "../components/LogoComp";
 import { Button2 } from "../components/Buttons";
 import Content from "../components/Content";
 import Stages from "../components/Stages";
@@ -56,6 +60,18 @@ export default function Home() {
         </div>
         <div>
           <Passes />
+        </div>
+        <div>
+          <GetHere />
+        </div>
+        <div>
+          <ThisIsUs />
+        </div>
+        <div>
+          <Merchandise />
+        </div>
+        <div>
+          <LogoComp />
         </div>
       </Content>
     </>

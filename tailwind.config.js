@@ -9,6 +9,7 @@ module.exports = {
       },
       fontSize: {
         "5.5xl": "3.5rem",
+        smallRem: "0.6rem",
       },
       colors: {
         "concert-yellow": "#FBCE30",
@@ -19,6 +20,8 @@ module.exports = {
         "concert-blue": "#05AFF2",
         "concert-yellowish": "#FFF9E7",
         "concert-l-dark": "#171717",
+        "concert-red-dark": "#975072",
+        "concert-bg": "#FFF9E7",
       },
       important: true,
       spacing: {
