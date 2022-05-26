@@ -14,52 +14,67 @@ import { useState, useEffect } from "react";
 const urlSlugMatch = require("url-slug-match");
 
 const cart = {
-  tickets: {
-    regular: {
+  tickets: [
+    {
       label: "Regular Pass - ticket",
       price: 799,
       quantity: 2,
     },
-    vip: {
+    {
       label: "VIP Pass - ticket",
       price: 1299,
-      quantity: 2,
-    }
-  },
+      quantity: 4,
+    },
+  ],
   accomodation: {
-    Svartheim: {
-      twoPersonTent: 2,
-      onePersonTent: 0
-    },
-    Nilfheim: {
-      twoPersonTent: 0,
-      threePersonTent: 0
-    },
-    Helheim: {
-      twoPersonTent: 0,
-      threePersonTent: 0
-    },
-    MuspelHeim: {
-      twoPersonTent: 2,
-      threePersonTent: 0
-    },
-    Alfheim: {
-      twoPersonTent: 0,
-      threePersonTent: 0
-    }
-  }
-}
+    tents: [
+      {
+        area: "Muspelheim",
+        twoPersonTent: 1,
+        threePersonTent: null,
+      },
+      {
+        area: "Svartheim",
+        twoPersonTent: 1,
+        threePersonTent: 1,
+      },
+      {
+        area: "Alfheim",
+        twoPersonTent: 1,
+        threePersonTent: 1,
+      },
+    ],
+  },
+};
+
+// const cart2 = {
+//   tickets: {
+//     regular: {
+//       label: "Regular Pass - ticket",
+//       price: 799,
+//       quantity: 2,
+//     },
+//     vip: {
+//       label: "VIP Pass - ticket",
+//       price: 1299,
+//       quantity: 2,
+//     },
+//   },
+//   accomodation: null,
+// };
 
 function App() {
   const [bandsList, setProducts] = useState([]);
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const [userCart, setUserCart] = useState(cart);
 
-  console.log(userCart);
+  // console.log(userCart);
 
   useEffect(() => {
     async function getProducts() {
-      const res = await fetch("https://the-javascript-bar-project.herokuapp.com/bands");
+      const res = await fetch(
+        "https://the-javascript-bar-project.herokuapp.com/bands"
+      );
       const data = await res.json();
       setProducts(data);
     }
@@ -68,7 +83,7 @@ function App() {
 
   let updatedBandList = [];
 
-  console.log(bandsList);
+  // console.log(bandsList);
   bandsList.map((band) => {
     // console.log(band.name);
     let thisBand = band;
@@ -76,13 +91,15 @@ function App() {
     updatedBandList = [...updatedBandList, thisBand];
   });
 
-  console.log(updatedBandList);
+  // console.log(updatedBandList);
 
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     async function getLineUp() {
-      const res = await fetch("https://the-javascript-bar-project.herokuapp.com/schedule");
+      const res = await fetch(
+        "https://the-javascript-bar-project.herokuapp.com/schedule"
+      );
       const data = await res.json();
       setSchedule(data);
     }
@@ -96,11 +113,17 @@ function App() {
       <Header bgColor="bg-concert-pink" />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
+        <Route
+          path="lineup"
+          element={<Lineup schedule={schedule} bands={bandsList} />}
+        />
         <Route path="artist/:id" element={<Artist bands={updatedBandList} />} />
-        <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
+        <Route
+          path="schedule"
+          element={<Schedule schedule={schedule} bands={bandsList} />}
+        />
         <Route path="shop" element={<Shop />} />
-        <Route path="purchases" element={<Purchases />} />
+        <Route path="purchases" element={<Purchases savedItems={userCart} />} />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<Whoups404 />} />
       </Routes>
