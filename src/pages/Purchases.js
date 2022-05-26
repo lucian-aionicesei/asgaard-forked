@@ -1,6 +1,6 @@
 import Content from "../components/Content";
 import { FaPen, FaFacebookSquare } from "react-icons/fa";
-import {IoLogoGoogle} from "react-icons/io"
+import { IoLogoGoogle } from "react-icons/io";
 
 export default function Purchases() {
   return (
@@ -26,30 +26,30 @@ export function UserLogin(props) {
         </p>
       </div>
       <form>
-        <div class="mb-4">
-          <label class="block font-bold" for="username">
+        <div className="mb-4">
+          <label className="block font-bold" htmlFor="username">
             E-mail
           </label>
           <input
-            class="shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Username"
           />
         </div>
-        <div class="mb-4">
-          <label class="block font-bold" for="password">
+        <div className="mb-4">
+          <label className="block font-bold" htmlFor="password">
             Password
           </label>
           <input
-            class="shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="******************"
           />
         </div>
         <button
-          class="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
         >
           LOG IN
@@ -59,11 +59,13 @@ export function UserLogin(props) {
         No account?
         <span className="underline pl-2 font-bold cursor-pointer">Sign up</span>
       </p>
-      <div class="bg-concert-yellowish w-full hover:bg-concert-b-green text-black border border-[2px] border-black font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline cursor-pointer flex items-center space-x-4">
-        <FaFacebookSquare className="text-4xl" /><p className="w-full">Sign up with Facebook</p>
+      <div className="bg-concert-yellowish w-full hover:bg-concert-b-green text-black border border-[2px] border-black font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline cursor-pointer flex items-center space-x-4">
+        <FaFacebookSquare className="text-4xl" />
+        <p className="w-full">Sign up with Facebook</p>
       </div>
-      <div class="bg-concert-yellowish w-full hover:bg-concert-b-green text-black border border-[2px] border-black font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline cursor-pointer flex items-center space-x-4">
-        <IoLogoGoogle className="text-4xl" /><p className="w-full">Sign up with Google</p>
+      <div className="bg-concert-yellowish w-full hover:bg-concert-b-green text-black border border-[2px] border-black font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline cursor-pointer flex items-center space-x-4">
+        <IoLogoGoogle className="text-4xl" />
+        <p className="w-full">Sign up with Google</p>
       </div>
     </section>
   );
@@ -95,7 +97,7 @@ export function UserCart(props) {
       </p> */}
       <div className="text-gray-900 flex justify-center items-center space-x-2 pt-6 font-semibold bg-concert">
         <p className="flex flex-col phone:flex-row items-center gap-2">
-          <span class="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+          <span className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
             LOG IN
           </span>
           <span> and proceed to payment</span>
@@ -134,7 +136,7 @@ function CartItem(props) {
               max="100"
               onfocusout="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"
             ></input>
-            <label for="salary"> pcs.</label>
+            <label htmlFor="salary"> pcs.</label>
           </form>
           <p className="font-bold text-right">DKK 400,00</p>
         </div>
