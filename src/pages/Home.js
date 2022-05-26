@@ -6,8 +6,9 @@ import { Button2 } from "../components/Buttons";
 import Content from "../components/Content";
 import Stages from "../components/Stages";
 import Passes from "../components/Passes";
+import Sponsors from "../components/Sponsors";
 import { Link } from "react-router-dom";
-const urlSlugMatch = require('url-slug-match');
+const urlSlugMatch = require("url-slug-match");
 
 export default function Home() {
   const homePageLineup =
@@ -73,6 +74,9 @@ export default function Home() {
         <div>
           <LogoComp />
         </div>
+        <div>
+          <Sponsors />
+        </div>
       </Content>
     </>
   );
@@ -80,19 +84,28 @@ export default function Home() {
 
 export function HomeLineUp({ lineUp }) {
   const lineupRows = lineUp.split("|");
-  
+
   return (
     <article className=" font-aciersolid md:font-acier bg-concert-yellow text-black px-4 phone:px-8 pt-[5vw] pb-[4vw] w-full h-auto space-y-12">
       <ul className="grid">
         {lineupRows.map((row, index) => (
-          <li key={`row${index}`} className={`text-${7 - index}rem justify-center whitespace-normal flex flex-wrap`}>
+          <li
+            key={`row${index}`}
+            className={`text-${
+              7 - index
+            }rem justify-center whitespace-normal flex flex-wrap`}
+          >
             <BandLink bandsString={row} />
           </li>
         ))}
       </ul>
       <div className="flex phone justify-center space-x-3">
-        <Link to="/lineup"><Button2 label="See all artists" bgcolor="concert-pink"/></Link>
-        <Link to="/schedule"><Button2 label="Dailly schedule" bgcolor="concert-b-green"/></Link>
+        <Link to="/lineup">
+          <Button2 label="See all artists" bgcolor="concert-pink" />
+        </Link>
+        <Link to="/schedule">
+          <Button2 label="Dailly schedule" bgcolor="concert-b-green" />
+        </Link>
       </div>
     </article>
   );
@@ -104,9 +117,14 @@ export function BandLink({ bandsString }) {
   return (
     <>
       {bands.map((band, index) => {
-         return <Link key={`artist${index}`} className="w-fit hover:bg-concert-pink md:hover:font-aciersolid" to={`artist/${urlSlugMatch(band.trim())}`}>{`${band.trim()}/`}</Link>
+        return (
+          <Link
+            key={`artist${index}`}
+            className="w-fit hover:bg-concert-pink md:hover:font-aciersolid"
+            to={`artist/${urlSlugMatch(band.trim())}`}
+          >{`${band.trim()}/`}</Link>
+        );
       })}
     </>
   );
 }
-
