@@ -36,6 +36,7 @@ module.exports = {
       screens: {
         tablet: "860px",
         phone: "530px",
+        smallphone: "420px",
       },
     },
     borderWidth: {

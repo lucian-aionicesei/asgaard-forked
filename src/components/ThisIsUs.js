@@ -6,7 +6,7 @@ export default function ThisIsUs() {
       <h1 className="pt-8 font-acier text-5xl text-black whitespace-pre sm:text-5xl md:text-6xl">
         THIS IS US
       </h1>
-      <div className="p-8 px-16 text-xs align-center sm:px-32 text-sm">
+      <div className="text-base md:text-xl 2xl:text-2xl p-8 px-16 align-center">
         <p className="text-center">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
