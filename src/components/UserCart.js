@@ -1,48 +1,41 @@
 import { useState } from "react";
 
 export default function UserCart({ savedItems }) {
-  const [tickets, setTickets] = useState(savedItems.tickets);
-  const [accomodation, setAccomodation] = useState(savedItems.accomodation);
-  const [total, setTotal] = useState(0);
-  console.log(tickets);
+  // const [tickets, setTickets] = useState(savedItems.filter());
+  // const [accomodation, setAccomodation] = useState(savedItems.accomodation);
+  const [cartItems, setCartItems] = useState(savedItems);
+  // console.log(cartItems);
+
+  const initialValue = 99;
+  const sumWithInitial = cartItems.reduce(
+    (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.quantity),
+    initialValue
+  )
 
   return (
     <section className="w-full phone:min-w-[400px] max-w-[500px] h-fit text-black bg-concert-yellowish p-6 border-[3px] border-black">
       <h3 className="text-center text-2xl font-bold">YOUR ORDER</h3>
       <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
-        {tickets.map((ticket, index) => {
-          return (
-            <CartItem
-              label={ticket.label}
-              price={parseFloat(ticket.price).toFixed(2)}
-              quantity={ticket.quantity}
-              key={`ticket#${index}`}
-            />
-          );
-        })}
-        {accomodation.tents.map((booking, index) => {
-          return (
-            booking.twoPersonTent && (
+        {cartItems.map((item, index) => {
+          if (item.type === "ticket" && item.quantity > 0) {
+            return (
               <CartItem
-                label={`2 person tent - ${booking.area}`}
-                price={parseFloat(299.0).toFixed(2)}
-                quantity={booking.twoPersonTent}
-                key={`2p-tent-${booking.area}#${index}`}
+                key={`cart-item${index}`}
+                label={item.label}
+                price={item.price}
+                quantity={item.quantity}
               />
-            )
-          );
-        })}
-        {accomodation.tents.map((booking, index) => {
-          return (
-            booking.threePersonTent && (
+            );
+          } else if (item.type === "accomodation") {
+            return (
               <CartItem
-                label={`3 person tent - ${booking.area}`}
-                price={parseFloat(399.0).toFixed(2)}
-                quantity={booking.threePersonTent}
-                key={`3p-tent-${booking.area}#${index}`}
+                key={`cart-item${index}`}
+                label={`${item.tent} - ${item.area}`}
+                price={item.price}
+                quantity={item.quantity}
               />
-            )
-          );
+            );
+          }
         })}
       </ul>
       <p className="flex justify-between border-b-[2px] border-black py-1">
@@ -51,7 +44,7 @@ export default function UserCart({ savedItems }) {
       </p>
       <p className="flex justify-between pt-3 pb-1">
         <span className="font-semibold text-xl">Total:</span>
-        <span className="font-semibold text-xl">DKK {total}</span>
+        <span className="font-semibold text-xl">DKK {sumWithInitial}</span>
       </p>
       <p className="text-gray-500 text-sm text-right pb-6 border-b-[1px] border-gray-300">
         (including booking fee*)
@@ -92,21 +85,19 @@ function CartItem({ label, price, quantity }) {
         </div>
         <div className="flex flex-col phone:flex-row justify-between ">
           <form action="" className="flex space-x-1">
-            <input
-              type="number"
-              id="salary"
-              name="salary"
-              className="w-12 h-fit p-0 pl-2"
-              min="0"
-              max="100"
-              value={quantity}
-              onfocusout="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"
-            ></input>
-            <label htmlFor="salary"> pcs.</label>
+            <label>
+              <input
+                type="number"
+                name="salary"
+                className="w-12 h-fit p-0 pl-2"
+                min="0"
+                max="100"
+                value={quantity}
+              ></input>
+              pcs.
+            </label>
           </form>
-          <p className="font-bold text-right">
-            DKK {parseFloat(price * quantity).toFixed(2)}
-          </p>
+          <p className="font-bold text-right">DKK {price * quantity}</p>
         </div>
       </div>
     </li>

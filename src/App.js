@@ -18,12 +18,12 @@ const cart = {
     {
       label: "Regular Pass - ticket",
       price: 799,
-      quantity: 2,
+      quantity: 1,
     },
     {
       label: "VIP Pass - ticket",
       price: 1299,
-      quantity: 4,
+      quantity: 1,
     },
   ],
   accomodation: {
@@ -35,11 +35,6 @@ const cart = {
       },
       {
         area: "Svartheim",
-        twoPersonTent: 1,
-        threePersonTent: 1,
-      },
-      {
-        area: "Alfheim",
         twoPersonTent: 1,
         threePersonTent: 1,
       },
@@ -63,12 +58,56 @@ const cart = {
 //   accomodation: null,
 // };
 
+const cart3 = [
+  {
+    id: 1,
+    type: "ticket",
+    ticketType: "regular",
+    label: "Regular Pass - ticket",
+    price: 799,
+    quantity: 2,
+  },
+  {
+    id: 2,
+    type: "ticket",
+    ticketType: "vip",
+    label: "VIP Pass - ticket",
+    price: 1299,
+    quantity: 2,
+  },
+  {
+    id: 3,
+    type: "accomodation",
+    area: "Muspelheim",
+    tent: "2 person tent",
+    price: 299,
+    quantity: 1,
+  },
+  {
+    id: 4,
+    type: "accomodation",
+    area: "Alfheim",
+    tent: "3 person tent",
+    price: 399,
+    quantity: 1,
+  },
+];
+
+const cart4 = [
+  {
+    id: 1,
+    type: "ticket",
+    ticketType: "regular",
+    label: "Regular Pass - ticket",
+    price: 799,
+    quantity: 2,
+  },
+];
+
 function App() {
   const [bandsList, setProducts] = useState([]);
   const [userAuthenticated, setUserAuthenticated] = useState(false);
-  const [userCart, setUserCart] = useState(cart);
-
-  // console.log(userCart);
+  const [userCart, setUserCart] = useState([]);
 
   useEffect(() => {
     async function getProducts() {
@@ -82,6 +121,8 @@ function App() {
   }, []);
 
   let updatedBandList = [];
+
+  setUserCart()
 
   // console.log(bandsList);
   bandsList.map((band) => {
@@ -123,7 +164,12 @@ function App() {
           element={<Schedule schedule={schedule} bands={bandsList} />}
         />
         <Route path="shop" element={<Shop />} />
-        <Route path="purchases" element={<Purchases savedItems={userCart} />} />
+        <Route
+          path="purchases"
+          element={
+            <Purchases savedItems={userCart} setUserCart={setUserCart} />
+          }
+        />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<Whoups404 />} />
       </Routes>
