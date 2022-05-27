@@ -8,7 +8,9 @@ const urlSlugMatch = require("url-slug-match");
 
 export default function Lineup({ bands }) {
   // const [bands, setBands] = useState([]);
-  const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/schedule");
+  const { loading, error, data } = useFetch(
+    "https://the-javascript-bar-project.herokuapp.com/schedule"
+  );
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p> Error </p>;
@@ -23,7 +25,7 @@ export default function Lineup({ bands }) {
 
   if (data) {
     const dataArray = Object.values(data);
-    console.log(dataArray);
+    // console.log(dataArray);
 
     const stageMidgard = Object.values(dataArray[0]);
     const stageVanaheim = Object.values(dataArray[1]);
@@ -35,7 +37,8 @@ export default function Lineup({ bands }) {
       // console.log("this is Midgard days", dayMidgard);
       dayMidgard.map((actMidgard) => {
         // console.log(actMidgard.act);
-        actMidgard.act !== "break" && (NewMidgard = [...NewMidgard, actMidgard.act]);
+        actMidgard.act !== "break" &&
+          (NewMidgard = [...NewMidgard, actMidgard.act]);
         // actMidgard = actMidgard.act;
       });
       // console.log(ActMidgard);
@@ -45,70 +48,91 @@ export default function Lineup({ bands }) {
     stageVanaheim.map((dayVanaheim) => {
       dayVanaheim = Object.values(dayVanaheim);
       dayVanaheim.map((actVanaheim) => {
-        actVanaheim.act !== "break" && (NewVanaheim = [...NewVanaheim, actVanaheim.act]);
+        actVanaheim.act !== "break" &&
+          (NewVanaheim = [...NewVanaheim, actVanaheim.act]);
       });
     });
 
     stageJotunheim.map((dayJotunheim) => {
       dayJotunheim = Object.values(dayJotunheim);
       dayJotunheim.map((actJotunheim) => {
-        actJotunheim.act !== "break" && (NewJotunheim = [...NewJotunheim, actJotunheim.act]);
+        actJotunheim.act !== "break" &&
+          (NewJotunheim = [...NewJotunheim, actJotunheim.act]);
       });
     });
   }
 
-  console.log(NewMidgard);
+  // console.log(NewMidgard);
 
   NewMidgard.map((bandMidgard) => {
     const thisBand = bands.find((elem) => elem.name === bandMidgard);
     DisplayMidgard = [...DisplayMidgard, thisBand];
   });
-  console.log(DisplayMidgard);
+  // console.log(DisplayMidgard);
 
   NewVanaheim.map((bandVanaheim) => {
     const thisBandVanaheim = bands.find((elem) => elem.name === bandVanaheim);
     DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
   });
-  console.log(DisplayVanaheim);
+  // console.log(DisplayVanaheim);
 
   NewJotunheim.map((bandJotunheim) => {
     const thisBandJotunheim = bands.find((elem) => elem.name === bandJotunheim);
     DisplayJotunheim = [...DisplayJotunheim, thisBandJotunheim];
   });
-  console.log(DisplayJotunheim);
+  // console.log(DisplayJotunheim);
 
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
-        <h1 className="text-7xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Line up</h1>
+        <h1 className="text-7xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">
+          Line up
+        </h1>
       </div>
       <Content>
         <section className="m-8 mt-2 xl:m-16">
           <article>
             <p className="text-center text-base font-semibold md:mx-16 lg:text-xl xl:text-2xl 2xl:text-3xl 2xl:mx-56">
-              Since it was launched 3 years ago as a student project of four KEA students - Lucian, Christian, Paul and Drago, the festival has changed drastically and become the <b>largest festival in the world</b>.{" "}
+              Since it was launched 3 years ago as a student project of four KEA
+              students - Lucian, Christian, Paul and Drago, the festival has
+              changed drastically and become the{" "}
+              <b>largest festival in the world</b>.{" "}
             </p>
             <p className="text-center text-base font-semibold md:mx-16 lg:text-xl xl:text-2xl 2xl:text-3xl 2xl:mx-56">
-              The line up we bring you this year is certainly the biggest gathering of the world's most popular rock stars on one place. In fact, in three places.
+              The line up we bring you this year is certainly the biggest
+              gathering of the world's most popular rock stars on one place. In
+              fact, in three places.
             </p>
           </article>
-          <p className="flex justify-center text-base font-semibold m-4  md:mx-16 lg:text-xl 2xl:text-4xl 2xl:m-8">~</p>
+          <p className="flex justify-center text-base font-semibold m-4  md:mx-16 lg:text-xl 2xl:text-4xl 2xl:m-8">
+            ~
+          </p>
           <article>
             <p className="text-center text-base font-semibold md:mx-16 lg:text-xl xl:text-2xl 2xl:text-3xl 2xl:mx-56">
-              Three stages, equally big. The band schedule is such that you can choose one stage and explore diverse artists, otherwise you have enough time to simply switch to other stage The passage between the stages is free.
+              Three stages, equally big. The band schedule is such that you can
+              choose one stage and explore diverse artists, otherwise you have
+              enough time to simply switch to other stage The passage between
+              the stages is free.
             </p>
-            <p className="text-center text-base font-semibold pt-6 md:mx-16 lg:text-xl xl:text-2xl 2xl:text-3xl 2xl:mx-56">On weekends, there will be one big surprise guest on each stage, who is not listed in this year's line-up. See you!</p>
+            <p className="text-center text-base font-semibold pt-6 md:mx-16 lg:text-xl xl:text-2xl 2xl:text-3xl 2xl:mx-56">
+              On weekends, there will be one big surprise guest on each stage,
+              who is not listed in this year's line-up. See you!
+            </p>
           </article>
         </section>
 
         <div className="bg-concert-redish flex flex-row">
           <div className="flex flex-row p-4 gap">
-            <div className={`flex flex-row justify-center items-center text-black font-montserrat px-2 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2`}>
+            <div
+              className={`flex flex-row justify-center items-center text-black font-montserrat px-2 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2`}
+            >
               {" "}
               ALPHABETICAL <RiArrowDownSLine size={32} />
             </div>
 
-            <div className={`flex flex-row justify-center items-center text-black font-montserrat px-2 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2`}>
+            <div
+              className={`flex flex-row justify-center items-center text-black font-montserrat px-2 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-yellow mr-2`}
+            >
               {" "}
               GENRE <RiArrowDownSLine size={32} />
             </div>
@@ -124,7 +148,9 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Midgard</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">
+            Midgard
+          </h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {DisplayMidgard.map((band, index) => (
@@ -136,7 +162,9 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Vanaheim</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">
+            Vanaheim
+          </h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {DisplayVanaheim.map((band, index) => (
@@ -148,7 +176,9 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">
+            Jotunheim
+          </h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {DisplayJotunheim.map((band, index) => (
@@ -164,7 +194,12 @@ export default function Lineup({ bands }) {
 }
 
 export function CheckingBands({ band, bgColor }) {
-  if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
+  if (
+    band.logo.endsWith(".jpg") ||
+    band.logo.endsWith(".JPG") ||
+    band.logo.endsWith(".png") ||
+    band.logo.endsWith(".svg")
+  ) {
     return <ImgJPG band={band} bgColor={bgColor} />;
   }
   return <ImgSVG band={band} bgColor={bgColor} />;
@@ -175,10 +210,18 @@ export function ImgJPG({ band, bgColor }) {
     <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       <div className="grid gap-x-8">
         <div className="h-[11rem] lg:h-[18rem] ">
-          <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+          <img
+            src={`./images/logos/${band.logo}`}
+            className="object-cover w-full  h-[12rem] lg:h-[18rem]"
+            alt={band.name}
+          ></img>
         </div>
 
-        <div className={`bg-${bgColor} font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}>{band.name}</div>
+        <div
+          className={`bg-${bgColor} font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}
+        >
+          {band.name}
+        </div>
       </div>
     </Link>
   );
@@ -190,9 +233,17 @@ export function ImgSVG({ band, bgColor }) {
       {" "}
       <div className="grid gap-x-8">
         <div className="h-[11rem] lg:h-[18rem] ">
-          <img src={band.logo} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+          <img
+            src={band.logo}
+            className="object-cover w-full  h-[12rem] lg:h-[18rem]"
+            alt={band.name}
+          ></img>
         </div>
-        <div className={`bg-${bgColor} font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}>{band.name}</div>
+        <div
+          className={`bg-${bgColor} font-aciersolid  text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}
+        >
+          {band.name}
+        </div>
       </div>
     </Link>
   );

@@ -3,7 +3,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 export function Button1({ label }) {
   return (
     <div
-      className={`text-black font-montserrat px-4 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-b-green hover:bg-black hover:text-concert-yellow`}
+      className={`text-black font-montserrat px-4 py-1 w-fit font-bold border-[3px] border-black text-sm phone:text-lg bg-concert-b-green hover:bg-concert-pink`}
     >
       {label}
     </div>
