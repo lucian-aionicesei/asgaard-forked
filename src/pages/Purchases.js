@@ -143,4 +143,5 @@ function CartItem(props) {
       </div>
     </li>
   );
+  
 }

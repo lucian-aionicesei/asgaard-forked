@@ -17,7 +17,7 @@ export default function Sponsors() {
             <img className="scale-100" src={Bank} alt="" />
           </span>
           <span>
-            <img className="scale-100" src={Lidl} alt="" />
+            <img className="scale-100 fill-white" src={Lidl} alt="" />
           </span>
           <span>
             <img className="scale-75" src={Master} alt="" />
