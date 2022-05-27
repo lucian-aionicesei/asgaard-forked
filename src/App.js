@@ -138,7 +138,7 @@ function App() {
       // cartItem.quantity = cartItem.quantity + ticket.quantity
       setUserCart(old => old.map(item =>{
         if (item.id === ticket.id){
-          const copy = item;
+          const copy = {...item};
           copy.quantity = copy.quantity + ticket.quantity;
           return copy;
         }
