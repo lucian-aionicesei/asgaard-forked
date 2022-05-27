@@ -3,7 +3,7 @@ import { FaPen, FaFacebookSquare } from "react-icons/fa";
 import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart"
 
-export default function Purchases({savedItems}) {
+export default function Purchases({savedItems, setUserCart}) {
   // console.log(savedItems)
   return (
     <Content>
@@ -12,7 +12,7 @@ export default function Purchases({savedItems}) {
       </h1>
       <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
         <UserLogin />
-        <UserCart savedItems={savedItems}/>
+        <UserCart savedItems={savedItems} setUserCart={setUserCart}/>
       </article>
     </Content>
   );

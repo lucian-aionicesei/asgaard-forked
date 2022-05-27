@@ -11,6 +11,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Button2 } from "./components/Buttons";
+import { Item } from "semantic-ui-react";
 const urlSlugMatch = require("url-slug-match");
 
 const cart = {
@@ -114,26 +116,38 @@ const cartItem = {
   quantity: 0,
 };
 
+const ticket = Object.create(cartItem);
+
+ticket.id = 1;
+ticket.type = "ticket";
+ticket.ticketType = "regular";
+ticket.label = "Regular pass - Ticket";
+ticket.price = 799;
+ticket.quantity = 2;
+
 function App() {
   const [bandsList, setProducts] = useState([]);
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const [userCart, setUserCart] = useState([]);
 
-  const ticket = Object.create(cartItem);
+  // console.log(userCart);
 
-  ticket.id = 1;
-  ticket.type = "ticket";
-  ticket.ticketType = "regular";
-  ticket.label = "Regular pass - Ticket";
-  ticket.price = 799;
-  ticket.quantity = 2;
-
-  console.log(ticket);
-
-  useEffect(() => {
-    setUserCart((oldArray) => [...oldArray, ticket]);
-  }, [setUserCart])
-
+  function addToCart() {
+    if (userCart.find((cartItem) => cartItem.id === ticket.id)) {
+      console.log("Item already added");
+      // cartItem.quantity = cartItem.quantity + ticket.quantity
+      setUserCart(old => old.map(item =>{
+        if (item.id === ticket.id){
+          const copy = item;
+          copy.quantity = copy.quantity + ticket.quantity;
+          return copy;
+        }
+      }) 
+      );
+    } else {
+      setUserCart((oldArray) => [...oldArray, ticket]);
+    }
+  }
 
   useEffect(() => {
     async function getProducts() {
@@ -176,7 +190,9 @@ function App() {
   return (
     <div className="App bg-black font-montserrat">
       <Header bgColor="bg-concert-pink" />
-
+      <button onClick={addToCart} className="bg-white">
+        Add to cart
+      </button>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route

@@ -1,29 +1,31 @@
 import { useState } from "react";
 
-export default function UserCart({ savedItems }) {
+export default function UserCart({ savedItems, setUserCart }) {
   // const [tickets, setTickets] = useState(savedItems.filter());
   // const [accomodation, setAccomodation] = useState(savedItems.accomodation);
-  const [cartItems, setCartItems] = useState(savedItems);
+  // const [cartItems, setCartItems] = useState(savedItems);
   // console.log(cartItems);
+  console.log(savedItems.length);
 
-  const initialValue = 99;
-  const sumWithInitial = cartItems.reduce(
-    (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.quantity),
+  const initialValue = (savedItems.length > 0) ? 99 : 0;
+  const sumWithInitial = savedItems.reduce(
+    (previousValue, currentValue) =>
+      previousValue + currentValue.price * currentValue.quantity,
     initialValue
-  )
+  );
 
   return (
     <section className="w-full phone:min-w-[400px] max-w-[500px] h-fit text-black bg-concert-yellowish p-6 border-[3px] border-black">
       <h3 className="text-center text-2xl font-bold">YOUR ORDER</h3>
-      <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
-        {cartItems.map((item, index) => {
+      {(savedItems.length > 0) ? <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
+        {savedItems.map((item, index) => {
           if (item.type === "ticket" && item.quantity > 0) {
             return (
               <CartItem
                 key={`cart-item${index}`}
                 label={item.label}
-                price={item.price}
-                quantity={item.quantity}
+                item={item}
+                setUserCart={setUserCart}
               />
             );
           } else if (item.type === "accomodation") {
@@ -31,13 +33,14 @@ export default function UserCart({ savedItems }) {
               <CartItem
                 key={`cart-item${index}`}
                 label={`${item.tent} - ${item.area}`}
-                price={item.price}
-                quantity={item.quantity}
+                item={item}
+                setUserCart={setUserCart}
               />
             );
           }
         })}
-      </ul>
+      </ul> : <p className="text-center h-24 flex items-center justify-center">No items added to cart</p> }
+      
       <p className="flex justify-between border-b-[2px] border-black py-1">
         <span>Booking Fee*</span>
         <span className="font-semibold">DKK 99</span>
@@ -65,7 +68,13 @@ export default function UserCart({ savedItems }) {
   );
 }
 
-function CartItem({ label, price, quantity }) {
+function CartItem({ label, item, setUserCart }) {
+  function remove() {
+    setUserCart((oldArray) =>
+      oldArray.filter((cartItem) => cartItem.id !== item.id)
+    );
+  }
+
   return (
     <li className="min-h-24 flex items-center border-t-[1px] border-gray-300">
       <img
@@ -77,8 +86,11 @@ function CartItem({ label, price, quantity }) {
         <div>
           <h5 className="font-bold">{label}</h5>
           <p className="flex flex-col phone:flex-row justify-between">
-            <span className="italic">DKK {price}</span>
-            <span className="text-red-300 hover:text-red-500 italic text-sm font-semibold text-right cursor-pointer">
+            <span className="italic">DKK {item.price}</span>
+            <span
+              onClick={() => remove()}
+              className="text-red-300 hover:text-red-500 italic text-sm font-semibold text-right cursor-pointer"
+            >
               Delete
             </span>
           </p>
@@ -92,12 +104,14 @@ function CartItem({ label, price, quantity }) {
                 className="w-12 h-fit p-0 pl-2"
                 min="0"
                 max="100"
-                value={quantity}
+                value={item.quantity}
               ></input>
               pcs.
             </label>
           </form>
-          <p className="font-bold text-right">DKK {price * quantity}</p>
+          <p className="font-bold text-right">
+            DKK {item.price * item.quantity}
+          </p>
         </div>
       </div>
     </li>
