@@ -10,34 +10,33 @@ export default function PassesLines({
 }) {
   const [show, setShow] = useState(false);
   return (
-    <section className="w-full p-2 font-bold">
-      <div className="w-full h-14 bg-concert-bg border-[3px] border-black flex">
+    <li className="w-full font-bold">
+      <div className="w-full h-16 bg-concert-bg border-[3px] border-black flex">
         <div
           className={`h-full w-10 bg-${bgPasses} border-r-[2px] border-black`}
         ></div>
-        <div className="px-2 justify-between w-full flex h-full">
-          <div className="pt-2 flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
-            <div className="w-24">
-              <h4 className="whitespace-pre">{`${passName}`}</h4>
-
+        <div className="px-3 justify-between w-full flex h-full">
+          <div className=" flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
+            <div className="w-40">
+              <h4 className="whitespace-pre text-lg">{`${passName}`}</h4>
               <button
                 onClick={() => {
                   setShow(!show);
                 }}
-                className="mt-1 mb-1"
+                /* className="mt-1 mb-1" */
               >
                 <SeeDetailButton label="See Details" />
               </button>
             </div>
-            <p className="pr-2">{`${passPrice}`}</p>
+            <p className="pr-2 text-base">{`${passPrice}`}</p>
           </div>
           <div className="flex h-full items-center space-x-2">
-            <div className="flex items-center h-fit space-x-1 px-1 bg-concert-yellow border-black border-[3px] phone:space-x-2">
-              <AiOutlineMinusCircle />
+            <div className="flex items-center h-8 space-x-2 px-1 bg-concert-yellow border-black border-[2px] phone:space-x-5">
+              <AiOutlineMinusCircle className="text-xl"/>
               <p>1</p>
-              <AiOutlinePlusCircle />
+              <AiOutlinePlusCircle className="text-xl"/>
             </div>
-            <div className="text-[0.3rem] bg-black h-fit text-bold p-1 text-center text-white sm:text-xs">
+            <div className="text-[0.3rem] bg-black h-8 text-bold p-1 flex items-center text-white sm:text-xs">
               ADD TO CHART
             </div>
           </div>
@@ -55,6 +54,6 @@ export default function PassesLines({
           </p>
         </div>
       )}
-    </section>
+    </li>
   );
 }
