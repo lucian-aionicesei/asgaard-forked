@@ -104,10 +104,36 @@ const cart4 = [
   },
 ];
 
+const cartItem = {
+  id: "",
+  type: "",
+  ticketType: "",
+  area: "",
+  label: "",
+  price: 0,
+  quantity: 0,
+};
+
 function App() {
   const [bandsList, setProducts] = useState([]);
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const [userCart, setUserCart] = useState([]);
+
+  const ticket = Object.create(cartItem);
+
+  ticket.id = 1;
+  ticket.type = "ticket";
+  ticket.ticketType = "regular";
+  ticket.label = "Regular pass - Ticket";
+  ticket.price = 799;
+  ticket.quantity = 2;
+
+  console.log(ticket);
+
+  useEffect(() => {
+    setUserCart((oldArray) => [...oldArray, ticket]);
+  }, [setUserCart])
+
 
   useEffect(() => {
     async function getProducts() {
@@ -121,8 +147,6 @@ function App() {
   }, []);
 
   let updatedBandList = [];
-
-  setUserCart()
 
   // console.log(bandsList);
   bandsList.map((band) => {
@@ -152,6 +176,7 @@ function App() {
   return (
     <div className="App bg-black font-montserrat">
       <Header bgColor="bg-concert-pink" />
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route
