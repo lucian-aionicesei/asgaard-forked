@@ -10,7 +10,7 @@ import Sponsors from "../components/Sponsors";
 import { Link } from "react-router-dom";
 const urlSlugMatch = require("url-slug-match");
 
-export default function Home() {
+export default function Home({userCart, setUserCart}) {
   const homePageLineup =
     "Led Zeppelin * AC/DC | Terminalist * Tool * The Who | The Beatles * Pink Floyd * Queen * Metallica | The Rolling Stones * Guns N' Roses * Nirvana | Black Sabbath * Raised Fist* Refused * Steuber Group * Simonis Inc | Halvorson, Kertzmann and Predovic * Huels, Ratke and Fritsch * A Perfect Circle | Price, Grant and Bechtelar * Erdman - Casper * Nikolaus Inc";
 
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <Passes />
+          <Passes userCart={userCart} setUserCart={setUserCart}/>
         </div>
         <div>
           <GetHere />

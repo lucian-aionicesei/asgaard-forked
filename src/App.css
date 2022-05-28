@@ -3,54 +3,66 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "acier";
-    src: url("../public/fonts/acier-text-gris.ttf");
-  }
+  font-family: "acier";
+  src: url("../public/fonts/acier-text-gris.ttf");
+}
 
-  @font-face {
-    font-family: "acier-solid";
-    src: url("../public/fonts/acier-text-solid.ttf");
-  }
+@font-face {
+  font-family: "acier-solid";
+  src: url("../public/fonts/acier-text-solid.ttf");
+}
 
-  a {
-    display: block;
-  }
+a {
+  display: block;
+}
 
-  .text-7rem {
-    font-size: clamp(1.4rem, 5vw, 5.5rem);
-    line-height: clamp(1.5rem, 5vw, 5rem);
-  }
+/* Chrome, Safari, Edge, Opera */
+.selectQuantity input::-webkit-outer-spin-button,
+.selectQuantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  .text-6rem {
-    font-size: clamp(1.4rem, 4vw, 5rem);
-    line-height: clamp(1.5rem, 4vw, 5rem);
-  }
+/* Firefox */
+.selectQuantity input[type="number"] {
+  -moz-appearance: textfield;
+}
 
-  .text-5rem {
-    font-size: clamp(1.4rem, 3vw, 5rem);
-    line-height: clamp(1.5rem, 3.2vw, 5rem);
-  }
-  .text-4rem {
-    font-size: clamp(1.4rem, 2.7vw, 5rem);
-    line-height: clamp(1.5rem, 3vw, 5rem);
-  }
+.text-7rem {
+  font-size: clamp(1.4rem, 5vw, 5.5rem);
+  line-height: clamp(1.5rem, 5vw, 5rem);
+}
 
-  .text-3rem {
-    font-size: clamp(1.4rem, 2.2vw, 5rem);
-    line-height: clamp(1.5rem, 2.5vw, 5rem);
-  }
+.text-6rem {
+  font-size: clamp(1.4rem, 4vw, 5rem);
+  line-height: clamp(1.5rem, 4vw, 5rem);
+}
 
-  .text-2rem {
-    font-size: clamp(1.4rem, 1.75vw, 5rem);
-    line-height: clamp(1.5rem, 2vw, 5rem);
-  }
+.text-5rem {
+  font-size: clamp(1.4rem, 3vw, 5rem);
+  line-height: clamp(1.5rem, 3.2vw, 5rem);
+}
+.text-4rem {
+  font-size: clamp(1.4rem, 2.7vw, 5rem);
+  line-height: clamp(1.5rem, 3vw, 5rem);
+}
 
-  .text-1rem {
-    font-size: clamp(1.4rem, 1.5vw, 5rem);
-    line-height: clamp(1.5rem, 2.2vw, 5rem);
-  }
+.text-3rem {
+  font-size: clamp(1.4rem, 2.2vw, 5rem);
+  line-height: clamp(1.5rem, 2.5vw, 5rem);
+}
 
-  .text-0rem {
-    font-size: clamp(1.4rem, 2vw, 5rem);
-    line-height: clamp(1.5rem, 2.2vw, 5rem);
-  }
+.text-2rem {
+  font-size: clamp(1.4rem, 1.75vw, 5rem);
+  line-height: clamp(1.5rem, 2vw, 5rem);
+}
+
+.text-1rem {
+  font-size: clamp(1.4rem, 1.5vw, 5rem);
+  line-height: clamp(1.5rem, 2.2vw, 5rem);
+}
+
+.text-0rem {
+  font-size: clamp(1.4rem, 2vw, 5rem);
+  line-height: clamp(1.5rem, 2.2vw, 5rem);
+}

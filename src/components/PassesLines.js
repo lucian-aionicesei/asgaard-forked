@@ -1,45 +1,113 @@
-import { SeeDetailButton } from "./Buttons";
+import { SeeDetailButton, SeeDetailButtonUp } from "./Buttons";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import React, { useState } from "react";
 
-export default function PassesLines({
-  passName,
-  passPrice,
-  bgPasses,
-  dropText,
-}) {
+const cartItem = {
+  id: "",
+  type: "",
+  ticketType: "",
+  area: "",
+  label: "",
+  price: 0,
+  quantity: 0,
+};
+
+export default function PassesLines({passName, passPrice, bgPasses, dropText, userCart, setUserCart, cartItemID}) {
   const [show, setShow] = useState(false);
+  let [itemQuantity, setItemQuantity] = useState(1);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Submitted", itemQuantity);
+
+    const ticket = Object.create(cartItem);
+
+    ticket.id = cartItemID;
+    ticket.type = "ticket";
+    ticket.ticketType = "regular";
+    ticket.label = `${passName} - Ticket`;
+    ticket.price = passPrice;
+    ticket.quantity = itemQuantity;
+
+    addToCart(ticket)
+  }
+
+  function addToCart(ticket) {
+    if (userCart.find((cartItem) => cartItem.id === ticket.id)) {
+      console.log("Item already added");
+      // cartItem.quantity = cartItem.quantity + ticket.quantity
+      setUserCart(old => old.map(item =>{
+        if (item.id === ticket.id){
+          const copy = {...item};
+          copy.quantity = copy.quantity + ticket.quantity;
+          return copy;
+        }
+      }) 
+      );
+    } else {
+      setUserCart((oldArray) => [...oldArray, ticket]);
+    }
+  }
+
   return (
     <li className="w-full font-bold">
-      <div className="w-full h-16 bg-concert-bg border-[3px] border-black flex">
+      <div className="w-full md:h-16 bg-concert-bg border-[3px] border-black flex">
         <div
-          className={`h-full w-10 bg-${bgPasses} border-r-[2px] border-black`}
+          className={`h-full w-10 bg-${bgPasses} border-r-[2px] border-black hidden md:block`}
         ></div>
-        <div className="px-3 justify-between w-full flex h-full">
-          <div className=" flex text-xs items-center pb-1 space-x-[5vw] sm:text-sm">
-            <div className="w-40">
-              <h4 className="whitespace-pre text-lg">{`${passName}`}</h4>
+        <div className="px-3 py-2 md:py-0 justify-between w-full flex flex-col md:flex-row h-full gap-y-6 ">
+          <div className=" flex text-xs items-center pb-1 space-x-10 sm:text-sm">
+            <div className=" w-32 md:w-40">
+              <h4 className="whitespace-pre text-base md:text-lg">{`${passName.toUpperCase()}`}</h4>
               <button
                 onClick={() => {
                   setShow(!show);
                 }}
                 /* className="mt-1 mb-1" */
               >
-                <SeeDetailButton label="See Details" />
+                {show ? (
+                  <SeeDetailButtonUp label="See Details" />
+                ) : (
+                  <SeeDetailButton label="See Details" />
+                )}
               </button>
             </div>
-            <p className="pr-2 text-base">{`${passPrice}`}</p>
+            <p className="pr-2 text-xs">
+              <span className="text-xl font-bold">{passPrice}</span> DKK
+            </p>
           </div>
-          <div className="flex h-full items-center space-x-2">
-            <div className="flex items-center h-8 space-x-2 px-1 bg-concert-yellow border-black border-[2px] phone:space-x-5">
-              <AiOutlineMinusCircle className="text-xl"/>
-              <p>1</p>
-              <AiOutlinePlusCircle className="text-xl"/>
-            </div>
-            <div className="text-[0.3rem] bg-black h-8 text-bold p-1 flex items-center text-white sm:text-xs">
+          <form
+            className="flex h-full items-center space-x-2 ml-auto"
+            onSubmit={handleSubmit}
+          >
+            <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
+              <AiOutlineMinusCircle
+                className="text-xl"
+                onClick={() =>
+                  itemQuantity > 1 && setItemQuantity(itemQuantity - 1)
+                }
+              />
+              <input
+                type="number"
+                min="1"
+                max="100"
+                required
+                value={itemQuantity}
+                onChange={(e) => setItemQuantity(e.target.value)}
+                onBlur={(e)=> (e.target.value === "") && setItemQuantity(1)}
+                className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
+              />
+              <AiOutlinePlusCircle
+                className="text-xl"
+                onClick={() =>
+                  itemQuantity >= 1 && setItemQuantity(itemQuantity + 1)
+                }
+              />
+            </label>
+            <button className=" bg-black h-8 font-bold p-1 flex items-center text-white text-xs">
               ADD TO CHART
-            </div>
-          </div>
+            </button>
+          </form>
         </div>
       </div>
       {show && (
@@ -49,7 +117,7 @@ export default function PassesLines({
           }}
           className="h-auto bg-yellow-50"
         >
-          <p className="p-4 text-xs cursor-pointer sm:text-base">
+          <p className="p-4 text-sm cursor-pointer sm:text-base font-semibold">
             {`${dropText}`}
           </p>
         </div>

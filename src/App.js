@@ -194,7 +194,7 @@ function App() {
         Add to cart
       </button>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home userCart={userCart} setUserCart={setUserCart}/>} />
         <Route
           path="lineup"
           element={<Lineup schedule={schedule} bands={bandsList} />}
@@ -208,7 +208,7 @@ function App() {
         <Route
           path="purchases"
           element={
-            <Purchases savedItems={userCart} setUserCart={setUserCart} />
+            <Purchases userCart={userCart} setUserCart={setUserCart} />
           }
         />
         <Route path="account" element={<Account />} />
