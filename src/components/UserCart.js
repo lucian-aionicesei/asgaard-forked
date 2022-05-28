@@ -114,7 +114,7 @@ function CartItem({ label, item, userCart, setUserCart }) {
             <label>
               <input
                 type="number"
-                className="w-12 h-fit p-0 pl-2"
+                className="w-12 h-fit p-0 pl-2 font-bold"
                 min="1"
                 value={item.quantity}
                 onChange={(e) => changeQuantity(e.target.value)}

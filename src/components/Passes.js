@@ -11,7 +11,7 @@ export default function Passes({ userCart, setUserCart }) {
       <ul className="space-y-6 px-[5vw] max-w-[1200px]">
         <PassesLines
           passName="Regular pass"
-          passPrice="799"
+          passPrice={799}
           bgPasses="concert-l-green"
           dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -19,12 +19,12 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
           userCart={userCart}
           setUserCart={setUserCart}
-          cartItemID="1"
+          cartItemID={1}
         />
 
         <PassesLines
           passName="VIP pass"
-          passPrice="1299"
+          passPrice={1299}
           bgPasses="concert-yellow"
           dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -32,11 +32,11 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
           userCart={userCart}
           setUserCart={setUserCart}
-          cartItemID="2"
+          cartItemID={2}
         />
         <PassesLines
           passName="Premium pass"
-          passPrice="1599"
+          passPrice={1599}
           bgPasses="concert-redish"
           dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -44,13 +44,13 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
           userCart={userCart}
           setUserCart={setUserCart}
-          cartItemID="3"
+          cartItemID={3}
         />
         {toggleHidden && (
           <>
             <PassesLines
               passName="Day pass"
-              passPrice="130"
+              passPrice={130}
               bgPasses="fuchsia-700"
               dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -58,11 +58,11 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
               userCart={userCart}
               setUserCart={setUserCart}
-              cartItemID="4"
+              cartItemID={4}
             />
             <PassesLines
               passName="3 day pass"
-              passPrice="400"
+              passPrice={400}
               bgPasses="concert-b-green"
               dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -70,7 +70,7 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
               userCart={userCart}
               setUserCart={setUserCart}
-              cartItemID="5"
+              cartItemID={5}
             />
           </>
         )}

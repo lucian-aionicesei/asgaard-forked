@@ -3,7 +3,7 @@ import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import React, { useState } from "react";
 
 const cartItem = {
-  id: "",
+  id: 0,
   type: "",
   ticketType: "",
   area: "",
