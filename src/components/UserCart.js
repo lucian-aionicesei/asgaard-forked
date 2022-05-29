@@ -6,6 +6,7 @@ export default function UserCart({ userCart, setUserCart }) {
   // const [cartItems, setCartItems] = useState(savedItems);
   // console.log(cartItems);
   console.log(userCart.length);
+  console.log(userCart)
 
   const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
@@ -19,7 +20,7 @@ export default function UserCart({ userCart, setUserCart }) {
       <h3 className="text-center text-2xl font-bold">YOUR ORDER</h3>
       {(userCart.length > 0) ? <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
         {userCart.map((item, index) => {
-          if (item.type === "ticket" && item.quantity > 0) {
+          if (item.type === "ticket") {
             return (
               <CartItem
                 key={`cart-item${index}`}
@@ -70,7 +71,9 @@ export default function UserCart({ userCart, setUserCart }) {
   );
 }
 
-function CartItem({ label, item, userCart, setUserCart }) {
+function CartItem({ label, item, setUserCart }) {
+
+  console.log(item)
 
   function remove() {
     setUserCart((oldArray) =>
@@ -79,11 +82,14 @@ function CartItem({ label, item, userCart, setUserCart }) {
   }
 
   function changeQuantity(targetValue) {
+    targetValue = parseFloat(targetValue);
     setUserCart(old => old.map(cartItem =>{
       if (cartItem.id === item.id){
         const copy = {...cartItem};
         copy.quantity = targetValue;
         return copy;
+      } else {
+        return cartItem;
       }
     }) 
     );
@@ -118,12 +124,13 @@ function CartItem({ label, item, userCart, setUserCart }) {
                 min="1"
                 value={item.quantity}
                 onChange={(e) => changeQuantity(e.target.value)}
+                onBlur={(e) => (e.target.value==="") && changeQuantity(1)}
               ></input>
               pcs.
             </label>
           </form>
           <p className="font-bold text-right">
-            DKK {item.price * item.quantity}
+            DKK { item.price * item.quantity}
           </p>
         </div>
       </div>

@@ -2,8 +2,8 @@ import { SeeDetailButton, SeeDetailButtonUp } from "./Buttons";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import React, { useState } from "react";
 
-const cartItem = {
-  id: 0,
+const oneCartItem = {
+  id: "",
   type: "",
   ticketType: "",
   area: "",
@@ -12,7 +12,15 @@ const cartItem = {
   quantity: 0,
 };
 
-export default function PassesLines({passName, passPrice, bgPasses, dropText, userCart, setUserCart, cartItemID}) {
+export default function PassesLines({
+  passName,
+  passPrice,
+  bgPasses,
+  dropText,
+  userCart,
+  setUserCart,
+  cartItemId,
+}) {
   const [show, setShow] = useState(false);
   let [itemQuantity, setItemQuantity] = useState(1);
 
@@ -20,29 +28,32 @@ export default function PassesLines({passName, passPrice, bgPasses, dropText, us
     event.preventDefault();
     console.log("Submitted", itemQuantity);
 
-    const ticket = Object.create(cartItem);
+    const ticket = Object.create(oneCartItem);
 
-    ticket.id = cartItemID;
+    ticket.id = cartItemId;
     ticket.type = "ticket";
     ticket.ticketType = "regular";
     ticket.label = `${passName} - Ticket`;
     ticket.price = passPrice;
     ticket.quantity = itemQuantity;
 
-    addToCart(ticket)
+    addToCart(ticket);
+    setItemQuantity(1);
   }
 
   function addToCart(ticket) {
     if (userCart.find((cartItem) => cartItem.id === ticket.id)) {
       console.log("Item already added");
-      // cartItem.quantity = cartItem.quantity + ticket.quantity
-      setUserCart(old => old.map(item =>{
-        if (item.id === ticket.id){
-          const copy = {...item};
-          copy.quantity = copy.quantity + ticket.quantity;
-          return copy;
-        }
-      }) 
+      setUserCart((old) =>
+        old.map((item) => {
+          if (item.id === ticket.id) {
+            const copy = { ...item };
+            copy.quantity = copy.quantity + ticket.quantity;
+            return copy;
+          } else {
+            return item;
+          }
+        })
       );
     } else {
       setUserCart((oldArray) => [...oldArray, ticket]);
@@ -55,7 +66,7 @@ export default function PassesLines({passName, passPrice, bgPasses, dropText, us
         <div
           className={`h-full w-10 bg-${bgPasses} border-r-[2px] border-black hidden md:block`}
         ></div>
-        <div className="px-3 py-2 md:py-0 justify-between w-full flex flex-col md:flex-row h-full gap-y-6 ">
+        <div className="relative px-3 py-2 md:py-0 justify-between w-full flex flex-col md:flex-row h-full gap-y-6 overflow-hidden">
           <div className=" flex text-xs items-center pb-1 space-x-10 sm:text-sm">
             <div className=" w-32 md:w-40">
               <h4 className="whitespace-pre text-base md:text-lg">{`${passName.toUpperCase()}`}</h4>
@@ -94,7 +105,7 @@ export default function PassesLines({passName, passPrice, bgPasses, dropText, us
                 required
                 value={itemQuantity}
                 onChange={(e) => setItemQuantity(e.target.value)}
-                onBlur={(e)=> (e.target.value === "") && setItemQuantity(1)}
+                onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
                 className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
               />
               <AiOutlinePlusCircle
@@ -108,6 +119,9 @@ export default function PassesLines({passName, passPrice, bgPasses, dropText, us
               ADD TO CHART
             </button>
           </form>
+          {/* <div className="absolute right-0 top-0 w-full h-full flex items-center justify-center bg-concert-l-green">
+            <p className="text-lg">Item added to cart</p>
+          </div> */}
         </div>
       </div>
       {show && (

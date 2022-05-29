@@ -19,7 +19,7 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
           userCart={userCart}
           setUserCart={setUserCart}
-          cartItemID={1}
+          cartItemId="ticket1"
         />
 
         <PassesLines
@@ -32,7 +32,7 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
           userCart={userCart}
           setUserCart={setUserCart}
-          cartItemID={2}
+          cartItemId="ticket2"
         />
         <PassesLines
           passName="Premium pass"
@@ -44,7 +44,7 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
           userCart={userCart}
           setUserCart={setUserCart}
-          cartItemID={3}
+          cartItemId="ticket3"
         />
         {toggleHidden && (
           <>
@@ -58,7 +58,7 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
               userCart={userCart}
               setUserCart={setUserCart}
-              cartItemID={4}
+              cartItemId="ticket4"
             />
             <PassesLines
               passName="3 day pass"
@@ -70,7 +70,7 @@ export default function Passes({ userCart, setUserCart }) {
         aliquip ex ea commodo consequat."
               userCart={userCart}
               setUserCart={setUserCart}
-              cartItemID={5}
+              cartItemId="ticket5"
             />
           </>
         )}
