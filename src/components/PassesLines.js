@@ -20,6 +20,8 @@ export default function PassesLines({
   userCart,
   setUserCart,
   cartItemId,
+  countdown,
+  setCountdown,
 }) {
   const [show, setShow] = useState(false);
   let [itemQuantity, setItemQuantity] = useState(1);
@@ -36,8 +38,10 @@ export default function PassesLines({
     ticket.label = `${passName} - Ticket`;
     ticket.price = passPrice;
     ticket.quantity = itemQuantity;
+    // console.log(countdown);
 
     addToCart(ticket);
+    !countdown && setCountdown(true);
     setItemQuantity(1);
   }
 

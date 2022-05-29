@@ -28,13 +28,6 @@ function App() {
   const timeAfterTenSec = nowInMilsec + tenSeconds;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log('This will run after 1 second!')
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     async function getProducts() {
       const res = await fetch(
         "https://the-javascript-bar-project.herokuapp.com/bands"
@@ -74,9 +67,9 @@ function App() {
 
   return (
     <div className="App bg-black font-montserrat">
-      <Header bgColor="bg-concert-pink" countdown={countdown} setCountdown={setCountdown} counterTime={timeAfterTenMins}/>
+      <Header bgColor="bg-concert-pink" countdown={countdown} counterTime={timeAfterTenMins}/>
       <Routes>
-        <Route exact path="/" element={<Home userCart={userCart} setUserCart={setUserCart}/>} />
+        <Route exact path="/" element={<Home userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
         <Route
           path="lineup"
           element={<Lineup schedule={schedule} bands={bandsList} />}

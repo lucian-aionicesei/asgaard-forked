@@ -1,6 +1,7 @@
 import React from 'react';
 import useCountdown from '../hooks/useCountdown';
 import DateTimeDisplay from './DateTimeDisplay';
+import { Link } from 'react-router-dom';
 
 const CountdownTimer = ({ targetDate }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
@@ -39,7 +40,7 @@ const ExpiredNotice = () => {
           <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
           <p>:</p>
           <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
-          <p>&nbsp;to complete the order</p>
+          <p className='flex'>&nbsp;to<Link className='hover:bg-concert-b-green' to={"/purchases"}>&nbsp;complete the order</Link></p>
       </div>
     );
   };

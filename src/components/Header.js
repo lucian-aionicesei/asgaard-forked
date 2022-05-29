@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import useWindowDimensions from "../hooks/getWindowDimensions";
 import CountdownTimer from "../components/CountdownTimer";
 
-export default function Header({countdown, setCountdown, counterTime}) {
+export default function Header({countdown, counterTime}) {
   const [dropDown, setDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
 
@@ -83,7 +83,6 @@ export default function Header({countdown, setCountdown, counterTime}) {
             <Link to={"/shop"} className="hidden phone:block">
               <Button1 label="Buy ticket"/>
             </Link>
-            <button onClick={()=>{ setCountdown(true) }}>Test</button>
             <Link to={"/purchases"}>
               {/* <div className="flex items-center space-x-6 pl-2 bg-red-500">
               <p className="text-black">09:15 to complete order</p>
@@ -100,7 +99,7 @@ export default function Header({countdown, setCountdown, counterTime}) {
           </div>
         </nav>
         {countdown && (
-          <div className="w-full fidex bg-concert-pink leading-8 md:leading-10 px-8 font-bold text-lg md:text-xl">
+          <div className="w-full fidex bg-concert-redish leading-8 md:leading-10 px-8 font-bold text-lg md:text-xl">
             <div className="text-center phone:text-right">
               <CountdownTimer targetDate={counterTime} />
             </div>

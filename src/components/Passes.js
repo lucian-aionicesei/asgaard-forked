@@ -2,7 +2,7 @@ import { Button1, Button2 } from "./Buttons";
 import PassesLines from "./PassesLines";
 import { useState } from "react";
 
-export default function Passes({ userCart, setUserCart }) {
+export default function Passes({ userCart, setUserCart, countdown, setCountdown }) {
   const [toggleHidden, setToggleHidden] = useState(false);
 
   return (
@@ -20,6 +20,8 @@ export default function Passes({ userCart, setUserCart }) {
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket1"
+          setCountdown={setCountdown}
+          countdown={countdown}
         />
 
         <PassesLines
@@ -33,6 +35,8 @@ export default function Passes({ userCart, setUserCart }) {
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket2"
+          setCountdown={setCountdown}
+          countdown={countdown}
         />
         <PassesLines
           passName="Premium pass"
@@ -45,6 +49,8 @@ export default function Passes({ userCart, setUserCart }) {
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket3"
+          setCountdown={setCountdown}
+          countdown={countdown}
         />
         {toggleHidden && (
           <>
@@ -59,6 +65,8 @@ export default function Passes({ userCart, setUserCart }) {
               userCart={userCart}
               setUserCart={setUserCart}
               cartItemId="ticket4"
+              setCountdown={setCountdown}
+              countdown={countdown}
             />
             <PassesLines
               passName="3 day pass"
@@ -71,6 +79,8 @@ export default function Passes({ userCart, setUserCart }) {
               userCart={userCart}
               setUserCart={setUserCart}
               cartItemId="ticket5"
+              setCountdown={setCountdown}
+              countdown={countdown}
             />
           </>
         )}
