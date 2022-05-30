@@ -19,6 +19,14 @@ export default function Purchases({userCart, setUserCart}) {
 }
 
 export function UserLogin(props) {
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("submitted");
+    console.log(event.target.email.value);
+    console.log(event.target.password.value);
+  }
+
   return (
     <section className="h-auto w-full max-w-[400px] py-6 text-black space-y-6 bg-yellow-500 px-4">
       <div>
@@ -27,16 +35,16 @@ export function UserLogin(props) {
           You need to be loged-in to proceed to payment
         </p>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-bold" htmlFor="username">
             E-mail
           </label>
           <input
-            className="shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
-            placeholder="Username"
+            className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="email"
+            type="email"
+            placeholder="E-mail"
           />
         </div>
         <div className="mb-4">
@@ -44,7 +52,7 @@ export function UserLogin(props) {
             Password
           </label>
           <input
-            className="shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow font-bold appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="******************"
@@ -52,7 +60,6 @@ export function UserLogin(props) {
         </div>
         <button
           className="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
         >
           LOG IN
         </button>
