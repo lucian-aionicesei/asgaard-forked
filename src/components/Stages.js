@@ -2,17 +2,22 @@ import { Link } from "react-router-dom";
 
 export default function Stages({ bgColor, stagesBG, stageName }) {
   return (
-    <div className={`bg-${bgColor} w-full items-center`}>
+    <div className="w-full items-center">
       <Link to={"/lineup"}>
         <img
-          className="row-span-3 w-full object-cover"
+          className="row-span-3 w-full "
           src={`${stagesBG}`} /*"../../images/party1.svg"*/
           alt=""
         ></img>
-        <div className="flex w-full h-auto text-center justify-center items-center">
-          <h2 className="flex text-white font-acier text-4xl p-">
+        <div
+          className={`bg-${bgColor} flex flex-col w-full h-auto pb-2 text-center justify-center items-center`}
+        >
+          <h2 className="flex leading-none align-text-bottom text-black font-acier text-[3rem] pt-2">
             {`${stageName}`}
           </h2>
+          <h4 className=" text-xs text-gray-800 leading-none font-montserrat font-bold">
+            STAGE
+          </h4>
         </div>
       </Link>
     </div>

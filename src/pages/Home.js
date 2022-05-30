@@ -10,7 +10,12 @@ import Sponsors from "../components/Sponsors";
 import { Link } from "react-router-dom";
 const urlSlugMatch = require("url-slug-match");
 
-export default function Home({userCart, setUserCart, countdown, setCountdown}) {
+export default function Home({
+  userCart,
+  setUserCart,
+  countdown,
+  setCountdown,
+}) {
   const homePageLineup =
     "Led Zeppelin * AC/DC | Terminalist * Tool * The Who | The Beatles * Pink Floyd * Queen * Metallica | The Rolling Stones * Guns N' Roses * Nirvana | Black Sabbath * Raised Fist* Refused * Steuber Group * Simonis Inc | Halvorson, Kertzmann and Predovic * Huels, Ratke and Fritsch * A Perfect Circle | Price, Grant and Bechtelar * Erdman - Casper * Nikolaus Inc";
 
@@ -41,26 +46,35 @@ export default function Home({userCart, setUserCart, countdown, setCountdown}) {
           <div className="py-4">
             <Stages
               bgColor="concert-pink"
-              stagesBG="../../images/party1.svg"
-              stageName="STAGE 1"
+              stagesBG="../../images/party1.png"
+              stageName="Midgard"
             />
           </div>
 
           <div className="flex flex-col md:flex-row gap-x-5">
-            <Stages
-              bgColor="concert-blue"
-              stagesBG="../../images/party2.svg"
-              stageName="STAGE 2"
-            />
-            <Stages
-              bgColor="concert-b-green"
-              stagesBG="../../images/party3.svg"
-              stageName="STAGE 3"
-            />
+            <div className="pb-4">
+              <Stages
+                bgColor="concert-blue"
+                stagesBG="../../images/party2.png"
+                stageName="Vanaheim"
+              />
+            </div>
+            <div>
+              <Stages
+                bgColor="concert-b-green"
+                stagesBG="../../images/party3.png"
+                stageName="Jotunheim"
+              />
+            </div>
           </div>
         </div>
         <div>
-          <Passes userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown}/>
+          <Passes
+            userCart={userCart}
+            setUserCart={setUserCart}
+            countdown={countdown}
+            setCountdown={setCountdown}
+          />
         </div>
         <div>
           <GetHere />
