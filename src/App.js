@@ -24,38 +24,38 @@ const cart = {
       label: "VIP Pass - ticket",
       price: 1299,
       quantity: 2,
-    }
+    },
   },
   accomodation: {
     Svartheim: {
       twoPersonTent: 2,
-      onePersonTent: 0
+      onePersonTent: 0,
     },
     Nilfheim: {
       twoPersonTent: 0,
-      threePersonTent: 0
+      threePersonTent: 0,
     },
     Helheim: {
       twoPersonTent: 0,
-      threePersonTent: 0
+      threePersonTent: 0,
     },
     MuspelHeim: {
       twoPersonTent: 2,
-      threePersonTent: 0
+      threePersonTent: 0,
     },
     Alfheim: {
       twoPersonTent: 0,
-      threePersonTent: 0
-    }
-  }
-}
+      threePersonTent: 0,
+    },
+  },
+};
 
 function App() {
   const [bandsList, setProducts] = useState([]);
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const [userCart, setUserCart] = useState(cart);
 
-  console.log(userCart);
+  // console.log(userCart);
 
   useEffect(() => {
     async function getProducts() {
@@ -68,7 +68,7 @@ function App() {
 
   let updatedBandList = [];
 
-  console.log(bandsList);
+  // console.log(bandsList);
   bandsList.map((band) => {
     // console.log(band.name);
     let thisBand = band;
@@ -76,7 +76,7 @@ function App() {
     updatedBandList = [...updatedBandList, thisBand];
   });
 
-  console.log(updatedBandList);
+  // console.log(updatedBandList);
 
   const [schedule, setSchedule] = useState([]);
 

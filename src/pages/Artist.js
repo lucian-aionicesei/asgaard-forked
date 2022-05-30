@@ -4,18 +4,12 @@ import { BsInstagram } from "react-icons/bs";
 import { BsSpotify } from "react-icons/bs";
 import { ImSoundcloud } from "react-icons/im";
 import useFetch from "../hooks/useFetch";
-import { Button2 } from "../components/Buttons";
-// import { CheckingBands } from "./Lineup";
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 const urlSlugMatch = require("url-slug-match");
 
 export default function Artist() {
   let { id } = useParams();
   let thisBand;
-  let MakeIDCapialLetter;
   let updatedBandList = [];
-  let bandsList;
 
   const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/bands");
 
@@ -41,13 +35,6 @@ export default function Artist() {
     thisBand = data.find((elem) => elem.id === id);
     console.log(updatedBandList);
   }
-
-  // bands.map((band) => {
-  //   if (band.name == MakeIDCapialLetter) {
-  //     console.log(band);
-  //     return band;
-  //   }
-  // });
 
   return (
     <Content>
