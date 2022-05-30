@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-export default function UserCart({ savedItems, setUserCart }) {
+export default function UserCart({ userCart, setUserCart }) {
   // const [tickets, setTickets] = useState(savedItems.filter());
   // const [accomodation, setAccomodation] = useState(savedItems.accomodation);
   // const [cartItems, setCartItems] = useState(savedItems);
   // console.log(cartItems);
-  console.log(savedItems.length);
+  // console.log(userCart.length);
+  // console.log(userCart)
 
-  const initialValue = (savedItems.length > 0) ? 99 : 0;
-  const sumWithInitial = savedItems.reduce(
+  const initialValue = (userCart.length > 0) ? 99 : 0;
+  const sumWithInitial = userCart.reduce(
     (previousValue, currentValue) =>
       previousValue + currentValue.price * currentValue.quantity,
     initialValue
@@ -17,14 +18,15 @@ export default function UserCart({ savedItems, setUserCart }) {
   return (
     <section className="w-full phone:min-w-[400px] max-w-[500px] h-fit text-black bg-concert-yellowish p-6 border-[3px] border-black">
       <h3 className="text-center text-2xl font-bold">YOUR ORDER</h3>
-      {(savedItems.length > 0) ? <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
-        {savedItems.map((item, index) => {
-          if (item.type === "ticket" && item.quantity > 0) {
+      {(userCart.length > 0) ? <ul className="space-y-6 my-10 min-h-fit max-h-80 overflow-auto">
+        {userCart.map((item, index) => {
+          if (item.type === "ticket") {
             return (
               <CartItem
                 key={`cart-item${index}`}
                 label={item.label}
                 item={item}
+                userCart={userCart}
                 setUserCart={setUserCart}
               />
             );
@@ -32,8 +34,9 @@ export default function UserCart({ savedItems, setUserCart }) {
             return (
               <CartItem
                 key={`cart-item${index}`}
-                label={`${item.tent} - ${item.area}`}
+                label={`${item.label}`}
                 item={item}
+                userCart={userCart}
                 setUserCart={setUserCart}
               />
             );
@@ -69,9 +72,26 @@ export default function UserCart({ savedItems, setUserCart }) {
 }
 
 function CartItem({ label, item, setUserCart }) {
+
+  // console.log(item)
+
   function remove() {
     setUserCart((oldArray) =>
       oldArray.filter((cartItem) => cartItem.id !== item.id)
+    );
+  }
+
+  function changeQuantity(targetValue) {
+    targetValue = parseFloat(targetValue);
+    setUserCart(old => old.map(cartItem =>{
+      if (cartItem.id === item.id){
+        const copy = {...cartItem};
+        copy.quantity = targetValue;
+        return copy;
+      } else {
+        return cartItem;
+      }
+    }) 
     );
   }
 
@@ -100,17 +120,17 @@ function CartItem({ label, item, setUserCart }) {
             <label>
               <input
                 type="number"
-                name="salary"
-                className="w-12 h-fit p-0 pl-2"
-                min="0"
-                max="100"
+                className="w-12 h-fit p-0 pl-2 font-bold"
+                min="1"
                 value={item.quantity}
+                onChange={(e) => changeQuantity(e.target.value)}
+                onBlur={(e) => (e.target.value==="") && changeQuantity(1)}
               ></input>
               pcs.
             </label>
           </form>
           <p className="font-bold text-right">
-            DKK {item.price * item.quantity}
+            DKK { item.price * item.quantity}
           </p>
         </div>
       </div>

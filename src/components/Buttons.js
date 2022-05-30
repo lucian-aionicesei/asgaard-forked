@@ -1,4 +1,4 @@
-import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
 export function Button1({ label }) {
   return (
@@ -43,7 +43,7 @@ Button3.defaultProps = {
 export function SeeDetailButton({ label, bgcolor }) {
   return (
     <div
-      className={`whitespace-pre text-sm sm:text-black font-montserrat w-fit font-bold border-[3px] border-black text-xs bg-${bgcolor} `}
+      className={`whitespace-pre sm:text-black font-montserrat w-fit h-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
     >
       <ul className="flex items-center space-x-1">
         <li>
@@ -56,6 +56,25 @@ export function SeeDetailButton({ label, bgcolor }) {
 }
 
 SeeDetailButton.defaultProps = {
+  bgcolor: "concert-b-green",
+};
+
+export function SeeDetailButtonUp({ label, bgcolor }) {
+  return (
+    <div
+      className={`whitespace-pre text-sm sm:text-black font-montserrat w-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
+    >
+      <ul className="flex items-center space-x-1">
+        <li>
+          <AiOutlineArrowUp />
+        </li>
+        <li>{label}</li>
+      </ul>
+    </div>
+  );
+}
+
+SeeDetailButtonUp.defaultProps = {
   bgcolor: "concert-b-green",
 };
 
