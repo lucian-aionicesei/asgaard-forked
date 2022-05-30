@@ -59,22 +59,25 @@ export default function Lineup({ bands }) {
 
   console.log(NewMidgard);
 
-  NewMidgard.map((bandMidgard) => {
-    const thisBand = bands.find((elem) => elem.name === bandMidgard);
-    DisplayMidgard = [...DisplayMidgard, thisBand];
-  });
+  data &&
+    NewMidgard.map((bandMidgard) => {
+      const thisBand = bands.find((elem) => elem.name === bandMidgard);
+      DisplayMidgard = [...DisplayMidgard, thisBand];
+    });
   console.log(DisplayMidgard);
 
-  NewVanaheim.map((bandVanaheim) => {
-    const thisBandVanaheim = bands.find((elem) => elem.name === bandVanaheim);
-    DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
-  });
+  data &&
+    NewVanaheim.map((bandVanaheim) => {
+      const thisBandVanaheim = bands.find((elem) => elem.name === bandVanaheim);
+      DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
+    });
   console.log(DisplayVanaheim);
 
-  NewJotunheim.map((bandJotunheim) => {
-    const thisBandJotunheim = bands.find((elem) => elem.name === bandJotunheim);
-    DisplayJotunheim = [...DisplayJotunheim, thisBandJotunheim];
-  });
+  data &&
+    NewJotunheim.map((bandJotunheim) => {
+      const thisBandJotunheim = bands.find((elem) => elem.name === bandJotunheim);
+      DisplayJotunheim = [...DisplayJotunheim, thisBandJotunheim];
+    });
   console.log(DisplayJotunheim);
 
   return (
@@ -127,11 +130,12 @@ export default function Lineup({ bands }) {
           <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Midgard</h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
-            {DisplayMidgard.map((band, index) => (
-              <div key={`band#${index}`} className="bg-gray-600 text-white ">
-                <CheckingBands bgColor="concert-pink" band={band} />
-              </div>
-            ))}
+            {data &&
+              DisplayMidgard.map((band, index) => (
+                <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                  <CheckingBands bgColor="concert-pink" band={band} />
+                </div>
+              ))}
           </ul>
         </div>
 
@@ -139,11 +143,12 @@ export default function Lineup({ bands }) {
           <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Vanaheim</h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
-            {DisplayVanaheim.map((band, index) => (
-              <div key={`band#${index}`} className="bg-gray-600 text-white ">
-                <CheckingBands bgColor="concert-b-green" band={band} />
-              </div>
-            ))}
+            {data &&
+              DisplayVanaheim.map((band, index) => (
+                <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                  <CheckingBands bgColor="concert-b-green" band={band} />
+                </div>
+              ))}
           </ul>
         </div>
 
@@ -151,11 +156,12 @@ export default function Lineup({ bands }) {
           <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-blue flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Jotunheim</h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
-            {DisplayJotunheim.map((band, index) => (
-              <div key={`band#${index}`} className="bg-gray-600 text-white ">
-                <CheckingBands bgColor="concert-blue" band={band} />
-              </div>
-            ))}
+            {data &&
+              DisplayJotunheim.map((band, index) => (
+                <div key={`band#${index}`} className="bg-gray-600 text-white ">
+                  <CheckingBands bgColor="concert-blue" band={band} />
+                </div>
+              ))}
           </ul>
         </div>
       </Content>
@@ -164,10 +170,12 @@ export default function Lineup({ bands }) {
 }
 
 export function CheckingBands({ band, bgColor }) {
-  if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
-    return <ImgJPG band={band} bgColor={bgColor} />;
+  if (band) {
+    if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
+      return <ImgJPG band={band} bgColor={bgColor} />;
+    }
+    return <ImgSVG band={band} bgColor={bgColor} />;
   }
-  return <ImgSVG band={band} bgColor={bgColor} />;
 }
 
 export function ImgJPG({ band, bgColor }) {

@@ -3,28 +3,44 @@ import { useParams } from "react-router-dom";
 import { BsInstagram } from "react-icons/bs";
 import { BsSpotify } from "react-icons/bs";
 import { ImSoundcloud } from "react-icons/im";
+import useFetch from "../hooks/useFetch";
 import { Button2 } from "../components/Buttons";
 // import { CheckingBands } from "./Lineup";
 import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 const urlSlugMatch = require("url-slug-match");
 
-export default function Artist({ bands }) {
+export default function Artist() {
   let { id } = useParams();
-  const thisBand = bands.find((elem) => elem.id === id);
-  console.log(bands);
-  console.log(thisBand);
+  let thisBand;
+  let MakeIDCapialLetter;
+  let updatedBandList = [];
+  let bandsList;
 
-  const NewArrayBands = [bands];
-  const MakeIDCapialLetter = id
-    .toLowerCase()
-    .replaceAll("-", " ")
-    .split(" ")
-    .map((word) => {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" ");
+  const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/bands");
 
-  console.log(bands);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p> Error </p>;
+  if (data) {
+    data.map((data) => {
+      thisBand = data;
+      console.log(data);
+      thisBand.id = urlSlugMatch(data.name.trim());
+      updatedBandList = [...updatedBandList, thisBand];
+    });
+
+    // MakeIDCapialLetter = id
+    //   .toLowerCase()
+    //   .replaceAll("-", " ")
+    //   .split(" ")
+    //   .map((word) => {
+    //     return word.charAt(0).toUpperCase() + word.slice(1);
+    //   })
+    //   .join(" ");
+
+    thisBand = data.find((elem) => elem.id === id);
+    console.log(updatedBandList);
+  }
 
   // bands.map((band) => {
   //   if (band.name == MakeIDCapialLetter) {
@@ -35,16 +51,15 @@ export default function Artist({ bands }) {
 
   return (
     <Content>
-      {/* <CheckingBandPage bands={bands} /> */}
       <div className="flex justify-center items-center pt-[4rem] ">
         <div className="w-[95%] sm:w-[90%]  lg:w-3/4 xl:w-[70%]  shadow-[0_4px_80px_35px_rgba(251,206,48,0.25)]">
           <h1 className="font-aciersolid  text-2xl lg:font-acier text-center py-4 hover:font-aciersolid md:text-3xl lg:text-5xl xl:text-6xl 2xl:text-8xl border-[2px] border-b-[0px] border-concert-yellow bg-concert-pink text-black ">
             {" "}
-            {MakeIDCapialLetter}
+            {data && thisBand.name}
           </h1>
           <div className=" p-2  flex flex-row justify-between border-[2px] border-concert-yellow lg:p-4 xl:p-4 2xl:p-6">
             <div className="flex justify-center items-center">
-              <div className="px-3 sm:px-4 flex justify-center items-center text-black font-aciersolid lg:px-14 py-1 w-fit font-bold border-[3px] border-black text-lg bg-concert-yellow mr-2 2xl:text-4xl tracking-widest">{thisBand.genre}</div>
+              <div className="px-3 sm:px-4 flex justify-center items-center text-black font-aciersolid lg:px-14 py-1 w-fit font-bold border-[3px] border-black text-lg bg-concert-yellow mr-2 2xl:text-4xl tracking-widest">{data && thisBand.genre}</div>
             </div>
             <div className=" flex flex-row  items-center m-2 w-[38%]   ">
               <BsInstagram size={32} className="mr-8 2xl:mr-2 text-concert-pink size={40}" />
@@ -55,7 +70,7 @@ export default function Artist({ bands }) {
           </div>
           <div>
             <div className="h-[17rem] lg:h-[30rem] border-[2px] border-b-[0px] border-t-[0px] border-concert-yellow ">
-              <CheckingBands bgColor="concert-blue" band={thisBand} />
+              <CheckingBands bgColor="concert-blue" band={data && thisBand} />
             </div>
           </div>
           <div className="border-[2px] border-b-[0px] border-concert-yellow flex items-center justify-center p-8">
@@ -63,7 +78,7 @@ export default function Artist({ bands }) {
           </div>
           <div className="">
             <section>
-              <p className="border-[2px] border-concert-yellow p-8 text-montserrat md:text-lg lg:text-xl lg:font-semibold xl:text-2xl xl:font-semibold xl:leading-loose">{thisBand.bio}</p>
+              <p className="border-[2px] border-concert-yellow p-8 text-montserrat md:text-lg lg:text-xl lg:font-semibold xl:text-2xl xl:font-semibold xl:leading-loose">{data && thisBand.bio}</p>
             </section>
           </div>
         </div>
@@ -81,10 +96,12 @@ export default function Artist({ bands }) {
 
 function CheckingBands({ band, bgColor }) {
   console.log(band);
-  if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
-    return <ImgJPG band={band} bgColor={bgColor} />;
+  if (band) {
+    if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
+      return <ImgJPG band={band} bgColor={bgColor} />;
+    }
+    return <ImgSVG band={band} bgColor={bgColor} />;
   }
-  return <ImgSVG band={band} bgColor={bgColor} />;
 }
 
 function ImgJPG({ band, bgColor }) {
