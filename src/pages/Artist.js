@@ -18,7 +18,7 @@ export default function Artist() {
   if (data) {
     data.map((data) => {
       thisBand = data;
-      console.log(data);
+      // console.log(data);
       thisBand.id = urlSlugMatch(data.name.trim());
       updatedBandList = [...updatedBandList, thisBand];
     });
@@ -33,7 +33,7 @@ export default function Artist() {
     //   .join(" ");
 
     thisBand = data.find((elem) => elem.id === id);
-    console.log(updatedBandList);
+    // console.log(updatedBandList);
   }
 
   return (

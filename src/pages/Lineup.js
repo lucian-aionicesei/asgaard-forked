@@ -23,7 +23,7 @@ export default function Lineup({ bands }) {
 
   if (data) {
     const dataArray = Object.values(data);
-    console.log(dataArray);
+    // console.log(dataArray);
 
     const stageMidgard = Object.values(dataArray[0]);
     const stageVanaheim = Object.values(dataArray[1]);
@@ -57,28 +57,28 @@ export default function Lineup({ bands }) {
     });
   }
 
-  console.log(NewMidgard);
+  // console.log(NewMidgard);
 
   data &&
     NewMidgard.map((bandMidgard) => {
       const thisBand = bands.find((elem) => elem.name === bandMidgard);
       DisplayMidgard = [...DisplayMidgard, thisBand];
     });
-  console.log(DisplayMidgard);
+  // console.log(DisplayMidgard);
 
   data &&
     NewVanaheim.map((bandVanaheim) => {
       const thisBandVanaheim = bands.find((elem) => elem.name === bandVanaheim);
       DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
     });
-  console.log(DisplayVanaheim);
+  // console.log(DisplayVanaheim);
 
   data &&
     NewJotunheim.map((bandJotunheim) => {
       const thisBandJotunheim = bands.find((elem) => elem.name === bandJotunheim);
       DisplayJotunheim = [...DisplayJotunheim, thisBandJotunheim];
     });
-  console.log(DisplayJotunheim);
+  // console.log(DisplayJotunheim);
 
   return (
     <div>
