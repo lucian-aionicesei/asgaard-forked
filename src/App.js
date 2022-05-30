@@ -11,7 +11,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Item } from "semantic-ui-react";
+
 const urlSlugMatch = require("url-slug-match");
 
 function App() {
@@ -29,9 +29,7 @@ function App() {
 
   useEffect(() => {
     async function getProducts() {
-      const res = await fetch(
-        "https://the-javascript-bar-project.herokuapp.com/bands"
-      );
+      const res = await fetch("https://the-javascript-bar-project.herokuapp.com/bands");
       const data = await res.json();
       setProducts(data);
     }
@@ -54,9 +52,7 @@ function App() {
 
   useEffect(() => {
     async function getLineUp() {
-      const res = await fetch(
-        "https://the-javascript-bar-project.herokuapp.com/schedule"
-      );
+      const res = await fetch("https://the-javascript-bar-project.herokuapp.com/schedule");
       const data = await res.json();
       setSchedule(data);
     }
@@ -67,25 +63,14 @@ function App() {
 
   return (
     <div className="App bg-black font-montserrat">
-      <Header bgColor="bg-concert-pink" countdown={countdown} counterTime={timeAfterTenMins}/>
+      <Header bgColor="bg-concert-pink" countdown={countdown} counterTime={timeAfterTenMins} />
       <Routes>
         <Route exact path="/" element={<Home userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
-        <Route
-          path="lineup"
-          element={<Lineup schedule={schedule} bands={bandsList} />}
-        />
+        <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
         <Route path="artist/:id" element={<Artist bands={updatedBandList} />} />
-        <Route
-          path="schedule"
-          element={<Schedule schedule={schedule} bands={bandsList} />}
-        />
-        <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown}/>} />
-        <Route
-          path="purchases"
-          element={
-            <Purchases userCart={userCart} setUserCart={setUserCart} />
-          }
-        />
+        <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
+        <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
+        <Route path="purchases" element={<Purchases userCart={userCart} setUserCart={setUserCart} />} />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<Whoups404 />} />
       </Routes>

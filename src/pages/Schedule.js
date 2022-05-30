@@ -13,7 +13,7 @@ export default function Schedule() {
 
   let DaysOfTheWeek = ["Monday", "Tuesday", "Wednsaday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-  const [day, setDay] = useState();
+  const [day, setDay] = useState(0);
   const { bandData } = useFetch;
 
   const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/schedule");
@@ -65,8 +65,8 @@ export default function Schedule() {
         <h1 className="text-5xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Daily Schedule</h1>
       </div>
       <Content>
-        <div>
-          <div className="w-full sticky top-[6rem] z-10 bg-black">
+        <>
+          <div className="w-full sticky top-[6rem] z-0 bg-black">
             <div className="flex flex-row justify-center">
               <button
                 className=" bg-concert-redish px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
@@ -231,7 +231,7 @@ export default function Schedule() {
               </div>
             </div>
           </div>
-        </div>
+        </>
       </Content>
     </div>
   );
