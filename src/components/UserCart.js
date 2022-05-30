@@ -34,7 +34,7 @@ export default function UserCart({ userCart, setUserCart }) {
             return (
               <CartItem
                 key={`cart-item${index}`}
-                label={`${item.tent} - ${item.area}`}
+                label={`${item.label}`}
                 item={item}
                 userCart={userCart}
                 setUserCart={setUserCart}

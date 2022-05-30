@@ -42,10 +42,8 @@ export default function Footer() {
 
         <div className="mt-2 mb-2 md:mt-0 mb-0 ">
           <h3 className="font-acier font-normal text-3xl">NEWSLETTER</h3>
-          <input></input>
-          <Link to="/artist/2" className="py-3.5">
+          <input className="text-black"></input>
             <Button2 label="SUBSCRIBE" bgcolor="concert-pink" />
-          </Link>
         </div>
       </div>
 

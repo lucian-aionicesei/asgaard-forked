@@ -43,7 +43,7 @@ Button3.defaultProps = {
 export function SeeDetailButton({ label, bgcolor }) {
   return (
     <div
-      className={`whitespace-pre text-sm sm:text-black font-montserrat w-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
+      className={`whitespace-pre sm:text-black font-montserrat w-fit h-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
     >
       <ul className="flex items-center space-x-1">
         <li>

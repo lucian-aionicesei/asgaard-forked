@@ -79,7 +79,7 @@ function App() {
           path="schedule"
           element={<Schedule schedule={schedule} bands={bandsList} />}
         />
-        <Route path="shop" element={<Shop />} />
+        <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown}/>} />
         <Route
           path="purchases"
           element={
