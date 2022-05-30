@@ -2,6 +2,8 @@ import Content from "../components/Content";
 import { FaPen, FaFacebookSquare } from "react-icons/fa";
 import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart"
+import useLogin from "../hooks/useLogin";
+import axios from "axios"
 
 export default function Purchases({userCart, setUserCart}) {
   // console.log(savedItems)
@@ -19,12 +21,26 @@ export default function Purchases({userCart, setUserCart}) {
 }
 
 export function UserLogin(props) {
+  // const {error, data } = useLogin("christian@kea.dk","lucian123");
 
   function handleSubmit(event) {
     event.preventDefault();
     console.log("submitted");
     console.log(event.target.email.value);
     console.log(event.target.password.value);
+
+    axios
+      .post('https://asgaard-userdb.herokuapp.com/api/auth/local', {
+        identifier: 'bad@kea.dk',
+        password: 'lucian123',
+      })
+      .then(response => {
+        console.log('User profile', response.data.user);
+        console.log('User token', response.data.jwt);
+      })
+      .catch(error => {
+        console.log('An error occurred:', error.response.data.error.message);
+      });
   }
 
   return (
@@ -43,6 +59,7 @@ export function UserLogin(props) {
           <input
             className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
+            required
             type="email"
             placeholder="E-mail"
           />
@@ -54,6 +71,7 @@ export function UserLogin(props) {
           <input
             className="shadow font-bold appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
+            required
             type="password"
             placeholder="******************"
           />
