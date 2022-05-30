@@ -28,7 +28,7 @@ export default function PassesLines({
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Submitted", itemQuantity);
+    // console.log("Submitted", itemQuantity);
 
     const ticket = Object.create(oneCartItem);
 
@@ -47,7 +47,7 @@ export default function PassesLines({
 
   function addToCart(ticket) {
     if (userCart.find((cartItem) => cartItem.id === ticket.id)) {
-      console.log("Item already added");
+      // console.log("Item already added");
       setUserCart((old) =>
         old.map((item) => {
           if (item.id === ticket.id) {

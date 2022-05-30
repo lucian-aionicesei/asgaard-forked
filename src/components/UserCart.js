@@ -5,8 +5,8 @@ export default function UserCart({ userCart, setUserCart }) {
   // const [accomodation, setAccomodation] = useState(savedItems.accomodation);
   // const [cartItems, setCartItems] = useState(savedItems);
   // console.log(cartItems);
-  console.log(userCart.length);
-  console.log(userCart)
+  // console.log(userCart.length);
+  // console.log(userCart)
 
   const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
@@ -73,7 +73,7 @@ export default function UserCart({ userCart, setUserCart }) {
 
 function CartItem({ label, item, setUserCart }) {
 
-  console.log(item)
+  // console.log(item)
 
   function remove() {
     setUserCart((oldArray) =>

@@ -124,7 +124,7 @@ function CampingOption({userCart, setUserCart, cartItemId, accomodationPrice, ac
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Submitted", itemQuantity);
+    // console.log("Submitted", itemQuantity);
 
     const accomodation = Object.create(oneCartItem);
 
@@ -143,7 +143,7 @@ function CampingOption({userCart, setUserCart, cartItemId, accomodationPrice, ac
 
   function addToCart(accomodation) {
     if (userCart.find((cartItem) => cartItem.id === accomodation.id)) {
-      console.log("Item already added");
+      // console.log("Item already added");
       setUserCart((old) =>
         old.map((item) => {
           if (item.id === accomodation.id) {
