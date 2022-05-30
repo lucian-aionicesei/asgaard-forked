@@ -16,6 +16,7 @@ const CountdownTimer = ({ targetDate }) => {
         minutes={minutes}
         seconds={seconds}
       />
+      
     );
   }
 };
