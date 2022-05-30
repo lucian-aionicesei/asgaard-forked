@@ -66,92 +66,93 @@ export default function Schedule() {
       </div>
       <Content>
         <>
+          <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-acier  hover:font-aciersolid bg-concert-redish  flex justify-center py-1  lg:py-1   xl:py-2 text-black">{DaysOfTheWeek[day]}</h1>
+          </div>
           <div className="w-full sticky top-[6rem] z-0 bg-black">
-            <div className="flex flex-row justify-center">
+            <div className=" flex flex-row justify-center flex-wrap">
               <button
-                className=" bg-concert-redish px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish px-[0.4rem] py-[0.2rem] text-[13px] md:px-[1rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={0}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 MONDAY
               </button>
               <button
-                className=" bg-concert-redish px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={1}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 TUESDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={2}
                 onClick={(event) => handleClick(event.target.value)}
               >
-                WEDNSDAY
+                WEDNESDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish px-[0.4rem]  py-[0.2rem]  text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={3}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 THURSDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={4}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 FRIDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={5}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 SATURDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.3rem] py-[0.2rem] text-[9px] font-montserrat font-bold 2xl:px-[4.2rem] text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
                 value={6}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 SUNDAY
               </button>
             </div>
-            <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
-              <h1 className="text-5xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-1 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10 text-black">{DaysOfTheWeek[day]}</h1>
-            </div>
           </div>
 
           <div id="main">
             <div className="text-5xl sm:text-7xl font-acier bg-concert-redish flex justify-start py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Midgard Stage</div>
-            <div className="bg-concert-redish h-[38rem] p-3">
+            <div className="bg-concert-redish h-[145rem] p-3">
               {data &&
                 day != null &&
                 stageMidgard[day].map((act) => {
                   if (act.act !== "break")
                     return (
-                      <div className="flex flex-row  justify-between bg-concert-yellowish p-0 border-[3px] border-b-[0px] border-black ">
-                        <div className=" bg-concert-yellow   text-[10px] w-[130px] font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-l-[0px] border-black font-extrabold">
-                          {act.start}A.M - {act.end} P.M.
-                        </div>
-
-                        <div className=" flex justify-center items-center  font-montserrat font-extrabold text-black text-[14px]">{act.act}</div>
-                        <div className="flex flex-row justify-between">
-                          <div className="flex justify-center items-center ">
-                            <div className="  bg-concert-yellow  px-[0.4rem] py-[0.1rem] mx-2 text-[9px]  font-montserrat font-black  text-black border-[3px]  border-black ">POP</div>
+                      <div className="flex flex-col justify-between bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
+                        <div className="flex flex-col items-center">
+                          <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] border-l-[0px] border-r-[0px] border-black font-extrabold">
+                            {act.start}A.M - {act.end} P.M.
                           </div>
-                          <div>
-                            <img src={`./images/logos/620px-Black_Sabbath_(Iommi,_Osbourne,_Ward_and_Butler).JPG`} className="object-cover  w-[5.7rem]  h-[2.9rem]" alt="this"></img>
+                          <div className=" flex justify-center items-center mt-[0.5rem] text-[27px]  text-center font-montserrat font-extrabold text-black text-[14px]">{act.act}</div>
+                        </div>
+                        <div className="flex flex-col justify-between">
+                          <div className="flex justify-center items-center ">
+                            <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem] font-montserrat font-black  text-black border-[3px]  border-black ">POP</div>
+                          </div>
+                          <div className="w-[100%] border-t-[3px] border-black ">
+                            <img src={`./images/logos/620px-Black_Sabbath_(Iommi,_Osbourne,_Ward_and_Butler).JPG`} className="object-cover w-[100%]  h-[10rem] " alt="this"></img>
                           </div>
                         </div>
                       </div>
                     );
                   return (
-                    <div>
-                      <div className="flex flex-row justify-center items-center bg-concert-yellowish p-2  border-[3px] border-b-[0px] border-black ">
+                    <div className="h-[5rem]">
+                      <div className="flex flex-row justify-center items-center bg-concert-redish p-2  border-[3px] border-b-[0px] border-black h-[5rem] ">
                         <div>
-                          <div className="font-montserrat font-extrabold text-slate-400">BREAK</div>
+                          <div className="font-montserrat font-extrabold text-black">BREAK</div>
                         </div>
                       </div>
                     </div>
