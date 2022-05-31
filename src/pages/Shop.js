@@ -124,9 +124,9 @@ export function CampingLines({
               }}
             >
               {show ? (
-                <SeeDetailButtonUp label="See details" />
+                <SeeDetailButtonUp label="Details" />
               ) : (
-                <SeeDetailButton label="See details" />
+                <SeeDetailButton label="Details" />
               )}
             </button>
             <button
@@ -153,7 +153,7 @@ export function CampingLines({
         </div>
       )}
       {dropDown && (
-        <div className="w-full items-center flex flex-col md:flex-row bg-yellow-50 px-[5vw] py-[4vw] gap-x-[5vw] gap-y-[7vw]">
+        <div className="w-full items-center flex flex-col md:flex-row bg-concert-yellow px-[5vw] py-[4vw] gap-x-[5vw] gap-y-[7vw]">
           <CampingOption
             userCart={userCart}
             setUserCart={setUserCart}
@@ -245,7 +245,7 @@ function CampingOption({
       <img
         src="./images/camping.jpg"
         alt=""
-        className="w-full h-40 md:h-[16vw] object-cover border-black border-[2px]"
+        className="w-full h-40 md:h-[16vw] object-cover"
       />
       <div className="relative overflow-hidden pb-2">
         <p className="text-base pt-2 px-2">{accomodationType}</p>
@@ -256,33 +256,60 @@ function CampingOption({
           className="flex items-center justify-center space-x-2 pt-4"
           onSubmit={handleSubmit}
         >
-          <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
-            <AiOutlineMinusCircle
-              className="text-xl cursor-pointer"
-              onClick={() =>
-                itemQuantity > 1 && setItemQuantity(itemQuantity - 1)
-              }
-            />
-            <input
-              type="number"
-              min="1"
-              max="100"
-              required
-              value={itemQuantity}
-              onChange={(e) => setItemQuantity(e.target.value)}
-              onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
-              className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
-            />
-            <AiOutlinePlusCircle
-              className="text-xl cursor-pointer"
-              onClick={() =>
-                itemQuantity >= 1 && setItemQuantity(itemQuantity + 1)
-              }
-            />
-          </label>
-          <button className=" bg-black h-8 font-bold p-1 flex items-center text-white text-xs">
-            ADD TO CHART
-          </button>
+          {itemAdded ? (
+            <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
+              <AiOutlineMinusCircle className="text-xl" />
+              <input
+                disabled
+                type="number"
+                min="1"
+                max="100"
+                required
+                value={itemQuantity}
+                onChange={(e) => setItemQuantity(e.target.value)}
+                onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
+                className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
+              />
+              <AiOutlinePlusCircle className="text-xl" />
+            </label>
+          ) : (
+            <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
+              <AiOutlineMinusCircle
+                className="text-xl cursor-pointer"
+                onClick={() =>
+                  itemQuantity > 1 && setItemQuantity(itemQuantity - 1)
+                }
+              />
+              <input
+                type="number"
+                min="1"
+                max="100"
+                required
+                value={itemQuantity}
+                onChange={(e) => setItemQuantity(e.target.value)}
+                onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
+                className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
+              />
+              <AiOutlinePlusCircle
+                className="text-xl cursor-pointer"
+                onClick={() =>
+                  itemQuantity >= 1 && setItemQuantity(itemQuantity + 1)
+                }
+              />
+            </label>
+          )}
+          {itemAdded ? (
+            <button
+              disabled
+              className="bg-gray-600 h-8 font-bold p-1 flex items-center text-gray-300 text-xs"
+            >
+              ADD TO CHART
+            </button>
+          ) : (
+            <button className=" bg-black h-8 font-bold p-1 flex items-center text-white text-xs">
+              ADD TO CHART
+            </button>
+          )}
         </form>
         {itemAdded && (
           <motion.div

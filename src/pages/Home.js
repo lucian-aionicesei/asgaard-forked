@@ -47,7 +47,7 @@ export default function Home({
             <Stages
               bgColor="concert-pink"
               stagesBG="../../images/party1.png"
-              stageName="STAGE 1"
+              stageName="Midgard"
             />
           </div>
 
@@ -55,12 +55,12 @@ export default function Home({
             <Stages
               bgColor="concert-blue"
               stagesBG="../../images/party2.png"
-              stageName="STAGE 2"
+              stageName="Vanaheim"
             />
             <Stages
               bgColor="concert-b-green"
               stagesBG="../../images/party3.png"
-              stageName="STAGE 3"
+              stageName="Jotunheim"
             />
           </div>
         </div>

@@ -98,9 +98,9 @@ export default function PassesLines({
                 /* className="mt-1 mb-1" */
               >
                 {show ? (
-                  <SeeDetailButtonUp label="See Details" />
+                  <SeeDetailButtonUp label="Details" />
                 ) : (
-                  <SeeDetailButton label="See Details" />
+                  <SeeDetailButton label="Details" />
                 )}
               </button>
             </div>
@@ -115,8 +115,8 @@ export default function PassesLines({
             {itemAdded ? (
               <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
                 <AiOutlineMinusCircle className="text-xl" />
-                <disabled
-                  input
+                <input
+                  disabled
                   type="number"
                   min="1"
                   max="100"
@@ -158,7 +158,7 @@ export default function PassesLines({
             {itemAdded ? (
               <button
                 disabled
-                className=" bg-black h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-500 text-xs"
+                className=" bg-black h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-300 text-xs"
               >
                 ADD TO CHART
               </button>

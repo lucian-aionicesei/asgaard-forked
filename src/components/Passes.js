@@ -2,7 +2,12 @@ import { Button1, Button2 } from "./Buttons";
 import PassesLines from "./PassesLines";
 import { useState } from "react";
 
-export default function Passes({ userCart, setUserCart, countdown, setCountdown }) {
+export default function Passes({
+  userCart,
+  setUserCart,
+  countdown,
+  setCountdown,
+}) {
   const [toggleHidden, setToggleHidden] = useState(false);
 
   return (
@@ -57,7 +62,7 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
             <PassesLines
               passName="Day pass"
               passPrice={130}
-              bgPasses="fuchsia-700"
+              bgPasses="concert-blue"
               dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
         ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -71,7 +76,7 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
             <PassesLines
               passName="3 day pass"
               passPrice={400}
-              bgPasses="concert-b-green"
+              bgPasses="concert-orange"
               dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
         ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

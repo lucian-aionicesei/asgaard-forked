@@ -22,6 +22,7 @@ module.exports = {
         "concert-l-dark": "#171717",
         "concert-red-dark": "#975072",
         "concert-bg": "#FFF9E7",
+        "concert-orange": "#F75B00",
       },
       important: true,
       spacing: {

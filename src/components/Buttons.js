@@ -1,4 +1,4 @@
-import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 export function Button1({ label }) {
   return (
@@ -43,11 +43,11 @@ Button3.defaultProps = {
 export function SeeDetailButton({ label, bgcolor }) {
   return (
     <div
-      className={`whitespace-pre sm:text-black font-montserrat w-fit h-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
+      className={`pr-2 whitespace-pre sm:text-black font-montserrat w-fit h-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
     >
       <ul className="flex items-center space-x-1">
         <li>
-          <AiOutlineArrowDown />
+          <TiArrowSortedDown />
         </li>
         <li>{label}</li>
       </ul>
@@ -56,17 +56,17 @@ export function SeeDetailButton({ label, bgcolor }) {
 }
 
 SeeDetailButton.defaultProps = {
-  bgcolor: "concert-b-green",
+  bgcolor: "concert-yellow",
 };
 
 export function SeeDetailButtonUp({ label, bgcolor }) {
   return (
     <div
-      className={`whitespace-pre text-sm sm:text-black font-montserrat w-fit font-bold border-[2px] border-black text-xs bg-${bgcolor} `}
+      className={`pr-2 whitespace-pre text-sm sm:text-black font-montserrat w-fit font-bold border-[2px] border-black text-xs bg-${bgcolor}`}
     >
       <ul className="flex items-center space-x-1">
         <li>
-          <AiOutlineArrowUp />
+          <TiArrowSortedUp />
         </li>
         <li>{label}</li>
       </ul>
@@ -75,7 +75,7 @@ export function SeeDetailButtonUp({ label, bgcolor }) {
 }
 
 SeeDetailButtonUp.defaultProps = {
-  bgcolor: "concert-b-green",
+  bgcolor: "concert-redish",
 };
 
 export function DetailButton({ label, bgcolor }) {
@@ -83,7 +83,7 @@ export function DetailButton({ label, bgcolor }) {
     <div
       className={`text-black font-montserrat px-7 w-fit font-bold border-[3px] border-black text-lg bg-${bgcolor}`}
     >
-      <div className="flex items-center">{label}</div>
+      <div className="flex items-center ">{label}</div>
     </div>
   );
 }
