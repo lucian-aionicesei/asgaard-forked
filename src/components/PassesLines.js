@@ -3,8 +3,6 @@ import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const transition = { duration: 2, type: "spring" };
-
 const oneCartItem = {
   id: "",
   type: "",
@@ -142,10 +140,14 @@ export default function PassesLines({
           </form>
           {itemAdded && (
             <motion.div
-              initial={{ right: "-1%" }}
-              whileInView={{ left: "-5%" }}
-              transition={transition}
-              className="absolute left-0 top-0 w-4/6 h-full flex items-center justify-center bg-concert-l-green"
+              animate={{ x: [0, 1000, 0] }}
+              initial={{ left: -1000 }}
+              transition={{
+                ease: "easeInOut",
+                duration: 6,
+                times: [0, 0.2, 1],
+              }}
+              className={`absolute left-0 top-0 w-full h-full flex items-center justify-center bg-${bgPasses}`}
             >
               <p className="text-xl">Item added to cart</p>
             </motion.div>
