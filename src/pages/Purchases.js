@@ -10,25 +10,38 @@ export default function Purchases({
   setUserCart,
   userAuthenticated,
   setUserAuthenticated,
+  countdown,
+  setCountdown
 }) {
-  // console.log(savedItems)
+  const [purchasingPhase, setPurchasingPhase] = useState(false);
+  
   return (
     <Content>
       <h1 className="text-6xl md:text-7xl font-acier text-center pt-20">
         Do you have an account?
       </h1>
       <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
-        {userAuthenticated ? <UserLogedIn setUserAuthenticated={setUserAuthenticated}/> : 
+        {purchasingPhase ? 
+        <PaymentForm /> : ((userAuthenticated) ? <UserLogedIn setUserAuthenticated={setUserAuthenticated}/> : 
+        <UserLogin
+          userAuthenticated={userAuthenticated}
+          setUserAuthenticated={setUserAuthenticated}
+        />)
+        }
+        {/* {((userAuthenticated) ? <UserLogedIn setUserAuthenticated={setUserAuthenticated}/> : 
           <UserLogin
             userAuthenticated={userAuthenticated}
             setUserAuthenticated={setUserAuthenticated}
-          />
-        }
+          />)
+        } */}
+
         <UserCart
           userCart={userCart}
           setUserCart={setUserCart}
           userAuthenticated={userAuthenticated}
           setUserAuthenticated={setUserAuthenticated}
+          countdown={countdown} setCountdown={setCountdown}
+          purchasingPhase={purchasingPhase} setPurchasingPhase={setPurchasingPhase}
         />
       </article>
     </Content>
@@ -142,6 +155,29 @@ export function UserLogedIn({setUserAuthenticated}) {
             Add ticket details
           </button>
          <p className="underline pt-4 font-bold cursor-pointer" onClick={()=> setUserAuthenticated(false)}>Log out</p>
+      </div>
+    </section>
+  );
+}
+
+function PaymentForm(props) {
+  return (
+    <section className="h-auto w-full max-w-[400px] py-6 text-black space-y-6 bg-yellow-500 px-4">
+      <div>
+        <h3 className="text-2xl font-bold">Payment form</h3>
+        <div className="flex justify-center pt-4">
+          <img src="./images/user-picture.jpg" alt="" className="rounded-full border-[3px] border-black w-40 h-40 object-cover"/>
+        </div>
+        <p className="font-semibold text-lg text-center py-4">
+          You are logged in as <span className="font-bold">Christian</span>
+        </p>
+        <p className=" pt-6">Don't forget to add your ticket details, after you complete the purchase.</p>
+      </div>
+      <div className="flex justify-around items-center flex-col">
+      <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+            Add ticket details
+          </button>
+         <p className="underline pt-4 font-bold cursor-pointer">Log out</p>
       </div>
     </section>
   );

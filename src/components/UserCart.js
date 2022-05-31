@@ -1,12 +1,6 @@
 import { useState } from "react";
 
-export default function UserCart({ userCart, setUserCart, userAuthenticated}) {
-  // const [tickets, setTickets] = useState(savedItems.filter());
-  // const [accomodation, setAccomodation] = useState(savedItems.accomodation);
-  // const [cartItems, setCartItems] = useState(savedItems);
-  // console.log(cartItems);
-  // console.log(userCart.length);
-  // console.log(userCart)
+export default function UserCart({ userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase}) {
 
   const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
@@ -28,6 +22,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated}) {
                 item={item}
                 userCart={userCart}
                 setUserCart={setUserCart}
+                countdown={countdown} setCountdown={setCountdown}
               />
             );
           } else if (item.type === "accomodation") {
@@ -38,6 +33,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated}) {
                 item={item}
                 userCart={userCart}
                 setUserCart={setUserCart}
+                countdown={countdown} setCountdown={setCountdown}
               />
             );
           }
@@ -60,23 +56,17 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated}) {
           <span>delete your order</span>
         </p> */}
       <div className="text-gray-900 flex justify-center items-center space-x-2 pt-6 font-semibold bg-concert">
-        {userAuthenticated ? 
-          ((userCart.length > 0) ? <button className="bg-concert-pink hover:bg-concert-b-green border border-[2px] border-black text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
-            Proceed to payment
-          </button> : <button className="bg-gray-300 border border-[2px] border-black text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
-            Proceed to payment
-          </button>) : <p className="flex flex-col phone:flex-row items-center gap-2">
-          <span className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            LOG IN
-          </span>
-          <span> and proceed to payment</span>
-        </p>}
+        {(userAuthenticated) ? 
+          ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin/>}
+          {purchasingPhase && <p className="font-semibold text-xs w-full">
+          You are logged in as <span className="font-bold">Christian</span>
+        </p> }
       </div>
     </section>
   );
 }
 
-function CartItem({ label, item, setUserCart }) {
+function CartItem({ label, item, userCart, setUserCart, countdown, setCountdown }) {
 
   // console.log(item)
 
@@ -84,6 +74,8 @@ function CartItem({ label, item, setUserCart }) {
     setUserCart((oldArray) =>
       oldArray.filter((cartItem) => cartItem.id !== item.id)
     );
+    console.log(userCart);
+    // (userCart.length === 0) && setCountdown(false);
   }
 
   function changeQuantity(targetValue) {
@@ -141,4 +133,25 @@ function CartItem({ label, item, setUserCart }) {
       </div>
     </li>
   );
+}
+
+function UserNotLogedin() {
+  return <p className="flex flex-col phone:flex-row items-center gap-2">
+  <span className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    LOG IN
+  </span>
+  <span> and proceed to payment</span>
+</p>
+}
+
+function PurchasingDeactivated() {
+  return <button className="bg-gray-300 border border-[2px] border-black text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+  Proceed to payment
+</button>
+}
+
+function ProceedToPayment({setPurchasingPhase}) {
+  return <button onClick={() => setPurchasingPhase(true)} className="bg-concert-pink hover:bg-concert-b-green border border-[2px] border-black text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+  Proceed to payment
+</button>
 }
