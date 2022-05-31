@@ -1,6 +1,7 @@
 import { SeeDetailButton, SeeDetailButtonUp } from "./Buttons";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const oneCartItem = {
   id: "",
@@ -24,6 +25,7 @@ export default function PassesLines({
   setCountdown,
 }) {
   const [show, setShow] = useState(false);
+  const [itemAdded, setItemAdded] = useState(false);
   let [itemQuantity, setItemQuantity] = useState(1);
 
   function handleSubmit(event) {
@@ -41,7 +43,20 @@ export default function PassesLines({
     // console.log(countdown);
 
     addToCart(ticket);
+    /*useEffect(() => {
+      const interval = setInterval(() => {
+        setCountDown(countDownDate - new Date().getTime());
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }, [countDownDate]);*/
     !countdown && setCountdown(true);
+    setItemAdded(true);
+    const interval = setInterval(() => {
+      setItemAdded(false);
+    }, 5000);
+    interval();
+    clearInterval(interval);
     setItemQuantity(1);
   }
 
@@ -123,9 +138,20 @@ export default function PassesLines({
               ADD TO CHART
             </button>
           </form>
-          {/* <div className="absolute right-0 top-0 w-full h-full flex items-center justify-center bg-concert-l-green">
-            <p className="text-xl">Item added to cart</p>
-          </div> */}
+          {itemAdded && (
+            <motion.div
+              animate={{ x: [0, 1000, 0] }}
+              initial={{ left: -1000 }}
+              transition={{
+                ease: "easeInOut",
+                duration: 6,
+                times: [0, 0.2, 1],
+              }}
+              className={`absolute left-0 top-0 w-full h-full flex items-center justify-center bg-${bgPasses}`}
+            >
+              <p className="text-xl">Item added to cart</p>
+            </motion.div>
+          )}
         </div>
       </div>
       {show && (
