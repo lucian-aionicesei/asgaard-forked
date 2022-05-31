@@ -359,51 +359,47 @@ const ticketDetails = {
 };
 
 function PaymentForm({ user, setUser, userCart, setCountdown, setPurchasingPhase }) {
-  
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(null);
+
 
   function handleSubmit(event) {
     event.preventDefault();
     console.log("form has been submitted");
+    console.log(user);
 
-    event.preventDefault();
-    console.log("submitted");
-    console.log(event.target.username.value);
-    console.log(event.target.email.value);
-    // let userEmail = event.target.email.value;
-    console.log(event.target.password.value);
-    // let userPassword = event.target.password.value;
     const reqBody = {
-      username: event.target.username.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
+      "purchases": {
+        "tickets": [],
+        "accomodation": []
+      }
     };
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.jwt}`
+    }
 
-    // setLoading(true);
+    setLoading(true);
 
-    // const getData = axios
-    //   .post(
-    //     "https://asgaard-userdb.herokuapp.com/api/auth/local/register",
-    //     reqBody
-    //   )
-    //   .then((response) => {
-    //     console.log("User profile", response.data);
-    //     console.log("User token", response.data);
-    //     // setUser(response.data);
-    //     setUser(response.data);
-    //     setUserAuthenticated(true);
-    //     setLoading(false);
-    //     setError(false);
-    //     setRegisterPhase(false);
-    //   })
-    //   .catch((error) => {
-    //     console.log("An error occurred:", error.response.request.status);
-    //     setError(error.response.request.status);
-    //     setUserAuthenticated(false);
-    //     setUser();
-    //     setLoading(false);
-    //   });
+    const sendData = axios
+      .put(
+        `https://asgaard-userdb.herokuapp.com/api/users/${user.user.id}`, {method: "put", headers, reqBody}
+      )
+      .then((response) => {
+        console.log("Purchases submit:", response);
+        // setUser(response.data);
+        // setUser(response.data);
+        setLoading(false);
+        setError(false);
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error.response);
+        setError(error.response);
+        setLoading(false);
+      });
 
-    // getData();
+    sendData();
 
   }
 
