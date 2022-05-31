@@ -4,6 +4,7 @@ import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart";
 import { useState } from "react";
 import axios from "axios";
+import { usePaymentInputs } from 'react-payment-inputs';
 
 export default function Purchases({
   userCart,
@@ -21,7 +22,7 @@ export default function Purchases({
         Do you have an account?
       </h1>
       <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
-        {purchasingPhase ? (
+        {/* {purchasingPhase ? (
           <PaymentForm />
         ) : userAuthenticated ? (
           <UserLogedIn setUserAuthenticated={setUserAuthenticated} />
@@ -30,13 +31,14 @@ export default function Purchases({
             userAuthenticated={userAuthenticated}
             setUserAuthenticated={setUserAuthenticated}
           />
-        )}
+        )} */}
         {/* {((userAuthenticated) ? <UserLogedIn setUserAuthenticated={setUserAuthenticated}/> : 
           <UserLogin
             userAuthenticated={userAuthenticated}
             setUserAuthenticated={setUserAuthenticated}
           />)
         } */}
+        <PaymentForm />
 
         <UserCart
           userCart={userCart}
@@ -178,8 +180,14 @@ export function UserLogedIn({ setUserAuthenticated }) {
 }
 
 function PaymentForm(props) {
+  const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } = usePaymentInputs();
+
+function handleSubmit(event) {
+  event.preventDefault();
+}
+
   return (
-    <form className="w-full mx-auto bg-yellow-500 p-5 text-black">
+    <form onSubmit={handleSubmit} className="w-full mx-auto bg-yellow-500 p-5 text-black">
       <div className="mb-10">
         <h1 className="text-center font-bold text-xl uppercase">
           Secure payment info
@@ -225,6 +233,7 @@ function PaymentForm(props) {
             className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="John Smith"
             type="text"
+            required
           />
         </div>
       </div>
@@ -235,6 +244,7 @@ function PaymentForm(props) {
             className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="0000 0000 0000 0000"
             type="text"
+            required
           />
         </div>
       </div>
@@ -242,7 +252,7 @@ function PaymentForm(props) {
         <div className="px-2 w-1/2">
           <label className="font-bold text-sm phone:text-base mb-2 ml-1">Expiration date</label>
           <div>
-            <select className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+            <select required className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
               <option value="01">01 - January</option>
               <option value="02">02 - February</option>
               <option value="03">03 - March</option>
@@ -259,7 +269,7 @@ function PaymentForm(props) {
           </div>
         </div>
         <div className="px-2 w-1/2">
-          <select className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+          <select required className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
             <option value="2022">2022</option>
             <option value="2023">2023</option>
             <option value="2024">2024</option>
@@ -280,6 +290,7 @@ function PaymentForm(props) {
             className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-32 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="000"
             type="text"
+            required
           />
         </div>
       </div>
