@@ -65,49 +65,64 @@ export default function Schedule({ bands }) {
           <div className="w-full sticky top-[6rem] z-0 bg-black">
             <div className=" flex flex-row justify-center flex-wrap">
               <button
-                className=" bg-concert-redish px-[0.4rem] py-[0.2rem] text-[13px] md:px-[1rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 0 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 value={0}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 MONDAY
               </button>
               <button
-                className=" bg-concert-redish px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                id="1"
                 value={1}
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 1 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 TUESDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 2 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 value={2}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 WEDNESDAY
               </button>
               <button
-                className=" bg-concert-redish px-[0.4rem]  py-[0.2rem]  text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 3 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 value={3}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 THURSDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 4 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 value={4}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 FRIDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 5 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 value={5}
                 onClick={(event) => handleClick(event.target.value)}
               >
                 SATURDAY
               </button>
               <button
-                className=" bg-concert-redish  px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold  text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px]  border-concert-redish"
+                className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
+                  day == 6 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                }`}
                 value={6}
                 onClick={(event) => handleClick(event.target.value)}
               >
