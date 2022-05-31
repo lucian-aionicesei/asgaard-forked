@@ -4,7 +4,6 @@ import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart";
 import { useState } from "react";
 import axios from "axios";
-import { usePaymentInputs } from 'react-payment-inputs';
 
 export default function Purchases({
   userCart,
@@ -22,7 +21,7 @@ export default function Purchases({
         Do you have an account?
       </h1>
       <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
-        {/* {purchasingPhase ? (
+        {purchasingPhase ? (
           <PaymentForm />
         ) : userAuthenticated ? (
           <UserLogedIn setUserAuthenticated={setUserAuthenticated} />
@@ -31,14 +30,14 @@ export default function Purchases({
             userAuthenticated={userAuthenticated}
             setUserAuthenticated={setUserAuthenticated}
           />
-        )} */}
+        )}
         {/* {((userAuthenticated) ? <UserLogedIn setUserAuthenticated={setUserAuthenticated}/> : 
           <UserLogin
             userAuthenticated={userAuthenticated}
             setUserAuthenticated={setUserAuthenticated}
           />)
         } */}
-        <PaymentForm />
+        {/* <PaymentForm /> */}
 
         <UserCart
           userCart={userCart}
@@ -180,10 +179,17 @@ export function UserLogedIn({ setUserAuthenticated }) {
 }
 
 function PaymentForm(props) {
-  const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } = usePaymentInputs();
-
+  
 function handleSubmit(event) {
   event.preventDefault();
+  console.log("form has been submitted");
+
+}
+
+function handleChange(e) {
+  if (e.target.value.length === 4 || e.target.value.length === 9 || e.target.value.length === 14) {
+    e.target.value = e.target.value + " ";
+  }
 }
 
   return (
@@ -193,7 +199,7 @@ function handleSubmit(event) {
           Secure payment info
         </h1>
       </div>
-      <div className="mb-3 flex -mx-2">
+      <div className="mb-3 flex flex-wrap gap-y-2 mx-2">
         <div className="px-2">
           <label htmlFor="type1" className="flex items-center cursor-pointer">
             <input
@@ -201,7 +207,7 @@ function handleSubmit(event) {
               className="form-radio h-5 w-5 text-indigo-500"
               name="type"
               id="type1"
-              checked
+              defaultChecked
             />
             <img
               src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
@@ -241,15 +247,17 @@ function handleSubmit(event) {
         <label className="font-bold text-sm phone:text-base mb-2 ml-1">Card number</label>
         <div>
           <input
+          onChange={(e) => handleChange(e)}
             className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="0000 0000 0000 0000"
             type="text"
             required
+            inputMode="numeric" name="creditCard" pattern="[0-9 ]+" maxLength="19" 
           />
         </div>
       </div>
-      <div className="mb-3 -mx-2 flex items-end">
-        <div className="px-2 w-1/2">
+      <div className="mb-3 -mx-2 flex gap-y-4 phone:items-end flex-col phone:flex-row">
+        <div className="px-2 w-1/2 min-w-[200px]">
           <label className="font-bold text-sm phone:text-base mb-2 ml-1">Expiration date</label>
           <div>
             <select required className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
@@ -268,7 +276,7 @@ function handleSubmit(event) {
             </select>
           </div>
         </div>
-        <div className="px-2 w-1/2">
+        <div className="px-2 w-1/2 min-w-[100px]">
           <select required className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
             <option value="2022">2022</option>
             <option value="2023">2023</option>
@@ -291,6 +299,7 @@ function handleSubmit(event) {
             placeholder="000"
             type="text"
             required
+            inputMode="numeric" pattern="[0-9]+" name="cvc"  maxLength="3"
           />
         </div>
       </div>
