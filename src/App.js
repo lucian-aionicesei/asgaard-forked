@@ -19,6 +19,7 @@ function App() {
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const [userCart, setUserCart] = useState([]);
   const [countdown, setCountdown] = useState(false);
+  const [user, setUser] = useState();
 
   const tenMinutesInMs = 10 * 60 * 1000;
   const tenSeconds = 15000;
@@ -70,8 +71,8 @@ function App() {
         <Route path="artist/:id" element={<Artist bands={updatedBandList} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
         <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
-        <Route path="purchases" element={<Purchases userCart={userCart} setUserCart={setUserCart} userAuthenticated={userAuthenticated} setUserAuthenticated={setUserAuthenticated} countdown={countdown} setCountdown={setCountdown}/>} />
-        <Route path="account" element={<Account />} />
+        <Route path="purchases" element={<Purchases userCart={userCart} setUserCart={setUserCart} userAuthenticated={userAuthenticated} setUserAuthenticated={setUserAuthenticated} countdown={countdown} setCountdown={setCountdown} user={user} setUser={setUser}/>} />
+        <Route path="account" element={<Account user={user} setUser={setUser}/>} />
         <Route path="*" element={<Whoups404 />} />
       </Routes>
       <Footer />

@@ -36,7 +36,7 @@ export default function Header({ countdown, counterTime }) {
         </p>
         <ul className="hidden md:flex space-x-8">
           <li className={`${currentPage === "/account" && "underline"} decoration-2`}>
-            <Link to={"/account"}>Account</Link>
+            <Link to={"/account"}>My account</Link>
           </li>
           <li>
             <span>EN</span>/<span>DK</span>

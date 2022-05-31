@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function UserCart({ userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase}) {
+export default function UserCart({ userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase, setRegisterPhase}) {
 
   const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
@@ -57,7 +57,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
         </p> */}
       <div className="text-gray-900 flex justify-center items-center space-x-2 pt-6 font-semibold bg-concert">
         {(userAuthenticated) ? 
-          ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin/>}
+          ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin setRegisterPhase={setRegisterPhase}/>}
           {purchasingPhase && <p className="font-semibold text-xs w-full">
           You are logged in as <span className="font-bold">Christian</span>
         </p> }
@@ -135,9 +135,9 @@ function CartItem({ label, item, userCart, setUserCart, countdown, setCountdown 
   );
 }
 
-function UserNotLogedin() {
+function UserNotLogedin({setRegisterPhase}) {
   return <p className="flex flex-col phone:flex-row items-center gap-2">
-  <span className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+  <span onClick={() => setRegisterPhase(false)} className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
     LOG IN
   </span>
   <span> and proceed to payment</span>
