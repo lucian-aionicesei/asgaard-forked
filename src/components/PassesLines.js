@@ -43,6 +43,8 @@ export default function PassesLines({
     // console.log(countdown);
 
     addToCart(ticket);
+
+    setItemQuantity(1);
     /*useEffect(() => {
       const interval = setInterval(() => {
         setCountDown(countDownDate - new Date().getTime());
@@ -52,12 +54,12 @@ export default function PassesLines({
     }, [countDownDate]);*/
     !countdown && setCountdown(true);
     setItemAdded(true);
+
     const interval = setInterval(() => {
       setItemAdded(false);
     }, 5000);
     interval();
     clearInterval(interval);
-    setItemQuantity(1);
   }
 
   function addToCart(ticket) {
@@ -110,33 +112,61 @@ export default function PassesLines({
             className="flex h-full items-center space-x-2 ml-auto"
             onSubmit={handleSubmit}
           >
-            <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
-              <AiOutlineMinusCircle
-                className="text-xl cursor-pointer"
-                onClick={() =>
-                  itemQuantity > 1 && setItemQuantity(itemQuantity - 1)
-                }
-              />
-              <input
-                type="number"
-                min="1"
-                max="100"
-                required
-                value={itemQuantity}
-                onChange={(e) => setItemQuantity(e.target.value)}
-                onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
-                className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
-              />
-              <AiOutlinePlusCircle
-                className="text-xl cursor-pointer"
-                onClick={() =>
-                  itemQuantity >= 1 && setItemQuantity(itemQuantity + 1)
-                }
-              />
-            </label>
-            <button className=" bg-black h-8 font-bold p-1 flex items-center text-white text-xs">
-              ADD TO CHART
-            </button>
+            {itemAdded ? (
+              <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
+                <AiOutlineMinusCircle className="text-xl" />
+                <disabled
+                  input
+                  type="number"
+                  min="1"
+                  max="100"
+                  required
+                  value={itemQuantity}
+                  onChange={(e) => setItemQuantity(e.target.value)}
+                  onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
+                  className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
+                />
+                <AiOutlinePlusCircle className="text-xl" />
+              </label>
+            ) : (
+              <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
+                <AiOutlineMinusCircle
+                  className="text-xl cursor-pointer"
+                  onClick={() =>
+                    itemQuantity > 1 && setItemQuantity(itemQuantity - 1)
+                  }
+                />
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  required
+                  value={itemQuantity}
+                  onChange={(e) => setItemQuantity(e.target.value)}
+                  onBlur={(e) => e.target.value === "" && setItemQuantity(1)}
+                  className="bg-concert-yellow text-center p-0 font-bold w-10 border-none"
+                />
+                <AiOutlinePlusCircle
+                  className="text-xl cursor-pointer"
+                  onClick={() =>
+                    itemQuantity >= 1 && setItemQuantity(itemQuantity + 1)
+                  }
+                />
+              </label>
+            )}
+
+            {itemAdded ? (
+              <button
+                disabled
+                className=" bg-black h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-500 text-xs"
+              >
+                ADD TO CHART
+              </button>
+            ) : (
+              <button className=" bg-black h-8 font-bold p-1 flex items-center text-white text-xs">
+                ADD TO CHART
+              </button>
+            )}
           </form>
           {itemAdded && (
             <motion.div
