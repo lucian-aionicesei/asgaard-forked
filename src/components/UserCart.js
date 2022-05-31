@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function UserCart({ userCart, setUserCart }) {
+export default function UserCart({ userCart, setUserCart, userAuthenticated}) {
   // const [tickets, setTickets] = useState(savedItems.filter());
   // const [accomodation, setAccomodation] = useState(savedItems.accomodation);
   // const [cartItems, setCartItems] = useState(savedItems);
@@ -60,12 +60,17 @@ export default function UserCart({ userCart, setUserCart }) {
           <span>delete your order</span>
         </p> */}
       <div className="text-gray-900 flex justify-center items-center space-x-2 pt-6 font-semibold bg-concert">
-        <p className="flex flex-col phone:flex-row items-center gap-2">
-          <span className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+        {userAuthenticated ? 
+          ((userCart.length > 0) ? <button className="bg-concert-pink hover:bg-concert-b-green border border-[2px] border-black text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+            Proceed to payment
+          </button> : <button className="bg-gray-300 border border-[2px] border-black text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+            Proceed to payment
+          </button>) : <p className="flex flex-col phone:flex-row items-center gap-2">
+          <span className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             LOG IN
           </span>
           <span> and proceed to payment</span>
-        </p>
+        </p>}
       </div>
     </section>
   );

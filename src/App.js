@@ -70,7 +70,7 @@ function App() {
         <Route path="artist/:id" element={<Artist bands={updatedBandList} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
         <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
-        <Route path="purchases" element={<Purchases userCart={userCart} setUserCart={setUserCart} />} />
+        <Route path="purchases" element={<Purchases userCart={userCart} setUserCart={setUserCart} userAuthenticated={userAuthenticated} setUserAuthenticated={setUserAuthenticated}/>} />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<Whoups404 />} />
       </Routes>
