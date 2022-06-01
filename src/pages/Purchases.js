@@ -4,6 +4,7 @@ import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart";
 import { useState } from "react";
 import axios from "axios";
+import { FaGlassCheers } from "react-icons/fa";
 
 export default function Purchases({
   userCart,
@@ -17,72 +18,78 @@ export default function Purchases({
 }) {
   const [purchasingPhase, setPurchasingPhase] = useState(false);
   const [registerPhase, setRegisterPhase] = useState(false);
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
 
   return (
     <Content>
-      <div className="w-full">
-        <h1 className="text-6xl md:text-7xl font-acier text-center py-20">
-          Do you have an account?
-        </h1>
-        <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
-          {purchasingPhase ? (
-            <PaymentForm
+      {paymentConfirmed ? (
+        <div className="w-full pt-12">
+          <article className="w-full p-2 phone:p-8 h-fit bg-concert-redish">
+            <OrderConfirmation
+              setUserAuthenticated={setUserAuthenticated}
               user={user}
               setUser={setUser}
+            />
+          </article>
+        </div>
+      ) : (
+        <div className="w-full">
+          <h1 className="text-6xl md:text-7xl font-acier text-center py-20">
+            Do you have an account?
+          </h1>
+          <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
+            {purchasingPhase ? (
+              <PaymentForm
+                user={user}
+                setUser={setUser}
+                userCart={userCart}
+                setUserCart={setUserCart}
+                countdown={countdown}
+                setCountdown={setCountdown}
+                purchasingPhase={purchasingPhase}
+                setPurchasingPhase={setPurchasingPhase}
+                setPaymentConfirmed={setPaymentConfirmed}
+              />
+            ) : userAuthenticated ? (
+              <UserLogedIn
+                setUserAuthenticated={setUserAuthenticated}
+                user={user}
+                setUser={setUser}
+              />
+            ) : registerPhase ? (
+              <RegisterUser
+                userAuthenticated={userAuthenticated}
+                setUserAuthenticated={setUserAuthenticated}
+                user={user}
+                setUser={setUser}
+                setRegisterPhase={setRegisterPhase}
+              />
+            ) : (
+              <UserLogin
+                userAuthenticated={userAuthenticated}
+                setUserAuthenticated={setUserAuthenticated}
+                user={user}
+                setUser={setUser}
+                setRegisterPhase={setRegisterPhase}
+              />
+            )}
+
+            <UserCart
               userCart={userCart}
               setUserCart={setUserCart}
+              userAuthenticated={userAuthenticated}
+              setUserAuthenticated={setUserAuthenticated}
               countdown={countdown}
               setCountdown={setCountdown}
               purchasingPhase={purchasingPhase}
               setPurchasingPhase={setPurchasingPhase}
-            />
-          ) : userAuthenticated ? (
-            <UserLogedIn
-              setUserAuthenticated={setUserAuthenticated}
-              user={user}
-              setUser={setUser}
-            />
-          ) : registerPhase ? (
-            <RegisterUser
-              userAuthenticated={userAuthenticated}
-              setUserAuthenticated={setUserAuthenticated}
               user={user}
               setUser={setUser}
               setRegisterPhase={setRegisterPhase}
             />
-          ) : (
-            <UserLogin
-              userAuthenticated={userAuthenticated}
-              setUserAuthenticated={setUserAuthenticated}
-              user={user}
-              setUser={setUser}
-              setRegisterPhase={setRegisterPhase}
-            />
-          )}
-
-          <UserCart
-            userCart={userCart}
-            setUserCart={setUserCart}
-            userAuthenticated={userAuthenticated}
-            setUserAuthenticated={setUserAuthenticated}
-            countdown={countdown}
-            setCountdown={setCountdown}
-            purchasingPhase={purchasingPhase}
-            setPurchasingPhase={setPurchasingPhase}
-            user={user}
-            setUser={setUser}
-            setRegisterPhase={setRegisterPhase}
-          />
-        </article>
-      </div>
-      {/* <div className="w-full">
-        <h1 className="text-6xl md:text-7xl font-acier text-center py-20">
-          See you at the festival
-        </h1>
-        <article className="w-full p-4 h-96 bg-concert-redish">
-          <OrderConfirmation />
-        </article>
-      </div> */}
+          </article>
+        </div>
+      )}
     </Content>
   );
 }
@@ -395,8 +402,10 @@ function PaymentForm({
   user,
   setUser,
   userCart,
+  setUserCart,
   setCountdown,
   setPurchasingPhase,
+  setPaymentConfirmed
 }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
@@ -404,6 +413,7 @@ function PaymentForm({
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setPaymentConfirmed(true);
     console.log("form has been submitted");
     console.log(user);
     console.log(user.user.purchases);
@@ -467,6 +477,7 @@ function PaymentForm({
         //   copy.user.purchases = response.data.purchses;
         //   return copy;
         // });
+        setUserCart([]);
         setLoading(false);
         setError(false);
       })
@@ -632,8 +643,41 @@ function PaymentForm({
   );
 }
 
-function OrderConfirmation() {
-  return <section className="h-24 ">
-
-  </section>;
+function OrderConfirmation({ setUserAuthenticated, user, setUser }) {
+  return (
+    <section className="h-fit max-w-[800px] mx-auto border-[4px] border-black bg-concert-yellowish text-black text-center p-2 phone:p-4">
+      <h2 className="text-2xl font-bold pt-12 pb-8">
+        THANK YOU FOR YOUR ORDER
+      </h2>
+      <FaGlassCheers className="w-full mx-auto text-3xl" />
+      <p className="pt-2 pb-1">
+        Your receipt has been sent to:{" "}
+        <span className="font-semibold underline">{user.user.email}</span>
+      </p>
+      <p className="pt-3 phone:pt-1 pb-1 font-semibold">
+        Remember to add your ticked details no later than{" "}
+        <span className="font-bold text-xl">30 June!</span>
+      </p>
+      <div className=" text-sm phone:text-xl pt-12 pb-4 mx-auto w-[70%] border-b-[3px] border-gray-600">
+        <h2 className="font-acier text-4xl phone:text-5.5xl font-extralight">
+          Asgård
+        </h2>
+        <p className="font-semibold text-gray-700">FESTIVAL</p>
+      </div>
+      <div className="flex justify-around items-center flex-col pt-6">
+        <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+          Add ticket details
+        </button>
+        <p
+          className="underline pt-4 font-bold cursor-pointer"
+          onClick={() => {
+            setUserAuthenticated(false);
+            setUser();
+          }}
+        >
+          Log out
+        </p>
+      </div>
+    </section>
+  );
 }
