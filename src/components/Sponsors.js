@@ -32,7 +32,7 @@ export default function Sponsors() {
             <img className="scale-75" src={Glo} alt="" />
           </span>
         </span>
-        <span className="flex flex row w-3/5 place-self-center pt-2 pb-2">
+        <span className=" flex row w-3/5 place-self-center pt-2 pb-2">
           <span>
             <img className="scale-50" src={Master} alt="" />
           </span>
@@ -49,7 +49,7 @@ export default function Sponsors() {
             <img className="scale-50" src={Eon} alt="" />
           </span>
         </span>
-        <span className="flex flex row w-3/5 place-self-center space-x-4">
+        <span className=" flex row w-3/5 place-self-center space-x-4">
           <span>
             <img className="scale-75" src={Eon} alt="" />
           </span>

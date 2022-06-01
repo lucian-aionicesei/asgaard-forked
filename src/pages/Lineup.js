@@ -1,7 +1,7 @@
 import Content from "../components/Content";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+// import { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 
 const urlSlugMatch = require("url-slug-match");

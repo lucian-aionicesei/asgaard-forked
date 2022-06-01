@@ -1,5 +1,5 @@
 import Content from "../components/Content";
-import { FaPen, FaFacebookSquare } from "react-icons/fa";
+import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart";
 import { useState } from "react";

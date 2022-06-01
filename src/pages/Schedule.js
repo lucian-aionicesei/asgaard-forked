@@ -1,8 +1,8 @@
 import Content from "../components/Content";
 import useFetch from "../hooks/useFetch";
 import { useState } from "react";
-import { _colorStringFilter } from "gsap/gsap-core";
-import { Link, useLocation } from "react-router-dom";
+// import { _colorStringFilter } from "gsap/gsap-core";
+import { Link } from "react-router-dom";
 const urlSlugMatch = require("url-slug-match");
 
 export default function Schedule({ bands }) {
