@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import { Button2 } from "../components/Buttons";
 import { useState } from "react";
 import { _colorStringFilter } from "gsap/gsap-core";
+import { Link, useLocation } from "react-router-dom";
 const urlSlugMatch = require("url-slug-match");
 
 export default function Schedule({ bands }) {
@@ -38,6 +39,7 @@ export default function Schedule({ bands }) {
   //
   //
   //
+  let mergedMidgard;
 
   // console.log(bands);
 
@@ -71,12 +73,6 @@ export default function Schedule({ bands }) {
     // console.log(DisplayMidgard);
     // console.log(updatedBandList);
 
-    // data &&
-    //   bands &&
-    //   stageMidgard[day].map((act) => {
-    //     act.act !== "break" && (RealMidgardAct = [...RealMidgardAct, act]);
-    //   });
-
     // console.log(`${day}`, DisplayMidgard);
     // console.log(`${day}`, RealMidgardAct);
 
@@ -89,19 +85,6 @@ export default function Schedule({ bands }) {
         thisBand.name = thisBand.act;
         updatedBandList = [...updatedBandList, thisBand];
       });
-
-    // const arrayHashmap = finalFianal.reduce((obj, item) => {
-    //   obj[item.name] ? obj[item.name].elements.push(...item.elements) : (obj[item.name] = { ...item });
-    //   return obj;
-    // }, {});
-
-    // const mergedArray = Object.values(arrayHashmap);
-
-    // console.log(mergedArray);
-
-    // console.log(DisplayMidgard);
-
-    // console.log(thisBand);
 
     // stageVanaheim.map((dayVanaheim) => {
     //   dayVanaheim = Object.values(dayVanaheim);
@@ -119,31 +102,23 @@ export default function Schedule({ bands }) {
         const thisBand = bands.find((elem) => elem.name === actMidgard);
         DisplayMidgard = [...DisplayMidgard, thisBand];
       });
-
-    bands && (FinalMidgard = DisplayMidgard.concat(updatedBandList));
-    console.log(FinalMidgard);
   }
 
   function handleClick(value) {
     setDay(value);
   }
 
-  // if ((bands, data)) {
-  //   const arrayHashmap = FinalMidgard.reduce((obj, item) => {
-  //     obj[item.name] ? obj.elements = (...item.elements) : (obj[item.name] = { ...item });
-  //     return obj;
-  //   }, {});
+  console.log(DisplayMidgard);
+  console.log(updatedBandList);
 
-  //   const mergedArray = Object.values(arrayHashmap);
+  if ((bands, data)) {
+    mergedMidgard = DisplayMidgard.map((subject) => {
+      let otherSubject = updatedBandList.find((element) => element.name === subject.name);
+      return { ...subject, ...otherSubject };
+    });
 
-  //   console.log(mergedArray);
-  // }
-
-  // bands.map((band) => {
-  //   // console.log(band);
-  //   let thisBand = bands.find((elem) => elem.name === stageMidgard[0].act);
-  //   console.log(thisBand);
-  // });
+    console.log(mergedMidgard);
+  }
 
   return (
     <div>
@@ -228,34 +203,32 @@ export default function Schedule({ bands }) {
             <div className="bg-concert-redish h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
               {data &&
                 day != null &&
-                stageMidgard[day].map((act) => {
+                mergedMidgard.map((act) => {
                   if (act.act !== "break")
                     return (
                       <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                         <div className="flex flex-col items-center md:flex-row md:">
                           <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1 xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
-                            {act.start}A.M - {act.end} P.M.
+                            <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
+                              {act.start}A.M - {act.end} P.M.
+                            </Link>
                           </div>
-                          <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">{act.act}</div>
+                          <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">
+                            <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.act}</Link>
+                          </div>
                         </div>
                         <div className="flex flex-col justify-between md:flex-row ">
                           <div className="flex justify-center items-center ">
                             <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem]   lg:text-[13px] xl:text-[16px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
-                              POP
+                              <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.genre}</Link>
                             </div>
                           </div>
                           <div className="w-[100%] border-t-[3px]  border-black md:h-[8rem] lg:h-[9rem] xl:h-[11rem] ">
-                            {/* <img src={act.logo} className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]"></img> */}
-                            <img
-                              src={`./images/logos/620px-Black_Sabbath_(Iommi,_Osbourne,_Ward_and_Butler).JPG`}
-                              className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]"
-                              alt="this"
-                            ></img>
+                            <CheckingBands bgColor="concert-b-green" band={act} />
                           </div>
                         </div>
                       </div>
                     );
-
                   // return (
                   //   <div className="h-[5rem] md:h-[6rem]">
                   //     <div className="flex flex-row justify-center items-center bg-concert-redish p-2  border-[3px] border-b-[0px]  border-black h-[5rem] md:h-[6rem]  ">
@@ -357,5 +330,30 @@ export default function Schedule({ bands }) {
         </>
       </Content>
     </div>
+  );
+}
+
+function CheckingBands({ band, bgColor }) {
+  if (band) {
+    if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
+      return <ImgJPG band={band} bgColor={bgColor} />;
+    }
+    return <ImgSVG band={band} bgColor={bgColor} />;
+  }
+}
+
+function ImgJPG({ band, bgColor }) {
+  return (
+    <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
+      <img src={`./images/logos/${band.logo}`} className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] lg:border-l-[3px] lg:border-black xl:h-[10.9rem] xl:w-[20rem]" alt={band.name}></img>
+    </Link>
+  );
+}
+
+function ImgSVG({ band, bgColor }) {
+  return (
+    <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
+      <img src={band.logo} className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] lg:border-l-[3px] lg:border-black xl:h-[10.9rem] xl:w-[20rem]" alt={band.name}></img>
+    </Link>
   );
 }
