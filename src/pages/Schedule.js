@@ -30,9 +30,8 @@ export default function Schedule({ bands }) {
   let updatedMidgardList = [];
   //
 
-  let newItems;
-  let MidgardNew = [];
-  let mihai;
+  let FinalMidgard = [];
+  let FinalnewArrayMidgard = [];
   //
   //
   //
@@ -58,69 +57,49 @@ export default function Schedule({ bands }) {
     stageJotunheim = Object.values(dataArray[2]);
 
     data &&
+      bands &&
       stageMidgard[day].map((act) => {
         act.act !== "break" && (FindMidgardAct = [...FindMidgardAct, act.act]);
       });
 
-    data &&
-      FindMidgardAct.map((actMidgard) => {
-        // console.log(actMidgard);
-        const thisBand = bands.find((elem) => elem.name === actMidgard);
-        DisplayMidgard = [...DisplayMidgard, thisBand];
-      });
+    // bands &&
+    //   FindMidgardAct.map((actMidgard) => {
+    //     // console.log(actMidgard);
+    //     const thisBand = bands.find((elem) => elem.name === actMidgard);
+    //     DisplayMidgard = [...DisplayMidgard, thisBand];
+    //   });
+    // console.log(DisplayMidgard);
+    // console.log(updatedBandList);
 
-    stageMidgard[day].map((act) => {
-      act.act !== "break" && (RealMidgardAct = [...RealMidgardAct, act]);
-    });
+    // data &&
+    //   bands &&
+    //   stageMidgard[day].map((act) => {
+    //     act.act !== "break" && (RealMidgardAct = [...RealMidgardAct, act]);
+    //   });
 
-    console.log(`${day}`, DisplayMidgard);
-    console.log(`${day}`, RealMidgardAct);
-
-    // RealMidgardAct.map((act) => {
-    //   newItems = act;
-    //   // const band = {
-    //   //   imgLogo: "",
-    //   //   genre: ""
-    //   // }
-    //   if (DisplayMidgard.find((band) => band.name === act.act)) {
-    //     newItems.img = band.logo;
-    //     newItems.genre = band.genre;
-    //     console.log(newItems);
-    //   }
-    //   // if (userCart.find((cartItem) => cartItem.id === ticket.id)) {
-    //   //   // console.log("Item already added");
-    //   //   setUserCart((old) =>
-    //   //     old.map((item) => {
-    //   //       if (item.id === ticket.id) {
-    //   //         const copy = { ...item };
-    //   //         copy.quantity = copy.quantity + ticket.quantity;
-    //   //         return copy;
-    //   //       } else {
-    //   //         return item;
-    //   //       }
-    //   //     })
-    //   //   );
-    //   // } else {
-    //   //   setUserCart((oldArray) => [...oldArray, ticket]);
-    //   // }
-    // });
+    // console.log(`${day}`, DisplayMidgard);
+    // console.log(`${day}`, RealMidgardAct);
 
     // console.log(`${day}`, stageMidgard[0]);
 
-    // data &&
-    //   stageMidgard[day].map((band) => {
-    //     if (band.act !== "break") return (thisBand = band);
-    //     thisBand.id = thisBand.act;
-    //     updatedBandList = [...updatedBandList, thisBand];
-    //     // console.log(updatedBandList);
-    //   });
+    data &&
+      bands &&
+      stageMidgard[day].map((band) => {
+        if (band.act !== "break") return (thisBand = band);
+        thisBand.name = thisBand.act;
+        updatedBandList = [...updatedBandList, thisBand];
+      });
 
-    // DisplayMidgard.map((artist) => {
-    //   BandMidgard = artist;
-    //   // BandMidgard.id = artist.name;
-    //   updatedMidgardList = [...updatedMidgardList, BandMidgard];
-    //   // console.log(BandMidgard);
-    // });
+    // const arrayHashmap = finalFianal.reduce((obj, item) => {
+    //   obj[item.name] ? obj[item.name].elements.push(...item.elements) : (obj[item.name] = { ...item });
+    //   return obj;
+    // }, {});
+
+    // const mergedArray = Object.values(arrayHashmap);
+
+    // console.log(mergedArray);
+
+    // console.log(DisplayMidgard);
 
     // console.log(thisBand);
 
@@ -133,9 +112,32 @@ export default function Schedule({ bands }) {
     // });
   }
 
+  if (bands) {
+    bands &&
+      FindMidgardAct.map((actMidgard) => {
+        // console.log(actMidgard);
+        const thisBand = bands.find((elem) => elem.name === actMidgard);
+        DisplayMidgard = [...DisplayMidgard, thisBand];
+      });
+
+    bands && (FinalMidgard = DisplayMidgard.concat(updatedBandList));
+    console.log(FinalMidgard);
+  }
+
   function handleClick(value) {
     setDay(value);
   }
+
+  // if ((bands, data)) {
+  //   const arrayHashmap = FinalMidgard.reduce((obj, item) => {
+  //     obj[item.name] ? obj.elements = (...item.elements) : (obj[item.name] = { ...item });
+  //     return obj;
+  //   }, {});
+
+  //   const mergedArray = Object.values(arrayHashmap);
+
+  //   console.log(mergedArray);
+  // }
 
   // bands.map((band) => {
   //   // console.log(band);
@@ -224,51 +226,46 @@ export default function Schedule({ bands }) {
           <div id="main">
             <div className=" text-5xl sm:text-7xl font-acier bg-concert-redish flex justify-center py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Midgard Stage</div>
             <div className="bg-concert-redish h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
-              {
-                // stageMidgard[day].map((act) => {
-                //   if (act.act !== "break")
-                //     DisplayMidgard.map((band) => {
-                //       console.log(act.act);
-                //       console.log(band.logo);
-                //     });
-                // });
-
-                data &&
-                  day != null &&
-                  stageMidgard[day].map((act) => {
-                    if (act.act !== "break")
-                      return (
-                        <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
-                          <div className="flex flex-col items-center md:flex-row md:">
-                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1 xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
-                              {act.start}A.M - {act.end} P.M.
-                            </div>
-                            <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">{act.act}</div>
+              {data &&
+                day != null &&
+                stageMidgard[day].map((act) => {
+                  if (act.act !== "break")
+                    return (
+                      <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
+                        <div className="flex flex-col items-center md:flex-row md:">
+                          <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1 xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                            {act.start}A.M - {act.end} P.M.
                           </div>
-                          <div className="flex flex-col justify-between md:flex-row ">
-                            <div className="flex justify-center items-center ">
-                              <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem]   lg:text-[13px] xl:text-[16px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
-                                POP
-                              </div>
+                          <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">{act.act}</div>
+                        </div>
+                        <div className="flex flex-col justify-between md:flex-row ">
+                          <div className="flex justify-center items-center ">
+                            <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem]   lg:text-[13px] xl:text-[16px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
+                              POP
                             </div>
-                            <div className="w-[100%] border-t-[3px]  border-black md:h-[8rem] lg:h-[9rem] xl:h-[11rem] ">
-                              {/* <img src={band.logo} className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]" alt={band.name}></img> */}
-                            </div>
+                          </div>
+                          <div className="w-[100%] border-t-[3px]  border-black md:h-[8rem] lg:h-[9rem] xl:h-[11rem] ">
+                            {/* <img src={act.logo} className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]"></img> */}
+                            <img
+                              src={`./images/logos/620px-Black_Sabbath_(Iommi,_Osbourne,_Ward_and_Butler).JPG`}
+                              className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]"
+                              alt="this"
+                            ></img>
                           </div>
                         </div>
-                      );
+                      </div>
+                    );
 
-                    // return (
-                    //   <div className="h-[5rem] md:h-[6rem]">
-                    //     <div className="flex flex-row justify-center items-center bg-concert-redish p-2  border-[3px] border-b-[0px]  border-black h-[5rem] md:h-[6rem]  ">
-                    //       <div>
-                    //         <div className="font-montserrat font-extrabold text-black ">BREAK</div>
-                    //       </div>
-                    //     </div>
-                    //   </div>
-                    // );
-                  })
-              }
+                  // return (
+                  //   <div className="h-[5rem] md:h-[6rem]">
+                  //     <div className="flex flex-row justify-center items-center bg-concert-redish p-2  border-[3px] border-b-[0px]  border-black h-[5rem] md:h-[6rem]  ">
+                  //       <div>
+                  //         <div className="font-montserrat font-extrabold text-black ">BREAK</div>
+                  //       </div>
+                  //     </div>
+                  //   </div>
+                  // );
+                })}
             </div>
             <div className="mt-[2rem]">
               <div className="text-5xl sm:text-7xl font-acier bg-concert-b-green flex justify-start py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Vanaheim Stage</div>
