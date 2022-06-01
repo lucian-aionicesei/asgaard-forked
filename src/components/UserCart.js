@@ -1,15 +1,8 @@
 import { useState } from "react";
 
-export default function UserCart({
-  userCart,
-  setUserCart,
-  userAuthenticated,
-  countdown,
-  setCountdown,
-  purchasingPhase,
-  setPurchasingPhase,
-}) {
-  const initialValue = userCart.length > 0 ? 99 : 0;
+export default function UserCart({ userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase, setRegisterPhase}) {
+
+  const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
     (previousValue, currentValue) =>
       previousValue + currentValue.price * currentValue.quantity,
@@ -71,22 +64,11 @@ export default function UserCart({
           <span>delete your order</span>
         </p> */}
       <div className="text-gray-900 flex justify-center items-center space-x-2 pt-6 font-semibold bg-concert">
-        {userAuthenticated ? (
-          userCart.length > 0 ? (
-            !purchasingPhase && (
-              <ProceedToPayment setPurchasingPhase={setPurchasingPhase} />
-            )
-          ) : (
-            <PurchasingDeactivated />
-          )
-        ) : (
-          <UserNotLogedin />
-        )}
-        {purchasingPhase && (
-          <p className="font-semibold text-xs w-full">
-            You are logged in as <span className="font-bold">Christian</span>
-          </p>
-        )}
+        {(userAuthenticated) ? 
+          ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin setRegisterPhase={setRegisterPhase}/>}
+          {purchasingPhase && <p className="font-semibold text-xs w-full">
+          You are logged in as <span className="font-bold">Christian</span>
+        </p> }
       </div>
     </section>
   );
@@ -168,15 +150,13 @@ function CartItem({
   );
 }
 
-function UserNotLogedin() {
-  return (
-    <p className="flex flex-col phone:flex-row items-center gap-2">
-      <span className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        LOG IN
-      </span>
-      <span> and proceed to payment</span>
-    </p>
-  );
+function UserNotLogedin({setRegisterPhase}) {
+  return <p className="flex flex-col phone:flex-row items-center gap-2">
+  <span onClick={() => setRegisterPhase(false)} className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    LOG IN
+  </span>
+  <span> and proceed to payment</span>
+</p>
 }
 
 function PurchasingDeactivated() {

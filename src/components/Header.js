@@ -35,12 +35,8 @@ export default function Header({ countdown, counterTime }) {
           20-27 JUL / <span>DARUPVEJ 4000 ROSKILDE</span>
         </p>
         <ul className="hidden md:flex space-x-8">
-          <li
-            className={`${
-              currentPage === "/account" && "underline"
-            } decoration-2`}
-          >
-            <Link to={"/account"}>Account</Link>
+          <li className={`${currentPage === "/account" && "underline"} decoration-2`}>
+            <Link to={"/account"}>My account</Link>
           </li>
           <li>
             <span>EN</span>/<span>DK</span>

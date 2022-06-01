@@ -12,6 +12,7 @@ const oneCartItem = {
   price: 0,
   quantity: 0,
   logo: "",
+  bgColor: ""
 };
 
 export default function PassesLines({
@@ -43,6 +44,7 @@ export default function PassesLines({
     ticket.price = passPrice;
     ticket.quantity = itemQuantity;
     ticket.logo = logo;
+    ticket.bgColor = bgPasses;
     // console.log(countdown);
 
     addToCart(ticket);
