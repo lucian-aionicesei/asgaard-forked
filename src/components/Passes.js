@@ -76,7 +76,7 @@ export default function Passes({
             <PassesLines
               passName="3 day pass"
               passPrice={400}
-              bgPasses="concert-orange"
+              bgPasses="concert-b-green"
               dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
         ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

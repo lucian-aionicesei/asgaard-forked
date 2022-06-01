@@ -57,30 +57,35 @@ export function CampContainer({ userCart, setUserCart }) {
           setUserCart={setUserCart}
           accomodationArea="Svartheim"
           dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          img="./images/camp1.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Nilfheim"
           dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          img="./images/camp2.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Helheim"
           dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          img="./images/camp3.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Muspelheim"
           dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          img="./images/camp4.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Alfheim"
           dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          img="./images/camp5.png"
         />
       </ul>
     </div>
@@ -92,6 +97,7 @@ export function CampingLines({
   setUserCart,
   dropText,
   accomodationArea,
+  img,
 }) {
   const [dropDown, setDropDown] = useState(false);
   const [show, setShow] = useState(false);
@@ -100,7 +106,7 @@ export function CampingLines({
     <li className="w-full h-fit">
       <div className="w-full h-36 md:h-32 bg-concert-bg border-[3px] border-black flex">
         <img
-          src="./images/camping.jpg"
+          src={img}
           className="hidden sm:block h-auto w-96 object-cover"
           alt=""
         ></img>
@@ -153,7 +159,7 @@ export function CampingLines({
         </div>
       )}
       {dropDown && (
-        <div className="w-full items-center flex flex-col md:flex-row bg-concert-yellow px-[5vw] py-[4vw] gap-x-[5vw] gap-y-[7vw]">
+        <div className="w-full items-center flex flex-col md:flex-row bg-concert-yellowish px-[5vw] py-[4vw] gap-x-[5vw] gap-y-[7vw]">
           <CampingOption
             userCart={userCart}
             setUserCart={setUserCart}
@@ -161,6 +167,7 @@ export function CampingLines({
             accomodationArea={accomodationArea}
             accomodationType="2 persons tent"
             cartItemId={`2pers-${accomodationArea}`}
+            tentPhoto="./images/twoTent.png"
           />
           <CampingOption
             userCart={userCart}
@@ -169,6 +176,7 @@ export function CampingLines({
             accomodationArea={accomodationArea}
             accomodationType="3 persons tent"
             cartItemId={`3pers-${accomodationArea}`}
+            tentPhoto="./images/threeTent.png"
           />
         </div>
       )}
@@ -193,6 +201,7 @@ function CampingOption({
   accomodationPrice,
   accomodationArea,
   accomodationType,
+  tentPhoto,
 }) {
   const [itemAdded, setItemAdded] = useState(false);
   let [itemQuantity, setItemQuantity] = useState(1);
@@ -243,7 +252,7 @@ function CampingOption({
   return (
     <div className=" md:w-full font-semibold bg-yellow-200">
       <img
-        src="./images/camping.jpg"
+        src={tentPhoto}
         alt=""
         className="w-full h-40 md:h-[16vw] object-cover"
       />
