@@ -140,7 +140,7 @@ export default function Lineup({ bands }) {
               GENRE <RiArrowDownSLine size={32} />
             </div>
 
-            <div class="form-floating  sm:w-auto xl:w-96">
+            <div className="form-floating  sm:w-auto xl:w-96">
               <input
                 type="password"
                 className="form-control block w-full text-base font-normal font-montserrat bg-concert-yellow bg-clip-padding border border-solid border-black border-[3px]  transition ease-in-out m-0 focus:text-black  placeholder-black  text-font-semibold placeholder-blackfocus:bg-concert-yellow  focus:border-concert-pink focus:outline-none "

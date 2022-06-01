@@ -150,7 +150,7 @@ export function UserLogin({
         </p>
       </div>
       {loading && <p>Loading...</p>}
-      <form onSubmit={handleSubmit}>
+      {!loading && <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-bold" htmlFor="email">
             E-mail
@@ -178,7 +178,7 @@ export function UserLogin({
         <button className="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           LOG IN
         </button>
-      </form>
+      </form>}
       {error && (
         <p className="mt-2 py-2 bg-concert-pink text-center font-bold border-[3px] border-black">
           Username or password is invalid
@@ -258,7 +258,7 @@ export function RegisterUser({
         </p>
       </div>
       {loading && <p>Loading...</p>}
-      <form onSubmit={handleSubmit}>
+      {!loading && <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-bold" htmlFor="username">
             User name
@@ -298,7 +298,7 @@ export function RegisterUser({
         <button className="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           SIGN UP
         </button>
-      </form>
+      </form>}
       {error && (
         <p className="mt-2 py-2 bg-concert-pink text-center font-bold border-[3px] border-black">
           Username or password is invalid

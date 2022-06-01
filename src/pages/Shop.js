@@ -50,7 +50,7 @@ export default function Shop({
 export function CampContainer({ userCart, setUserCart }) {
   return (
     <div className={`w-full bg-concert-yellow text-black pb-[3vw]`}>
-      <h1 className="text-5xl font-acier p-5">CAMPING ACCOMODATION</h1>
+      <h1 className="text-3xl phone:text-5xl font-acier p-5">CAMPING ACCOMODATION</h1>
       <ul className="space-y-6 px-[5vw] max-w-[1200px]">
         <CampingLines
           userCart={userCart}
