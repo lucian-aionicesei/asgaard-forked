@@ -44,16 +44,20 @@ export default function Artist() {
             {" "}
             {data && thisBand.name}
           </h1>
-          <div className=" p-2  flex flex-row justify-between border-[2px] border-concert-yellow lg:p-4 xl:p-4 2xl:p-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between items-center p-[1.2rem] border-[2px] border-concert-yellow  ">
             <div className="flex justify-center items-center">
-              <div className="px-3 sm:px-4 flex justify-center items-center text-black font-aciersolid lg:px-14 py-1 w-fit font-bold border-[3px] border-black text-lg bg-concert-yellow mr-2 2xl:text-4xl tracking-widest">{data && thisBand.genre}</div>
+              <div className=" flex justify-center sm:w-[5rem] text-center items-center text-black font-aciersolid  font-bold border-[3px] border-black text-lg lg:w-[9rem] lg:p-[0rem] lg:m-[0rem] lg:text-center xl:w-[8rem] xl:p-[0rem] xl:m-[0rem] bg-concert-yellow hover:concert-yellowish hover:bg-concert-yellowish mr-2 2xl:text-3xl tracking-widest 2xl:w-[13rem] 2xl:p-[0rem] 2xl:m-[0rem] 2xl:text-center">
+                {data && thisBand.genre}
+              </div>
             </div>
-            <div className=" flex flex-row  items-center m-2 w-[38%]   ">
-              <BsInstagram size={32} className="mr-8 2xl:mr-2 text-concert-pink size={40}" />
-              <BsSpotify size={32} className="mr-8 2xl:mr-2  text-concert-pink" />
-              <ImSoundcloud size={48} className="mr-8 2xl:mr-2 text-concert-pink" />
+            <div className="flex justify-center ">
+              <div className="flex flex-row w-[11rem] items-center justify-between mt-[1rem] ">
+                <BsInstagram size={32} className=" 2xl:mr-2 text-concert-pink size={40}" />
+                <BsSpotify size={32} className="  2xl:mr-2  text-concert-pink" />
+                <ImSoundcloud size={48} className="  2xl:mr-2 text-concert-pink" />
+              </div>
             </div>
-            <div className=" text-xl flex items-center font-acier text-concert-pink md:text-2xl xl:text-5xl p-2">STAGE 1</div>
+            <div className=" mt-[1rem] text-xl text-center font-acier text-concert-pink md:text-2xl xl:text-5xl p-2">STAGE 1</div>
           </div>
           <div>
             <div className="h-[17rem] lg:h-[30rem] border-[2px] border-b-[0px] border-t-[0px] border-concert-yellow ">
@@ -61,7 +65,7 @@ export default function Artist() {
             </div>
           </div>
           <div className="border-[2px] border-b-[0px] border-concert-yellow flex items-center justify-center p-8">
-            <div className="w-[90%] md:w-[80%] lg:w-[70%] bg-concert-pink text-center h-20 flex items-center justify-center xl:text-4xl font-aciersolid text-black">SPOTIFY</div>
+            <div className="w-[90%] md:w-[80%] lg:w-[70%] hover:concert-yellowish hover:bg-concert-yellow  bg-concert-pink text-center h-20 flex items-center justify-center xl:text-4xl font-aciersolid text-black">SPOTIFY</div>
           </div>
           <div className="">
             <section>
