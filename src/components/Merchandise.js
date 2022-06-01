@@ -16,8 +16,8 @@ export default function Merchandise() {
           Merchandise
         </h1>
         <p className="text-base md:text-xl 2xl:text-2xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor
+          Festival products can be purchased at the official webshop as well as
+          at the festival.
         </p>
         <div className="text-sm pt-4">
           <Button3 label="GET MERCH" buttonThreeBg="concert-yellow" />

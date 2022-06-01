@@ -8,10 +8,12 @@ export default function ThisIsUs() {
       </h1>
       <div className="text-base md:text-xl 2xl:text-2xl p-8 px-16 align-center">
         <p className="text-center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          We promote music, freedom and love no matter where it comes from.
+          <br />
+          <br />
+          The Asgard Festival also helps develop the music scene in third world
+          countries. Our goal is to bring the world's best performers to the
+          festival visitors at the lowest possible price for the environment.
         </p>
       </div>
       <div className="flex space-x-2 pb-8 pt-2">
