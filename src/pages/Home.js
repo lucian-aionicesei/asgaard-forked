@@ -32,22 +32,22 @@ export default function Home({
             20-27 Jul 2022
           </h1>
           <h3 className="text-md sm:text-3xl font-aciersolid lg:text-4xl lg:font-acier">
-            #Lorem #Ipsum #Dolor
+            #Music #Dance #Love
           </h3>
           <p className="hidden sm:block text-xs sm:text-base lg:text-xl font-semibold">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            <br></br> do eiusmod tempor{" "}
+            Get ready for the world’s biggest music festival.
+            <br></br> 126 bands on 3 stages in 7 days.{" "}
           </p>
         </div>
       </header>
       <Content>
         <HomeLineUp lineUp={homePageLineup} />
         <div>
-          <div className="py-4">
+          <div className="py-4 leading-none">
             <Stages
               bgColor="concert-pink"
               stagesBG="../../images/party1.png"
-              stageName="STAGE 1"
+              stageName="Midgard"
             />
           </div>
 
@@ -55,12 +55,12 @@ export default function Home({
             <Stages
               bgColor="concert-blue"
               stagesBG="../../images/party2.png"
-              stageName="STAGE 2"
+              stageName="Vanaheim"
             />
             <Stages
               bgColor="concert-b-green"
               stagesBG="../../images/party3.png"
-              stageName="STAGE 3"
+              stageName="Jotunheim"
             />
           </div>
         </div>

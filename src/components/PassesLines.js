@@ -11,6 +11,7 @@ const oneCartItem = {
   label: "",
   price: 0,
   quantity: 0,
+  logo: "",
 };
 
 export default function PassesLines({
@@ -23,6 +24,7 @@ export default function PassesLines({
   cartItemId,
   countdown,
   setCountdown,
+  logo,
 }) {
   const [show, setShow] = useState(false);
   const [itemAdded, setItemAdded] = useState(false);
@@ -40,6 +42,7 @@ export default function PassesLines({
     ticket.label = `${passName} - Ticket`;
     ticket.price = passPrice;
     ticket.quantity = itemQuantity;
+    ticket.logo = logo;
     // console.log(countdown);
 
     addToCart(ticket);
@@ -98,9 +101,9 @@ export default function PassesLines({
                 /* className="mt-1 mb-1" */
               >
                 {show ? (
-                  <SeeDetailButtonUp label="See Details" />
+                  <SeeDetailButtonUp label="Details" />
                 ) : (
-                  <SeeDetailButton label="See Details" />
+                  <SeeDetailButton label="Details" />
                 )}
               </button>
             </div>
@@ -115,8 +118,8 @@ export default function PassesLines({
             {itemAdded ? (
               <label className="flex items-center h-8 px-1 bg-concert-yellow border-black border-[2px] selectQuantity">
                 <AiOutlineMinusCircle className="text-xl" />
-                <disabled
-                  input
+                <input
+                  disabled
                   type="number"
                   min="1"
                   max="100"
@@ -158,7 +161,7 @@ export default function PassesLines({
             {itemAdded ? (
               <button
                 disabled
-                className=" bg-black h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-500 text-xs"
+                className=" bg-black h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-300 text-xs"
               >
                 ADD TO CHART
               </button>

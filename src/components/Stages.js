@@ -12,7 +12,7 @@ export default function Stages({ bgColor, stagesBG, stageName }) {
         <div
           className={`bg-${bgColor} flex flex-col w-full h-auto pb-2 text-center justify-center items-center`}
         >
-          <h2 className="flex leading-none align-text-bottom text-black font-acier text-[3rem] pt-2">
+          <h2 className="flex leading-none h-fit align-text-bottom text-black font-acier text-[3rem] pt-2">
             {`${stageName}`}
           </h2>
           <h4 className=" text-xs text-gray-800 leading-none font-montserrat font-bold">

@@ -10,8 +10,8 @@ export default function GetHere() {
           STAY HERE
         </h1>
         <p className="text-base md:text-xl 2xl:text-2xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor
+          We offer five locations, depending on your social and life
+          preferences, as well as two types of tents.
         </p>
         <div className="text-sm pt-4">
           <Button3 label="SEE ALL CAMPS" buttonThreeBg="concert-redish" />

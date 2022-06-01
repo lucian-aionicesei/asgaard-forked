@@ -1,8 +1,13 @@
-import { Button1, Button2 } from "./Buttons";
+import { Button2 } from "./Buttons";
 import PassesLines from "./PassesLines";
 import { useState } from "react";
 
-export default function Passes({ userCart, setUserCart, countdown, setCountdown }) {
+export default function Passes({
+  userCart,
+  setUserCart,
+  countdown,
+  setCountdown,
+}) {
   const [toggleHidden, setToggleHidden] = useState(false);
 
   return (
@@ -22,6 +27,7 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
           cartItemId="ticket1"
           setCountdown={setCountdown}
           countdown={countdown}
+          logo="./images/regularTicket.png"
         />
 
         <PassesLines
@@ -37,6 +43,7 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
           cartItemId="ticket2"
           setCountdown={setCountdown}
           countdown={countdown}
+          logo="./images/vipTicket.png"
         />
         <PassesLines
           passName="Premium pass"
@@ -51,13 +58,14 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
           cartItemId="ticket3"
           setCountdown={setCountdown}
           countdown={countdown}
+          logo="./images/premiumTicket.png"
         />
         {toggleHidden && (
           <>
             <PassesLines
               passName="Day pass"
               passPrice={130}
-              bgPasses="fuchsia-700"
+              bgPasses="concert-blue"
               dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
         ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -67,6 +75,7 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
               cartItemId="ticket4"
               setCountdown={setCountdown}
               countdown={countdown}
+              logo="./images/blueTicket.png"
             />
             <PassesLines
               passName="3 day pass"
@@ -81,6 +90,7 @@ export default function Passes({ userCart, setUserCart, countdown, setCountdown 
               cartItemId="ticket5"
               setCountdown={setCountdown}
               countdown={countdown}
+              logo="./images/lGreenTicket.png"
             />
           </>
         )}
