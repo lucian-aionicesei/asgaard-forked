@@ -1,6 +1,5 @@
 import Content from "../components/Content";
 import useFetch from "../hooks/useFetch";
-import { Button2 } from "../components/Buttons";
 import { useState } from "react";
 import { _colorStringFilter } from "gsap/gsap-core";
 import { Link, useLocation } from "react-router-dom";
@@ -12,41 +11,29 @@ export default function Schedule({ bands }) {
   let stageVanaheim;
   let stageJotunheim;
   //
-
   let FindMidgardAct = [];
+  let FindVanaheimAct = [];
+  let FindJotunheimAct = [];
+
   let DisplayMidgard = [];
-  let RealMidgardAct = [];
-  //
-  //
-  //
-  //
-  //
-  //
-  //
+  let DisplayVanaheim = [];
+  let DisplayJotunheim = [];
   //
   let thisBand;
-  let BandMidgard;
+  let thisBandVanaheim;
+  let thisBandJotunheim;
   //
   let updatedBandList = [];
-  let updatedMidgardList = [];
-  //
-
-  let FinalMidgard = [];
-  let FinalnewArrayMidgard = [];
-  //
-  //
-  //
-  //
-  //
+  let updatedBandListVanaheim = [];
+  let updatedBandListJotunheim = [];
   //
   let mergedMidgard;
-
-  // console.log(bands);
+  let mergedVanheim;
+  let mergedJotunheim;
 
   let DaysOfTheWeek = ["Monday", "Tuesday", "Wednsaday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   const [day, setDay] = useState(0);
-  // const { bandData } = useFetch;
 
   const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/schedule");
 
@@ -64,19 +51,20 @@ export default function Schedule({ bands }) {
         act.act !== "break" && (FindMidgardAct = [...FindMidgardAct, act.act]);
       });
 
-    // bands &&
-    //   FindMidgardAct.map((actMidgard) => {
-    //     // console.log(actMidgard);
-    //     const thisBand = bands.find((elem) => elem.name === actMidgard);
-    //     DisplayMidgard = [...DisplayMidgard, thisBand];
-    //   });
-    // console.log(DisplayMidgard);
-    // console.log(updatedBandList);
+    data &&
+      bands &&
+      stageVanaheim[day].map((act) => {
+        act.act !== "break" && (FindVanaheimAct = [...FindVanaheimAct, act.act]);
+      });
+
+    data &&
+      bands &&
+      stageJotunheim[day].map((act) => {
+        act.act !== "break" && (FindJotunheimAct = [...FindJotunheimAct, act.act]);
+      });
 
     // console.log(`${day}`, DisplayMidgard);
     // console.log(`${day}`, RealMidgardAct);
-
-    // console.log(`${day}`, stageMidgard[0]);
 
     data &&
       bands &&
@@ -85,6 +73,24 @@ export default function Schedule({ bands }) {
         thisBand.name = thisBand.act;
         updatedBandList = [...updatedBandList, thisBand];
       });
+
+    data &&
+      bands &&
+      stageVanaheim[day].map((band) => {
+        if (band.act !== "break") return (thisBandVanaheim = band);
+        thisBandVanaheim.name = thisBandVanaheim.act;
+        updatedBandListVanaheim = [...updatedBandListVanaheim, thisBandVanaheim];
+      });
+
+    data &&
+      bands &&
+      stageJotunheim[day].map((band) => {
+        if (band.act !== "break") return (thisBandJotunheim = band);
+        thisBandJotunheim.name = thisBandJotunheim.act;
+        updatedBandListJotunheim = [...updatedBandListJotunheim, thisBandJotunheim];
+      });
+
+    console.log(updatedBandListVanaheim);
 
     // stageVanaheim.map((dayVanaheim) => {
     //   dayVanaheim = Object.values(dayVanaheim);
@@ -102,6 +108,20 @@ export default function Schedule({ bands }) {
         const thisBand = bands.find((elem) => elem.name === actMidgard);
         DisplayMidgard = [...DisplayMidgard, thisBand];
       });
+
+    bands &&
+      FindVanaheimAct.map((actVanaheim) => {
+        // console.log(actMidgard);
+        const thisBandVanaheim = bands.find((elem) => elem.name === actVanaheim);
+        DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
+      });
+
+    bands &&
+      FindJotunheimAct.map((actJotunheim) => {
+        // console.log(actMidgard);
+        const thisBandJotunheim = bands.find((elem) => elem.name === actJotunheim);
+        DisplayJotunheim = [...DisplayJotunheim, thisBandJotunheim];
+      });
   }
 
   function handleClick(value) {
@@ -117,7 +137,15 @@ export default function Schedule({ bands }) {
       return { ...subject, ...otherSubject };
     });
 
-    console.log(mergedMidgard);
+    mergedVanheim = DisplayVanaheim.map((subject) => {
+      let otherSubjectVanaheim = updatedBandListVanaheim.find((element) => element.name === subject.name);
+      return { ...subject, ...otherSubjectVanaheim };
+    });
+
+    mergedJotunheim = DisplayJotunheim.map((subject) => {
+      let otherSubjectJotunheim = updatedBandListJotunheim.find((element) => element.name === subject.name);
+      return { ...subject, ...otherSubjectJotunheim };
+    });
   }
 
   return (
@@ -208,7 +236,7 @@ export default function Schedule({ bands }) {
                     return (
                       <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                         <div className="flex flex-col items-center md:flex-row md:">
-                          <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1 xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                          <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
                             <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
                               {act.start}A.M - {act.end} P.M.
                             </Link>
@@ -219,7 +247,7 @@ export default function Schedule({ bands }) {
                         </div>
                         <div className="flex flex-col justify-between md:flex-row ">
                           <div className="flex justify-center items-center ">
-                            <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem]   lg:text-[13px] xl:text-[16px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
+                            <div className="  bg-concert-yellow text-center w-[5rem]   mx-2 text-[12px] m-[0.5rem] lg:w-[6rem]  lg:text-[13px]  xl:w-[8rem] xl:text-[17px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
                               <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.genre}</Link>
                             </div>
                           </div>
@@ -245,37 +273,37 @@ export default function Schedule({ bands }) {
               <div className="bg-concert-b-green h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
                 {data &&
                   day != null &&
-                  stageVanaheim[day].map((act) => {
+                  mergedVanheim.map((act) => {
                     if (act.act !== "break")
                       return (
                         <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                           <div className="flex flex-col items-center md:flex-row md:">
-                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1 xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
-                              {act.start}A.M - {act.end} P.M.
+                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                              <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
+                                {act.start}A.M - {act.end} P.M.
+                              </Link>
                             </div>
-                            <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">{act.act}</div>
+                            <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">
+                              <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.act}</Link>
+                            </div>
                           </div>
                           <div className="flex flex-col justify-between md:flex-row ">
                             <div className="flex justify-center items-center ">
-                              <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem]   lg:text-[13px] xl:text-[16px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
-                                POP
+                              <div className="  bg-concert-yellow text-center w-[5rem]   mx-2 text-[12px] m-[0.5rem] lg:w-[6rem]  lg:text-[13px]  xl:w-[8rem] xl:text-[17px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
+                                <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.genre}</Link>
                               </div>
                             </div>
                             <div className="w-[100%] border-t-[3px]  border-black md:h-[8rem] lg:h-[9rem] xl:h-[11rem] ">
-                              <img
-                                src={`./images/logos/620px-Black_Sabbath_(Iommi,_Osbourne,_Ward_and_Butler).JPG`}
-                                className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]"
-                                alt="this"
-                              ></img>
+                              <CheckingBands bgColor="concert-b-green" band={act} />
                             </div>
                           </div>
                         </div>
                       );
                     // return (
-                    //   <div>
-                    //     <div className="flex flex-row justify-center items-center bg-concert-yellowish p-2  border-[3px] border-b-[0px] border-black ">
+                    //   <div className="h-[5rem] md:h-[6rem]">
+                    //     <div className="flex flex-row justify-center items-center bg-concert-redish p-2  border-[3px] border-b-[0px]  border-black h-[5rem] md:h-[6rem]  ">
                     //       <div>
-                    //         <div className="font-montserrat font-extrabold text-slate-400">BREAK</div>
+                    //         <div className="font-montserrat font-extrabold text-black ">BREAK</div>
                     //       </div>
                     //     </div>
                     //   </div>
@@ -288,37 +316,37 @@ export default function Schedule({ bands }) {
               <div className="bg-concert-blue h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem]">
                 {data &&
                   day != null &&
-                  stageJotunheim[day].map((act) => {
+                  mergedJotunheim.map((act) => {
                     if (act.act !== "break")
                       return (
                         <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                           <div className="flex flex-col items-center md:flex-row md:">
-                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1 xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
-                              {act.start}A.M - {act.end} P.M.
+                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                              <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
+                                {act.start}A.M - {act.end} P.M.
+                              </Link>
                             </div>
-                            <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">{act.act}</div>
+                            <div className=" flex justify-center items-center mt-[0.5rem] md:text-[20px] lg:text-[23px] xl:text-[26px] 2xl:pl-[2rem] md:ml-2 text-center font-montserrat font-extrabold text-black ">
+                              <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.act}</Link>
+                            </div>
                           </div>
                           <div className="flex flex-col justify-between md:flex-row ">
                             <div className="flex justify-center items-center ">
-                              <div className="  bg-concert-yellow  px-[1.4rem] py-[0.1rem] mx-2 text-[12px] m-[0.5rem]   lg:text-[13px] xl:text-[16px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
-                                POP
+                              <div className="  bg-concert-yellow text-center w-[5rem]   mx-2 text-[12px] m-[0.5rem] lg:w-[6rem]  lg:text-[13px]  xl:w-[8rem] xl:text-[17px] xl:mr-6 font-montserrat font-black  text-black border-[3px]  border-black  hover:concert-yellowish hover:bg-concert-yellowish">
+                                <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>{act.genre}</Link>
                               </div>
                             </div>
                             <div className="w-[100%] border-t-[3px]  border-black md:h-[8rem] lg:h-[9rem] xl:h-[11rem] ">
-                              <img
-                                src={`./images/logos/620px-Black_Sabbath_(Iommi,_Osbourne,_Ward_and_Butler).JPG`}
-                                className="object-cover w-[100%]  h-[10rem] md:h-[7.8rem] md:w-[12rem] lg:h-[8.9rem] lg:w-[15rem] xl:h-[10.9rem] xl:w-[20rem]"
-                                alt="this"
-                              ></img>
+                              <CheckingBands bgColor="concert-b-green" band={act} />
                             </div>
                           </div>
                         </div>
                       );
                     // return (
-                    //   <div>
-                    //     <div className="flex flex-row justify-center items-center bg-concert-yellowish p-2  border-[3px] border-b-[0px] border-black ">
+                    //   <div className="h-[5rem] md:h-[6rem]">
+                    //     <div className="flex flex-row justify-center items-center bg-concert-redish p-2  border-[3px] border-b-[0px]  border-black h-[5rem] md:h-[6rem]  ">
                     //       <div>
-                    //         <div className="font-montserrat font-extrabold text-slate-400">BREAK</div>
+                    //         <div className="font-montserrat font-extrabold text-black ">BREAK</div>
                     //       </div>
                     //     </div>
                     //   </div>
