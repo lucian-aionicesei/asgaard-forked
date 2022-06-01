@@ -90,9 +90,10 @@ export default function Header({ countdown, counterTime }) {
             </div> */}
               <div className="flex align-ceter item-center">
                 <MdOutlineShoppingCart className="relative text-3xl phone:text-4xl" />
-                <span className="absolute pl-6 mb-8 bg-red">
-                  <p className="bg-white h-4 w-4 font-xs ">2</p>
-                </span>
+
+                {/*
+                  <span className="absolute ml-6 bg-red-500 rounded h-[0.55rem] w-[0.55rem]"></span>
+          */}
               </div>
             </Link>
             <GiHamburgerMenu
