@@ -72,7 +72,7 @@ function App() {
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
         <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
         <Route path="purchases" element={<Purchases userCart={userCart} setUserCart={setUserCart} userAuthenticated={userAuthenticated} setUserAuthenticated={setUserAuthenticated} countdown={countdown} setCountdown={setCountdown} user={user} setUser={setUser}/>} />
-        <Route path="account" element={<Account user={user} setUser={setUser}/>} />
+        <Route path="account" element={<Account user={user} setUser={setUser} userCart={userCart} setUserCart={setUserCart} userAuthenticated={userAuthenticated} setUserAuthenticated={setUserAuthenticated} countdown={countdown} setCountdown={setCountdown}/> } />
         <Route path="*" element={<Whoups404 />} />
       </Routes>
       <Footer />

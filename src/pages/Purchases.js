@@ -5,6 +5,7 @@ import UserCart from "../components/UserCart";
 import { useState } from "react";
 import axios from "axios";
 import { FaGlassCheers } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Purchases({
   userCart,
@@ -29,6 +30,7 @@ export default function Purchases({
               setUserAuthenticated={setUserAuthenticated}
               user={user}
               setUser={setUser}
+              setPurchasingPhase={setPurchasingPhase}
             />
           </article>
         </div>
@@ -340,9 +342,11 @@ export function UserLogedIn({ user, setUser, setUserAuthenticated }) {
         </p>
       </div>
       <div className="flex justify-around items-center flex-col">
-        <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
-          Add ticket details
-        </button>
+        <Link to={"/account"}>
+          <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+            Add ticket details
+          </button>
+        </Link>
         <p
           className="underline pt-4 font-bold cursor-pointer"
           onClick={() => {
@@ -387,6 +391,7 @@ function cartToPurchases(userCart, purchases) {
       for (let i = 0; i < cartItem.quantity; i++) {
         const ticket = Object.create(ticketDetails);
         ticket.label = cartItem.label;
+        ticket.bgColor = cartItem.bgColor;
         console.log(purchasesCopy.tickets);
         purchasesCopy.tickets = [...purchasesCopy.tickets, ticket];
       }
@@ -405,7 +410,7 @@ function PaymentForm({
   setUserCart,
   setCountdown,
   setPurchasingPhase,
-  setPaymentConfirmed
+  setPaymentConfirmed,
 }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
@@ -643,7 +648,12 @@ function PaymentForm({
   );
 }
 
-function OrderConfirmation({ setUserAuthenticated, user, setUser }) {
+function OrderConfirmation({
+  setUserAuthenticated,
+  setPurchasingPhase,
+  user,
+  setUser,
+}) {
   return (
     <section className="h-fit max-w-[800px] mx-auto border-[4px] border-black bg-concert-yellowish text-black text-center p-2 phone:p-4">
       <h2 className="text-2xl font-bold pt-12 pb-8">
@@ -665,15 +675,16 @@ function OrderConfirmation({ setUserAuthenticated, user, setUser }) {
         <p className="font-semibold text-gray-700">FESTIVAL</p>
       </div>
       <div className="flex justify-around items-center flex-col pt-6">
-        <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
-          Add ticket details
-        </button>
+        <Link to={"/account"}>
+          <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+            Add ticket details
+          </button>
+        </Link>
         <p
           className="underline pt-4 font-bold cursor-pointer"
-          onClick={() => {
-            setUserAuthenticated(false);
-            setUser();
-          }}
+          // onClick={() => {
+          //   setPurchasingPhase(false)
+          // }}
         >
           Log out
         </p>
