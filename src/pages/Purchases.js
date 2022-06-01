@@ -355,41 +355,108 @@ const ticketDetails = {
   ownerAge: 0,
   nationality: "",
   city: "",
-  submitted: false
+  submitted: false,
 };
 
-function PaymentForm({ user, setUser, userCart, setCountdown, setPurchasingPhase }) {
+function cartToPurchases(userCart, purchases) {
+  let purchasesCopy = { tickets: [], accomodation: [] };
+  purchases && (purchasesCopy = { ...purchases });
+
+  console.log(purchases);
+
+  userCart.map((cartItem) => {
+    console.log(cartItem);
+    if (cartItem.type === "ticket") {
+      for (let i = 0; i < cartItem.quantity; i++) {
+        const ticket = Object.create(ticketDetails);
+        ticket.label = cartItem.label;
+        console.log(purchasesCopy.tickets);
+        purchasesCopy.tickets = [...purchasesCopy.tickets, ticket];
+      }
+    } else {
+      purchasesCopy.accomodation = [...purchasesCopy.accomodation, cartItem];
+    }
+  });
+
+  return {purchases: purchasesCopy};
+}
+
+function PaymentForm({
+  user,
+  setUser,
+  userCart,
+  setCountdown,
+  setPurchasingPhase,
+}) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(null);
 
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log("form has been submitted");
     console.log(user);
+    console.log(user.user.purchases);
 
-    const reqBody = {
-      "purchases": {
-        "tickets": [],
-        "accomodation": []
-      }
-    };
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${user.jwt}`
-    }
+    // const ticketsArray = user
+    const reqBody = await cartToPurchases(userCart, user.user.purchases);
+    console.log(reqBody);
+    setUser((userData) => {
+      const copy = userData;
+      copy.user.purchases = reqBody;
+      return copy;
+    });
+
+    // const reqBody = {
+    //   purchases: {
+    //     tickets: [{
+    //       label: "regular",
+    //       ticketOwner: "",
+    //       ownerAge: 0,
+    //       nationality: "",
+    //       city: "",
+    //       submitted: false,
+    //     },{
+    //       label: "VIP",
+    //       ticketOwner: "",
+    //       ownerAge: 0,
+    //       nationality: "",
+    //       city: "",
+    //       submitted: false,
+    //     }
+    //   ],
+    //     accomodation: [],
+    //   },
+    // };
+
+    // const reqBody = null;
+
+    // const headersAuth = {
+    //   "Content-Type": "application/json",
+    //   "Authorization": `Bearer ${user.jwt}`,
+    // };
+    const updatedData = JSON.stringify(reqBody);
+    console.log(updatedData);
 
     setLoading(true);
 
-    const sendData = axios
-      .put(
-        `https://asgaard-userdb.herokuapp.com/api/users/${user.user.id}`, {method: "put", headers, reqBody}
-      )
+    const sendData = axios({
+      method: "put",
+      url: `https://asgaard-userdb.herokuapp.com/api/users/${user.user.id}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.jwt}`,
+      },
+      data: updatedData,
+    })
       .then((response) => {
         console.log("Purchases submit:", response);
         // setUser(response.data);
-        // setUser(response.data);
+        // setUser((userData) => {
+        //   const copy = userData;
+        //   copy.user.purchases = response.data.purchses;
+        //   return copy;
+        // });
         setLoading(false);
         setError(false);
       })
@@ -400,7 +467,6 @@ function PaymentForm({ user, setUser, userCart, setCountdown, setPurchasingPhase
       });
 
     sendData();
-
   }
 
   function handleChange(e) {
