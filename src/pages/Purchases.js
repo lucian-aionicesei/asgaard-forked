@@ -20,59 +20,69 @@ export default function Purchases({
 
   return (
     <Content>
-      <h1 className="text-6xl md:text-7xl font-acier text-center pt-20">
-        Do you have an account?
-      </h1>
-      <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
-        {purchasingPhase ? (
-          <PaymentForm
-            user={user}
-            setUser={setUser}
+      <div className="w-full">
+        <h1 className="text-6xl md:text-7xl font-acier text-center py-20">
+          Do you have an account?
+        </h1>
+        <article className="bg-concert-yellow h-fit p-[4vw] flex flex-col-reverse items-center justify-center tablet:items-start tablet:flex-row phone:space-x-[2vw] gap-y-12">
+          {purchasingPhase ? (
+            <PaymentForm
+              user={user}
+              setUser={setUser}
+              userCart={userCart}
+              setUserCart={setUserCart}
+              countdown={countdown}
+              setCountdown={setCountdown}
+              purchasingPhase={purchasingPhase}
+              setPurchasingPhase={setPurchasingPhase}
+            />
+          ) : userAuthenticated ? (
+            <UserLogedIn
+              setUserAuthenticated={setUserAuthenticated}
+              user={user}
+              setUser={setUser}
+            />
+          ) : registerPhase ? (
+            <RegisterUser
+              userAuthenticated={userAuthenticated}
+              setUserAuthenticated={setUserAuthenticated}
+              user={user}
+              setUser={setUser}
+              setRegisterPhase={setRegisterPhase}
+            />
+          ) : (
+            <UserLogin
+              userAuthenticated={userAuthenticated}
+              setUserAuthenticated={setUserAuthenticated}
+              user={user}
+              setUser={setUser}
+              setRegisterPhase={setRegisterPhase}
+            />
+          )}
+
+          <UserCart
             userCart={userCart}
             setUserCart={setUserCart}
+            userAuthenticated={userAuthenticated}
+            setUserAuthenticated={setUserAuthenticated}
             countdown={countdown}
             setCountdown={setCountdown}
             purchasingPhase={purchasingPhase}
             setPurchasingPhase={setPurchasingPhase}
-          />
-        ) : userAuthenticated ? (
-          <UserLogedIn
-            setUserAuthenticated={setUserAuthenticated}
-            user={user}
-            setUser={setUser}
-          />
-        ) : registerPhase ? (
-          <RegisterUser
-            userAuthenticated={userAuthenticated}
-            setUserAuthenticated={setUserAuthenticated}
             user={user}
             setUser={setUser}
             setRegisterPhase={setRegisterPhase}
           />
-        ) : (
-          <UserLogin
-            userAuthenticated={userAuthenticated}
-            setUserAuthenticated={setUserAuthenticated}
-            user={user}
-            setUser={setUser}
-            setRegisterPhase={setRegisterPhase}
-          />
-        )}
-
-        <UserCart
-          userCart={userCart}
-          setUserCart={setUserCart}
-          userAuthenticated={userAuthenticated}
-          setUserAuthenticated={setUserAuthenticated}
-          countdown={countdown}
-          setCountdown={setCountdown}
-          purchasingPhase={purchasingPhase}
-          setPurchasingPhase={setPurchasingPhase}
-          user={user}
-          setUser={setUser}
-          setRegisterPhase={setRegisterPhase}
-        />
-      </article>
+        </article>
+      </div>
+      {/* <div className="w-full">
+        <h1 className="text-6xl md:text-7xl font-acier text-center py-20">
+          See you at the festival
+        </h1>
+        <article className="w-full p-4 h-96 bg-concert-redish">
+          <OrderConfirmation />
+        </article>
+      </div> */}
     </Content>
   );
 }
@@ -378,7 +388,7 @@ function cartToPurchases(userCart, purchases) {
     }
   });
 
-  return {purchases: purchasesCopy};
+  return { purchases: purchasesCopy };
 }
 
 function PaymentForm({
@@ -403,7 +413,7 @@ function PaymentForm({
     console.log(reqBody);
     setUser((userData) => {
       const copy = userData;
-      copy.user.purchases = reqBody;
+      copy.user.purchases = reqBody.purchases;
       return copy;
     });
 
@@ -620,4 +630,10 @@ function PaymentForm({
       </div>
     </form>
   );
+}
+
+function OrderConfirmation() {
+  return <section className="h-24 ">
+
+  </section>;
 }
