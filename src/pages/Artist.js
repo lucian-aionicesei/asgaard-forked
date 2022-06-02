@@ -82,7 +82,7 @@ export default function Artist() {
 // }
 
 function CheckingBands({ band, bgColor }) {
-  console.log(band);
+  // console.log(band);
   if (band) {
     if (band.logo.endsWith(".jpg") || band.logo.endsWith(".JPG") || band.logo.endsWith(".png") || band.logo.endsWith(".svg")) {
       return <ImgJPG band={band} bgColor={bgColor} />;
@@ -94,7 +94,7 @@ function CheckingBands({ band, bgColor }) {
 function ImgJPG({ band, bgColor }) {
   return (
     <div className="h-[17rem] lg:h-[30rem] ">
-      {console.log(`public/images/logos/${band.logo}`)}
+      {/* {console.log(`public/images/logos/${band.logo}`)} */}
       <img src={`/images/logos/${band.logo}`} className="object-cover w-full  h-[17rem] lg:h-[30rem]" alt={band.name}></img>
     </div>
   );

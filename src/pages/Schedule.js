@@ -90,7 +90,7 @@ export default function Schedule({ bands }) {
         updatedBandListJotunheim = [...updatedBandListJotunheim, thisBandJotunheim];
       });
 
-    console.log(updatedBandListVanaheim);
+    // console.log(updatedBandListVanaheim);
 
     // stageVanaheim.map((dayVanaheim) => {
     //   dayVanaheim = Object.values(dayVanaheim);
@@ -128,8 +128,8 @@ export default function Schedule({ bands }) {
     setDay(value);
   }
 
-  console.log(DisplayMidgard);
-  console.log(updatedBandList);
+  // console.log(DisplayMidgard);
+  // console.log(updatedBandList);
 
   if ((bands, data)) {
     mergedMidgard = DisplayMidgard.map((subject) => {

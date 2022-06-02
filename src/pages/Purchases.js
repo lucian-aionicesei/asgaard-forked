@@ -123,7 +123,7 @@ export function UserLogin({
     const getData = axios
       .post("https://asgaard-userdb.herokuapp.com/api/auth/local", reqBody)
       .then((response) => {
-        console.log("User profile", response.data);
+        // console.log("User profile", response.data);
         // console.log("User token", response.data);
         setUser(response.data);
         setUserAuthenticated(true);
@@ -131,7 +131,7 @@ export function UserLogin({
         setError(false);
       })
       .catch((error) => {
-        console.log("An error occurred:", error.response.request.status);
+        // console.log("An error occurred:", error.response.request.status);
         setError(error.response.request.status);
         setUserAuthenticated(false);
         setUser();
@@ -209,11 +209,11 @@ export function RegisterUser({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("submitted");
-    console.log(event.target.username.value);
-    console.log(event.target.email.value);
+    // console.log("submitted");
+    // console.log(event.target.username.value);
+    // console.log(event.target.email.value);
     // let userEmail = event.target.email.value;
-    console.log(event.target.password.value);
+    // console.log(event.target.password.value);
     // let userPassword = event.target.password.value;
     const reqBody = {
       username: event.target.username.value,
@@ -229,8 +229,8 @@ export function RegisterUser({
         reqBody
       )
       .then((response) => {
-        console.log("User profile", response.data);
-        console.log("User token", response.data);
+        // console.log("User profile", response.data);
+        // console.log("User token", response.data);
         // setUser(response.data);
         setUser(response.data);
         setUserAuthenticated(true);
@@ -239,7 +239,7 @@ export function RegisterUser({
         setRegisterPhase(false);
       })
       .catch((error) => {
-        console.log("An error occurred:", error.response.request.status);
+        // console.log("An error occurred:", error.response.request.status);
         setError(error.response.request.status);
         setUserAuthenticated(false);
         setUser();
@@ -383,16 +383,16 @@ function cartToPurchases(userCart, purchases) {
   let purchasesCopy = { tickets: [], accomodation: [] };
   purchases && (purchasesCopy = { ...purchases });
 
-  console.log(purchases);
+  // console.log(purchases);
 
   userCart.map((cartItem) => {
-    console.log(cartItem);
+    // console.log(cartItem);
     if (cartItem.type === "ticket") {
       for (let i = 0; i < cartItem.quantity; i++) {
         const ticket = Object.create(ticketDetails);
         ticket.label = cartItem.label;
         ticket.bgColor = cartItem.bgColor;
-        console.log(purchasesCopy.tickets);
+        // console.log(purchasesCopy.tickets);
         purchasesCopy.tickets = [...purchasesCopy.tickets, ticket];
       }
     } else {
@@ -419,13 +419,13 @@ function PaymentForm({
   async function handleSubmit(event) {
     event.preventDefault();
     setPaymentConfirmed(true);
-    console.log("form has been submitted");
-    console.log(user);
-    console.log(user.user.purchases);
+    // console.log("form has been submitted");
+    // console.log(user);
+    // console.log(user.user.purchases);
 
     // const ticketsArray = user
     const reqBody = await cartToPurchases(userCart, user.user.purchases);
-    console.log(reqBody);
+    // console.log(reqBody);
     setUser((userData) => {
       const copy = userData;
       copy.user.purchases = reqBody.purchases;
@@ -461,7 +461,7 @@ function PaymentForm({
     //   "Authorization": `Bearer ${user.jwt}`,
     // };
     const updatedData = JSON.stringify(reqBody);
-    console.log(updatedData);
+    // console.log(updatedData);
 
     setLoading(true);
 
@@ -475,7 +475,7 @@ function PaymentForm({
       data: updatedData,
     })
       .then((response) => {
-        console.log("Purchases submit:", response);
+        // console.log("Purchases submit:", response);
         // setUser(response.data);
         // setUser((userData) => {
         //   const copy = userData;
@@ -487,7 +487,7 @@ function PaymentForm({
         setError(false);
       })
       .catch((error) => {
-        console.log("An error occurred:", error.response);
+        // console.log("An error occurred:", error.response);
         setError(error.response);
         setLoading(false);
       });

@@ -47,7 +47,7 @@ export default function Account({
       {userAuthenticated && (
         <article className="w-full h-auto bg-concert-pink text-black pb-[3vw]">
           <h1 className="font-acier p-5 text-6xl text-black">MY Tickets</h1>
-          {console.log(user)}
+          {/* {console.log(user)} */}
           {user &&
             (user.user.purchases !== null ? (
               <ul className="space-y-6 px-[5vw] max-w-[1200px]">
@@ -59,7 +59,7 @@ export default function Account({
                     />
                   );
                 })}
-                {console.log(user.user.purchases.tickets.length)}
+                {/* {console.log(user.user.purchases.tickets.length)} */}
               </ul>
             ) : (
               <p className="text-center font-bold text-xl py-10 mx-10 bg-concert-yellow">No tickets bought..</p>

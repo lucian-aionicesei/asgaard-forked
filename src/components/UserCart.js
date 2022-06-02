@@ -88,7 +88,7 @@ function CartItem({
     setUserCart((oldArray) =>
       oldArray.filter((cartItem) => cartItem.id !== item.id)
     );
-    console.log(userCart);
+    // console.log(userCart);
     // (userCart.length === 0) && setCountdown(false);
   }
 
