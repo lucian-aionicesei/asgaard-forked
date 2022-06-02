@@ -48,7 +48,7 @@ export default function Header({ countdown, counterTime }) {
         </ul>
       </div>
       <div className="w-full sticky top-0 z-10">
-        <nav className="bg-black font-bold text-lg w-full text-concert-yellow px-4 phone:px-8 py-3 h-26 flex items-center phone:items-end justify-between">
+        <nav className="bg-black font-bold text-base w-full text-concert-yellow px-4 phone:px-8 py-3 h-26 flex items-center phone:items-end justify-between">
           <ul className="flex items-end md:space-x-6 lg:space-x-12">
             <li>
               <Link to={"/"} className=" text-sm phone:text-xl">
@@ -63,7 +63,7 @@ export default function Header({ countdown, counterTime }) {
                 to={"/shop"}
                 className={`${
                   currentPage === "/shop" && "underline"
-                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
+                } text-xxl decoration-2 leading-8 underline-offset-4 hidden md:block`}
               >
                 Book
               </Link>
@@ -152,6 +152,12 @@ function DropdownMenu() {
           className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
         >
           Lineup
+        </Link>
+        <Link
+          to={"/schedule"}
+          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
+        >
+          Schedule
         </Link>
         <Link
           to={"/shop"}
