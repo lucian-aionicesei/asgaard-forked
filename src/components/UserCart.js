@@ -134,6 +134,7 @@ function CartItem({
                 type="number"
                 className="w-12 h-fit p-0 pl-2 font-bold"
                 min="1"
+                max="6"
                 value={item.quantity}
                 onChange={(e) => changeQuantity(e.target.value)}
                 onBlur={(e) => e.target.value === "" && changeQuantity(1)}

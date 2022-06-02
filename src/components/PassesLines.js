@@ -124,7 +124,7 @@ export default function PassesLines({
                   disabled
                   type="number"
                   min="1"
-                  max="100"
+                  max="6"
                   required
                   value={itemQuantity}
                   onChange={(e) => setItemQuantity(e.target.value)}
@@ -144,7 +144,7 @@ export default function PassesLines({
                 <input
                   type="number"
                   min="1"
-                  max="100"
+                  max="6"
                   required
                   value={itemQuantity}
                   onChange={(e) => setItemQuantity(e.target.value)}

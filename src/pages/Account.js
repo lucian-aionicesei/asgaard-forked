@@ -80,6 +80,10 @@ export default function Account({
 // };
 
 export function Ticket({ purchasedTicket, number }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     <li className="w-full border-[3px] border-black bg-concert-yellowish h-fit md:h-56 flex ">
       <div
@@ -87,7 +91,7 @@ export function Ticket({ purchasedTicket, number }) {
       ></div>
       <div className="h-full p-4">
         <h2 className="text-2xl font-bold pb-4">{`${purchasedTicket.label} #${number}`}</h2>
-        <form className="flex flex-wrap gap-x-4 gap-y-4 items-end w-full">
+        <form onSubmit={handleSubmit} className="flex flex-wrap gap-x-4 gap-y-4 items-end w-full">
           <div className="flex flex-col">
             <label htmlFor="personName" className="font-bold">
               Ticket holder's name

@@ -272,7 +272,7 @@ function CampingOption({
                 disabled
                 type="number"
                 min="1"
-                max="100"
+                max="5"
                 required
                 value={itemQuantity}
                 onChange={(e) => setItemQuantity(e.target.value)}
@@ -292,7 +292,7 @@ function CampingOption({
               <input
                 type="number"
                 min="1"
-                max="100"
+                max="5"
                 required
                 value={itemQuantity}
                 onChange={(e) => setItemQuantity(e.target.value)}
