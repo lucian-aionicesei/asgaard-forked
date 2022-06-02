@@ -50,6 +50,7 @@ export default function Schedule({ bands }) {
       stageMidgard[day].map((act) => {
         act.act !== "break" && (FindMidgardAct = [...FindMidgardAct, act.act]);
       });
+    // console.log(FindMidgardAct);
 
     data &&
       bands &&
@@ -73,6 +74,7 @@ export default function Schedule({ bands }) {
         thisBand.name = thisBand.act;
         updatedBandList = [...updatedBandList, thisBand];
       });
+    // console.log(updatedBandList);
 
     data &&
       bands &&
@@ -90,7 +92,7 @@ export default function Schedule({ bands }) {
         updatedBandListJotunheim = [...updatedBandListJotunheim, thisBandJotunheim];
       });
 
-    console.log(updatedBandListVanaheim);
+    // console.log(updatedBandListVanaheim);
 
     // stageVanaheim.map((dayVanaheim) => {
     //   dayVanaheim = Object.values(dayVanaheim);
@@ -108,6 +110,7 @@ export default function Schedule({ bands }) {
         const thisBand = bands.find((elem) => elem.name === actMidgard);
         DisplayMidgard = [...DisplayMidgard, thisBand];
       });
+    // console.log(DisplayMidgard);
 
     bands &&
       FindVanaheimAct.map((actVanaheim) => {
@@ -128,8 +131,8 @@ export default function Schedule({ bands }) {
     setDay(value);
   }
 
-  console.log(DisplayMidgard);
-  console.log(updatedBandList);
+  // console.log(DisplayMidgard);
+  // console.log(updatedBandList);
 
   if ((bands, data)) {
     mergedMidgard = DisplayMidgard.map((subject) => {
@@ -137,6 +140,7 @@ export default function Schedule({ bands }) {
       return { ...subject, ...otherSubject };
     });
 
+    console.log(mergedMidgard);
     mergedVanheim = DisplayVanaheim.map((subject) => {
       let otherSubjectVanaheim = updatedBandListVanaheim.find((element) => element.name === subject.name);
       return { ...subject, ...otherSubjectVanaheim };
@@ -227,8 +231,8 @@ export default function Schedule({ bands }) {
             </div>
           </div>
           <div id="main">
-            <div className=" text-5xl sm:text-7xl font-acier bg-concert-redish flex justify-center py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Midgard Stage</div>
-            <div className="bg-concert-redish h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
+            <div className=" text-5xl sm:text-7xl font-acier bg-concert-pink flex justify-center py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Midgard Stage</div>
+            <div className="bg-concert-pink  h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
               {data &&
                 day != null &&
                 mergedMidgard.map((act) => {
