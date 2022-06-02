@@ -18,10 +18,7 @@ export default function Passes({
           passName="Regular pass"
           passPrice={799}
           bgPasses="concert-l-green"
-          dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat."
+          dropText="It allows entry to the event for ALL SEVEN days and ALL STAGES, but does not include additional drinks and food packages, as well as discounts on merchandise."
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket1"
@@ -34,10 +31,7 @@ export default function Passes({
           passName="VIP pass"
           passPrice={1299}
           bgPasses="concert-yellow"
-          dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat."
+          dropText="It allows entry to the event for ALL SEVEN days and ALL STAGES, as well as DAILY 6-PACK OF BEERS and a DAILY PACKAGE WITH SANDWITCH AND CHIPS, but no discounts on merchendise."
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket2"
@@ -49,10 +43,7 @@ export default function Passes({
           passName="Premium pass"
           passPrice={1599}
           bgPasses="concert-redish"
-          dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat."
+          dropText="It allows entry to the event for ALL SEVEN days and ALL STAGES, as well as DAILY 6-PACK OF BEERS and a DAILY PACKAGE WITH SANDWITCH AND CHIPS,T_SHIRT AND BASSEBALL HAT and 40% DISCOUNT on merchendises."
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket3"
@@ -66,10 +57,7 @@ export default function Passes({
               passName="Day pass"
               passPrice={130}
               bgPasses="concert-blue"
-              dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat."
+              dropText="It allows entry for a ONE DAY FOR ALL STAGES, but does not include additional drinks and food packages, as well as discounts on merchandise."
               userCart={userCart}
               setUserCart={setUserCart}
               cartItemId="ticket4"
@@ -81,10 +69,7 @@ export default function Passes({
               passName="3 day pass"
               passPrice={400}
               bgPasses="concert-b-green"
-              dropText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat."
+              dropText="It allows entry for THREE DAY FOR ALL STAGES, but does not include additional drinks and food packages, as well as discounts on merchandise."
               userCart={userCart}
               setUserCart={setUserCart}
               cartItemId="ticket5"
