@@ -43,34 +43,22 @@ export default function Header({ countdown, counterTime }) {
           </li>
         </ul>
       </div>
-      <div className="w-full sticky top-0 z-10">
+      <div className="w-full sticky top-0 z-20">
         <nav className="bg-black font-bold text-lg w-full text-concert-yellow px-4 phone:px-8 py-3 h-26 flex items-center phone:items-end justify-between">
           <ul className="flex items-end md:space-x-6 lg:space-x-12">
             <li>
               <Link to={"/"} className=" text-sm phone:text-xl">
-                <h2 className="font-acier text-4xl phone:text-5.5xl font-extralight">
-                  Asgård
-                </h2>
+                <h2 className="font-acier text-4xl phone:text-5.5xl font-extralight">Asgård</h2>
                 <p>FESTIVAL</p>
               </Link>
             </li>
             <li className="hidden md:block">
-              <Link
-                to={"/shop"}
-                className={`${
-                  currentPage === "/shop" && "underline"
-                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
-              >
+              <Link to={"/shop"} className={`${currentPage === "/shop" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
                 Book
               </Link>
             </li>
             <li className="hidden md:block">
-              <Link
-                to={"/lineup"}
-                className={`${
-                  currentPage === "/lineup" && "underline"
-                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
-              >
+              <Link to={"/lineup"} className={`${currentPage === "/lineup" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
                 Lineup
               </Link>
             </li>
@@ -117,28 +105,16 @@ function DropdownMenu() {
   return (
     <div className="w-full bg-concert-l-dark px-4 pt-4 phone:px-8 top-0 flex flex-col items-end font-bold">
       <div className="w-fit ml-auto flex flex-col space-y-4 items-end ">
-        <Link
-          to={"/shop"}
-          className="w-full px-8 bg-concert-b-green text-center hover:bg-concert-pink"
-        >
+        <Link to={"/shop"} className="w-full px-8 bg-concert-b-green text-center hover:bg-concert-pink">
           Tickets
         </Link>
-        <Link
-          to={"/lineup"}
-          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
-        >
+        <Link to={"/lineup"} className="w-full bg-concert-yellow text-center hover:bg-concert-pink">
           Lineup
         </Link>
-        <Link
-          to={"/shop"}
-          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
-        >
+        <Link to={"/shop"} className="w-full bg-concert-yellow text-center hover:bg-concert-pink">
           Book
         </Link>
-        <Link
-          to={"/account"}
-          className="w-full bg-concert-yellow text-center hover:bg-concert-pink"
-        >
+        <Link to={"/account"} className="w-full bg-concert-yellow text-center hover:bg-concert-pink">
           Account
         </Link>
         <p className="w-full text-center bg-concert-yellow">
