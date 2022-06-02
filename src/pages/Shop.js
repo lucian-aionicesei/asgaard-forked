@@ -84,7 +84,7 @@ export default function Shop({ userCart, setUserCart, countdown, setCountdown })
 export function CampContainer({ userCart, setUserCart }) {
   return (
     <div className={`w-full bg-concert-yellow text-black pb-[3vw]`}>
-      <h1 className="text-5xl font-acier p-5">CAMPING ACCOMODATION</h1>
+      <h1 className="text-3xl phone:text-5xl font-acier p-5">CAMPING ACCOMODATION</h1>
       <ul className="space-y-6 px-[5vw] max-w-[1200px]">
         <CampingLines
           userCart={userCart}
@@ -259,7 +259,7 @@ function CampingOption({ userCart, setUserCart, cartItemId, accomodationPrice, a
                 disabled
                 type="number"
                 min="1"
-                max="100"
+                max="5"
                 required
                 value={itemQuantity}
                 onChange={(e) => setItemQuantity(e.target.value)}
@@ -274,7 +274,7 @@ function CampingOption({ userCart, setUserCart, cartItemId, accomodationPrice, a
               <input
                 type="number"
                 min="1"
-                max="100"
+                max="5"
                 required
                 value={itemQuantity}
                 onChange={(e) => setItemQuantity(e.target.value)}
