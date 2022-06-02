@@ -152,9 +152,9 @@ const ticketDetails = {
 };
 
 export function UnsubmittedTicket({ purchasedTicket, number, user, setUser }) {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(null);
+  // const [data, setData] = useState(null);
+  const [, setError] = useState(false);
+  const [, setLoading] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault(event);

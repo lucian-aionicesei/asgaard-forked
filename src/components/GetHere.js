@@ -6,7 +6,7 @@ export default function GetHere() {
   return (
     <article className="flex items-center justify-between w-full h-auto bg-concert-yellow text-black 2xl:px-36 ">
       <div className="w-2/4 p-8 md:p-14  ">
-        <h1 className="flex flex-col font-acier text-3xl text-black whitespace-pre phone: text-4xl sm:text-5xl md:text-6xl">
+        <h1 className="flex flex-col font-acier text-black whitespace-pre phone: text-4xl sm:text-5xl md:text-6xl">
           GET HERE <br />
           STAY HERE
         </h1>

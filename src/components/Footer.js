@@ -4,7 +4,7 @@ import { Button2 } from "../components/Buttons";
 export default function Footer() {
   return (
     <footer className=" p-8 lg:w-full bg-black text-concert-yellow sm:p-8 sm:pt-16  md:pl-8  md:pr-8">
-      <div className="flex flex-col justify-center items-center g-10 font-bold text-lg border-t-[3px] border-concert-yellow pt-8 md: grid-flow-col gap-4  lg:flex-row justify-between leading-8 xl: 2xl: ">
+      <div className="flex flex-col items-center g-10 font-bold text-lg border-t-[3px] border-concert-yellow pt-8 md: grid-flow-col gap-4  lg:flex-row justify-between leading-8 xl: 2xl: ">
         <ul className="sm:m-1">
           <li className="">
             <Link to={"/"} className="text-base leading-extra-loose">
@@ -17,27 +17,15 @@ export default function Footer() {
         </ul>
 
         <ul className="mt-2 mb-2 md:mt-0 md:mb-0">
-          <a href="#">
             <li>Rules & Regulations</li>
-          </a>
-          <a href="#">
             <li>Terms of use</li>
-          </a>
-          <a href="#">
             <li>Privacy Policy</li>
-          </a>
         </ul>
 
         <ul className="mt-2 mb-2 md:mt-0 md:mb-0">
-          <a href="#">
             <li>Summer Well Shop</li>
-          </a>
-          <a href="#">
             <li>Delete personal data</li>
-          </a>
-          <a href="#">
             <li>ANPC</li>
-          </a>
         </ul>
 
         <div className="mt-2 mb-2 md:mt-0 md:mb-0 flex flex-col">

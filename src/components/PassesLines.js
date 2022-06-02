@@ -163,7 +163,7 @@ export default function PassesLines({
             {itemAdded ? (
               <button
                 disabled
-                className=" bg-black h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-300 text-xs"
+                className=" h-8 font-bold p-1 bg-gray-600 flex items-center text-gray-300 text-xs"
               >
                 ADD TO CHART
               </button>

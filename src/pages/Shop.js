@@ -2,7 +2,7 @@ import Content from "../components/Content";
 import MerchOffer from "../components/MerchOffer";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { SeeDetailButton, SeeDetailButtonUp, Button2 } from "../components/Buttons";
-import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetch";
 import Passes from "../components/Passes";
 import useCountdown from "../hooks/useCountdown";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export default function Shop({ userCart, setUserCart, countdown, setCountdown })
   const [field, setDay] = useState(0);
 
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
-  const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/available-spots");
+  // const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/available-spots");
 
   function handleClick(value) {
     setDay(value);
@@ -46,7 +46,7 @@ export default function Shop({ userCart, setUserCart, countdown, setCountdown })
         <div className="flex flex-row justify-between  ">
           <button
             className={`flex basis-1/3 m-[0.5rem] ml-0 p-[0.5rem] text-[0.75rem]  justify-center  md:p-[1.25rem] md:text-[2rem] font-acier text-semibold hover:font-aciersolid text-black w-auto ${
-              field == 0 ? `bg-black text-concert-pink font-aciersolid border-[2px] border-concert-pink ` : `bg-concert-pink text-black `
+              field === 0 ? `bg-black text-concert-pink font-aciersolid border-[2px] border-concert-pink ` : `bg-concert-pink text-black `
             } `}
             value={0}
             onClick={(event) => handleClick(event.target.value)}
@@ -55,7 +55,7 @@ export default function Shop({ userCart, setUserCart, countdown, setCountdown })
           </button>
           <button
             className={`flex basis-1/3 m-[0.5rem] p-[0.5rem] text-[0.75rem]    justify-center md:p-[1.25rem] md:text-[2rem] font-acier text-semibold hover:font-aciersolid  text-black w-auto ${
-              field == 1 ? `bg-black text-concert-yellow font-aciersolid border-[2px] border-concert-yellow ` : `bg-concert-yellow text-black `
+              field === 1 ? `bg-black text-concert-yellow font-aciersolid border-[2px] border-concert-yellow ` : `bg-concert-yellow text-black `
             } `}
             value={1}
             onClick={(event) => handleClick(event.target.value)}
@@ -64,7 +64,7 @@ export default function Shop({ userCart, setUserCart, countdown, setCountdown })
           </button>
           <button
             className={`flex basis-1/3 m-[0.5rem] mr-0 p-[0.5rem] text-[0.75rem]   justify-center md:p-[1.25rem] md:text-[2rem] font-acier text-semibold hover:font-aciersolid  text-black w-auto ${
-              field == 2 ? `bg-black text-concert-redish font-aciersolid border-[2px] border-concert-redish ` : `bg-concert-redish text-black `
+              field === 2 ? `bg-black text-concert-redish font-aciersolid border-[2px] border-concert-redish ` : `bg-concert-redish text-black `
             } `}
             value={2}
             onClick={(event) => handleClick(event.target.value)}

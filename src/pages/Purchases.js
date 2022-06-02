@@ -102,7 +102,7 @@ export function UserLogin({
   user,
   setUser,
 }) {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(null);
 
@@ -203,7 +203,7 @@ export function RegisterUser({
   user,
   setUser,
 }) {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(null);
 
@@ -407,9 +407,9 @@ function PaymentForm({
   setPurchasingPhase,
   setPaymentConfirmed,
 }) {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(null);
+  // const [data, setData] = useState(null);
+  const [, setError] = useState(false);
+  const [, setLoading] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();

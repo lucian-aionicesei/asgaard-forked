@@ -155,7 +155,7 @@ export default function Schedule({ bands }) {
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
-        <h1 className="text-5xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Daily Schedule</h1>
+        <h1 className="text-5xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16  xl:text-[114px] xl:py-10 ">Daily Schedule</h1>
       </div>
       <Content>
         <>
@@ -166,7 +166,7 @@ export default function Schedule({ bands }) {
             <div className=" flex flex-row justify-center flex-wrap">
               <button
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 0 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 0 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 value={0}
                 onClick={(event) => handleClick(event.target.value)}
@@ -177,7 +177,7 @@ export default function Schedule({ bands }) {
                 id="1"
                 value={1}
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 1 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 1 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 onClick={(event) => handleClick(event.target.value)}
               >
@@ -185,7 +185,7 @@ export default function Schedule({ bands }) {
               </button>
               <button
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 2 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 2 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 value={2}
                 onClick={(event) => handleClick(event.target.value)}
@@ -194,7 +194,7 @@ export default function Schedule({ bands }) {
               </button>
               <button
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 3 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 3 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 value={3}
                 onClick={(event) => handleClick(event.target.value)}
@@ -203,7 +203,7 @@ export default function Schedule({ bands }) {
               </button>
               <button
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 4 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 4 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 value={4}
                 onClick={(event) => handleClick(event.target.value)}
@@ -212,7 +212,7 @@ export default function Schedule({ bands }) {
               </button>
               <button
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 5 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 5 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 value={5}
                 onClick={(event) => handleClick(event.target.value)}
@@ -221,7 +221,7 @@ export default function Schedule({ bands }) {
               </button>
               <button
                 className={` px-[0.4rem] py-[0.2rem] text-[13px] md:px-[0.8rem] md:py-[0.4rem] md:text-[13px] lg:text-[16px] xl:text-[18px] 2xl:px-[3.2rem] font-montserrat font-bold text-black mb-3 mt-2 mr-1 hover:bg-black hover:text-concert-redish cursor-pointer border-[2px] border-concert-redish ${
-                  day == 6 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
+                  day === 6 ? `bg-black text-concert-redish ` : `bg-concert-redish text-black `
                 }`}
                 value={6}
                 onClick={(event) => handleClick(event.target.value)}
@@ -231,7 +231,7 @@ export default function Schedule({ bands }) {
             </div>
           </div>
           <div id="main">
-            <div className=" text-5xl sm:text-7xl font-acier bg-concert-pink flex justify-center py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Midgard Stage</div>
+            <div className=" text-5xl sm:text-7xl font-acier bg-concert-pink flex justify-center py-1 px-1 lg:py-1  xl:text-[114px] xl:py-1  text-black border-b-[3px] border-black">Midgard Stage</div>
             <div className="bg-concert-pink  h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
               {data &&
                 day != null &&
@@ -240,7 +240,7 @@ export default function Schedule({ bands }) {
                     return (
                       <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                         <div className="flex flex-col items-center md:flex-row md:">
-                          <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                          <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black ">
                             <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
                               {act.start}A.M - {act.end} P.M.
                             </Link>
@@ -273,7 +273,7 @@ export default function Schedule({ bands }) {
                 })}
             </div>
             <div className="mt-[2rem]">
-              <div className="text-5xl sm:text-7xl font-acier bg-concert-b-green flex justify-start py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Vanaheim Stage</div>
+              <div className="text-5xl sm:text-7xl font-acier bg-concert-b-green flex justify-start py-1 px-1 lg:py-1  xl:text-[114px] xl:py-1 text-black border-b-[3px] border-black">Vanaheim Stage</div>
               <div className="bg-concert-b-green h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem] ">
                 {data &&
                   day != null &&
@@ -282,7 +282,7 @@ export default function Schedule({ bands }) {
                       return (
                         <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                           <div className="flex flex-col items-center md:flex-row md:">
-                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black ">
                               <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
                                 {act.start}A.M - {act.end} P.M.
                               </Link>
@@ -316,7 +316,7 @@ export default function Schedule({ bands }) {
               </div>
             </div>
             <div className="mt-[2rem]">
-              <div className="text-5xl sm:text-7xl font-acier bg-concert-blue flex justify-start py-1 px-1 lg:py-1 px-1 xl:text-[114px] xl:py-1 px-1 text-black border-b-[3px] border-black">Jotunheim Stage</div>
+              <div className="text-5xl sm:text-7xl font-acier bg-concert-blue flex justify-start py-1 px-1 lg:py-1  xl:text-[114px] xl:py-1  text-black border-b-[3px] border-black">Jotunheim Stage</div>
               <div className="bg-concert-blue h-[104rem] p-3 md:h-[51rem] lg:h-[57rem] xl:h-[69rem]">
                 {data &&
                   day != null &&
@@ -325,7 +325,7 @@ export default function Schedule({ bands }) {
                       return (
                         <div className="flex flex-col justify-between md:flex-row   bg-concert-yellowish p-0 border-[3px] border-b-[0px]  border-black ">
                           <div className="flex flex-col items-center md:flex-row md:">
-                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black font-extrabold">
+                            <div className=" bg-concert-yellow   text-[15px] w-[100%] h-[2rem] md:w-[6rem] md:h-[100%] md:m-0 md:pl-1  xl:w-[8rem] xl:text-[18px] xl:pl-3 font-montserrat font-bold  text-black flex justify-center items-center border-x-[3px] border-b-[3px] md:border-b-[0px]  border-l-[0px] border-r-[0px] md:border-r-[3px]  border-black ">
                               <Link to={`/artist/${urlSlugMatch(act.name.trim())}`}>
                                 {act.start}A.M - {act.end} P.M.
                               </Link>

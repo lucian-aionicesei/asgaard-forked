@@ -83,7 +83,7 @@ export default function Lineup({ bands }) {
   return (
     <div>
       <div className="py-6 px-6 sm:mx-6 lg:mx-8 ">
-        <h1 className="text-7xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16 px-16 xl:text-[114px] xl:py-10 px-10">Line up</h1>
+        <h1 className="text-7xl sm:text-7xl font-acier bg-concert-yellow flex justify-center py-6 px-6 lg:py-16 xl:text-[114px] xl:py-10 ">Line up</h1>
       </div>
       <Content>
         <section className="m-8 mt-2 xl:m-16">
@@ -128,7 +128,7 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6  px-16 xl:text-[114px] xl:h-[10rem] mt-[5rem] ">Midgard</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-pink flex justify-center py-6 px-6   xl:text-[114px] xl:h-[10rem] mt-[5rem] ">Midgard</h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {data &&
@@ -141,7 +141,7 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6  px-16 xl:text-[114px] xl:h-[10rem] mt-[5rem] ">Vanaheim</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-b-green flex justify-center py-6 px-6   xl:text-[114px] xl:h-[10rem] mt-[5rem] ">Vanaheim</h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {data &&
@@ -154,7 +154,7 @@ export default function Lineup({ bands }) {
         </div>
 
         <div>
-          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-blue flex flex justify-center py-6 px-6  px-16 xl:text-[114px] xl:h-[10rem]  mt-[5rem]">Jotunheim</h2>
+          <h2 className="text-7xl text-black mb-8 sm:text-7xl  font-acier bg-concert-blue flex  justify-center py-6 px-6   xl:text-[114px] xl:h-[10rem]  mt-[5rem]">Jotunheim</h2>
 
           <ul className="w-full grid gap-4 grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 xl:grid-rows-4 ">
             {data &&

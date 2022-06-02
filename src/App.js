@@ -22,11 +22,11 @@ function App() {
   const [user, setUser] = useState();
 
   const tenMinutesInMs = 10 * 60 * 1000;
-  const tenSeconds = 15000;
+  // const tenSeconds = 15000;
   const nowInMilsec = new Date().getTime();
 
   const timeAfterTenMins = nowInMilsec + tenMinutesInMs;
-  const timeAfterTenSec = nowInMilsec + tenSeconds;
+  // const timeAfterTenSec = nowInMilsec + tenSeconds;
 
   useEffect(() => {
     async function getProducts() {
