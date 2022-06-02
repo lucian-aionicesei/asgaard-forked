@@ -43,7 +43,7 @@ export default function Passes({
           passName="Premium pass"
           passPrice={1599}
           bgPasses="concert-redish"
-          dropText="It allows entry to the event for ALL SEVEN days and ALL STAGES, as well as DAILY 6-PACK OF BEERS and a DAILY PACKAGE WITH SANDWITCH AND CHIPS,T_SHIRT AND BASSEBALL HAT and 40% DISCOUNT on merchendises."
+          dropText="It allows entry to the event for ALL SEVEN days and ALL STAGES, as well as DAILY 6-PACK OF BEERS and a DAILY PACKAGE WITH SANDWITCH AND CHIPS,T-SHIRT, BASSEBALL HAT and 40% DISCOUNT on merchendises."
           userCart={userCart}
           setUserCart={setUserCart}
           cartItemId="ticket3"

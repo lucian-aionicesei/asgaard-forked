@@ -6,19 +6,17 @@ export default function ThisIsUs() {
       <h1 className="pt-8 font-acier text-5xl text-black whitespace-pre sm:text-5xl md:text-6xl">
         THIS IS US
       </h1>
-      <div className="text-base md:text-xl 2xl:text-2xl p-8 px-16 align-center">
+      <div className="2xl: p-4 px-16 align-center">
         <p className="text-center">
-          We promote music, freedom and love no matter where it comes from.
-          <br />
-          <br />
-          The Asgard Festival also helps develop the music scene in third world
+          We promote music, freedom and love no matter where it comes from. The
+          Asgard Festival also helps develop the music scene in third world
           countries. Our goal is to bring the world's best performers to the
           festival visitors at the lowest possible price for the environment.
         </p>
       </div>
       <div className="flex space-x-2 pb-8 pt-2">
         <div className="text-sm">
-          <Button3 label="SEE ALL ARTISTS" buttonThreeBg="concert-l-green" />
+          <Button3 label="ALL ARTISTS" buttonThreeBg="concert-l-green" />
         </div>
         <div className="text-sm">
           <Button3 label="DAILY SCHEDULE" buttonThreeBg="concert-yellow" />

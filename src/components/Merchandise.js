@@ -15,7 +15,7 @@ export default function Merchandise() {
         <h1 className="text-xl flex flex-col font-acier text-black whitespace-pre sm:text-4xl lg:text-5xl ">
           Merchandise
         </h1>
-        <p className="text-base md:text-xl 2xl:text-2xl">
+        <p className="text-sm sm:text-base">
           Festival products can be purchased at the official webshop as well as
           at the festival.
         </p>
