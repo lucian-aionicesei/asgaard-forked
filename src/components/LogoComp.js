@@ -1,4 +1,5 @@
 import { Button3 } from "./Buttons";
+import { Link } from "react-router-dom";
 
 export default function LogoComp() {
   return (
@@ -9,10 +10,14 @@ export default function LogoComp() {
       </div>
       <div className="flex space-x-2 pb-8">
         <div className="text-sm">
-          <Button3 label="HOME" buttonThreeBg="concert-yellow" />
+          <Link to="/home">
+            <Button3 label="HOME" buttonThreeBg="concert-yellow" />
+          </Link>
         </div>
         <div className="text-sm">
-          <Button3 label="CONTACT" buttonThreeBg="concert-redish" />
+          <Link to="/home">
+            <Button3 label="CONTACT" buttonThreeBg="concert-redish" />
+          </Link>
         </div>
       </div>
     </article>

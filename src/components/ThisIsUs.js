@@ -1,4 +1,5 @@
 import { Button3 } from "./Buttons";
+import { Link } from "react-router-dom";
 
 export default function ThisIsUs() {
   return (
@@ -16,10 +17,14 @@ export default function ThisIsUs() {
       </div>
       <div className="flex space-x-2 pb-8 pt-2">
         <div className="text-sm">
-          <Button3 label="ALL ARTISTS" buttonThreeBg="concert-l-green" />
+          <Link to="/lineup">
+            <Button3 label="ALL ARTISTS" buttonThreeBg="concert-l-green" />
+          </Link>
         </div>
         <div className="text-sm">
-          <Button3 label="DAILY SCHEDULE" buttonThreeBg="concert-yellow" />
+          <Link to="/schedule">
+            <Button3 label="DAILY SCHEDULE" buttonThreeBg="concert-yellow" />
+          </Link>
         </div>
       </div>
     </article>

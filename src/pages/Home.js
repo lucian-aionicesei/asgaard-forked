@@ -111,10 +111,10 @@ export function HomeLineUp({ lineUp }) {
       </ul>
       <div className="flex phone justify-center space-x-3">
         <Link to="/lineup">
-          <Button2 label="See all artists" bgcolor="concert-pink" />
+          <Button2 label="ALL ARTISTS" bgcolor="concert-pink" />
         </Link>
         <Link to="/schedule">
-          <Button2 label="Dailly schedule" bgcolor="concert-b-green" />
+          <Button2 label="DAILY SCHEDULE" bgcolor="concert-b-green" />
         </Link>
       </div>
     </article>

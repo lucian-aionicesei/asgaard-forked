@@ -1,5 +1,6 @@
 import Merch from "../img/merch.png";
 import { Button3 } from "./Buttons";
+import { Link } from "react-router-dom";
 
 export default function Merchandise() {
   return (
@@ -20,7 +21,9 @@ export default function Merchandise() {
           at the festival.
         </p>
         <div className="text-sm pt-4">
-          <Button3 label="GET MERCH" buttonThreeBg="concert-yellow" />
+          <Link to="/schedule">
+            <Button3 label="GET MERCH" buttonThreeBg="concert-yellow" />
+          </Link>
         </div>
       </div>
     </article>

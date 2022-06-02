@@ -1,5 +1,6 @@
 import Tent from "../img/tent.png";
 import { Button3 } from "./Buttons";
+import { Link } from "react-router-dom";
 
 export default function GetHere() {
   return (
@@ -14,7 +15,9 @@ export default function GetHere() {
           preferences, as well as two types of tents.
         </p>
         <div className="text-sm pt-4">
-          <Button3 label="SEE ALL CAMPS" buttonThreeBg="concert-redish" />
+          <Link to="/shop">
+            <Button3 label="SEE ALL CAMPS" buttonThreeBg="concert-redish" />
+          </Link>
         </div>
       </div>
       <div className=" w-2/4 p-4 sm:p-8 md:p-12 ">
