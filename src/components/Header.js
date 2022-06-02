@@ -35,7 +35,11 @@ export default function Header({ countdown, counterTime }) {
           20-27 JUL / <span>DARUPVEJ 4000 ROSKILDE</span>
         </p>
         <ul className="hidden md:flex space-x-8">
-          <li className={`${currentPage === "/account" && "underline"} decoration-2`}>
+          <li
+            className={`${
+              currentPage === "/account" && "underline"
+            } decoration-2`}
+          >
             <Link to={"/account"}>My account</Link>
           </li>
           <li>
@@ -72,6 +76,26 @@ export default function Header({ countdown, counterTime }) {
                 } decoration-2 leading-8 underline-offset-4 hidden md:block`}
               >
                 Lineup
+              </Link>
+            </li>
+            <li className="hidden md:block">
+              <Link
+                to={"/schedule"}
+                className={`${
+                  currentPage === "/schedule" && "underline"
+                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
+              >
+                Schedule
+              </Link>
+            </li>
+            <li className="hidden md:block">
+              <Link
+                to={"/purchases"}
+                className={`${
+                  currentPage === "/purchases" && "underline"
+                } decoration-2 leading-8 underline-offset-4 hidden md:block`}
+              >
+                Purchases
               </Link>
             </li>
           </ul>
