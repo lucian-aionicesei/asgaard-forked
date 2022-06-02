@@ -295,9 +295,12 @@ export function RegisterUser({
             placeholder="******************"
           />
         </div>
-        <button className="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        {!loading && <button  className="w-full bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           SIGN UP
-        </button>
+        </button>}
+        {loading && <button disabled className="w-full bg-gray-600 border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          SIGN UP
+        </button>}
       </form>}
       {error && (
         <p className="mt-2 py-2 bg-concert-pink text-center font-bold border-[3px] border-black">
@@ -361,15 +364,6 @@ export function UserLogedIn({ user, setUser, setUserAuthenticated }) {
   );
 }
 
-// user={user}
-//             setUser={setUser}
-//             userCart={userCart}
-//             setUserCart={setUserCart}
-//             countdown={countdown}
-//             setCountdown={setCountdown}
-//             purchasingPhase={purchasingPhase}
-//             setPurchasingPhase={setPurchasingPhase}
-
 const ticketDetails = {
   label: "",
   ticketOwner: "",
@@ -391,6 +385,7 @@ function cartToPurchases(userCart, purchases) {
       for (let i = 0; i < cartItem.quantity; i++) {
         const ticket = Object.create(ticketDetails);
         ticket.label = cartItem.label;
+        ticket.submitted = false;
         ticket.bgColor = cartItem.bgColor;
         // console.log(purchasesCopy.tickets);
         purchasesCopy.tickets = [...purchasesCopy.tickets, ticket];
@@ -432,34 +427,6 @@ function PaymentForm({
       return copy;
     });
 
-    // const reqBody = {
-    //   purchases: {
-    //     tickets: [{
-    //       label: "regular",
-    //       ticketOwner: "",
-    //       ownerAge: 0,
-    //       nationality: "",
-    //       city: "",
-    //       submitted: false,
-    //     },{
-    //       label: "VIP",
-    //       ticketOwner: "",
-    //       ownerAge: 0,
-    //       nationality: "",
-    //       city: "",
-    //       submitted: false,
-    //     }
-    //   ],
-    //     accomodation: [],
-    //   },
-    // };
-
-    // const reqBody = null;
-
-    // const headersAuth = {
-    //   "Content-Type": "application/json",
-    //   "Authorization": `Bearer ${user.jwt}`,
-    // };
     const updatedData = JSON.stringify(reqBody);
     // console.log(updatedData);
 
@@ -475,13 +442,6 @@ function PaymentForm({
       data: updatedData,
     })
       .then((response) => {
-        // console.log("Purchases submit:", response);
-        // setUser(response.data);
-        // setUser((userData) => {
-        //   const copy = userData;
-        //   copy.user.purchases = response.data.purchses;
-        //   return copy;
-        // });
         setUserCart([]);
         setLoading(false);
         setError(false);
