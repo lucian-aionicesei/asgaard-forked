@@ -223,7 +223,7 @@ export function ImgJPGSuggestons({ band, bgColor }) {
     <Link to={`/artist/${urlSlugMatch(band.name.trim())}`} band={band}>
       <div className="grid gap-x-8">
         <div className="h-[11rem] lg:h-[18rem] ">
-          <img src={`./images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
+          <img src={`/images/logos/${band.logo}`} className="object-cover w-full  h-[12rem] lg:h-[18rem]" alt={band.name}></img>
         </div>
 
         <div className={`bg-${bgColor} font-aciersolid text-center text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl h-[4rem] flex justify-center items-center text-black lg:h-[6rem]`}>{band.name}</div>
