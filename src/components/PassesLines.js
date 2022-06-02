@@ -12,7 +12,7 @@ const oneCartItem = {
   price: 0,
   quantity: 0,
   logo: "",
-  bgColor: ""
+  bgColor: "",
 };
 
 export default function PassesLines({
@@ -196,7 +196,7 @@ export default function PassesLines({
           }}
           className="h-auto bg-yellow-50"
         >
-          <p className="p-4 text-sm cursor-pointer sm:text-base font-semibold">
+          <p className="p-4 text-base cursor-pointer sm:font-semibold">
             {`${dropText}`}
           </p>
         </div>

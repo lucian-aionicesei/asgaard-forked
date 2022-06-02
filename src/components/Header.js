@@ -53,13 +53,23 @@ export default function Header({ countdown, counterTime }) {
               </Link>
             </li>
             <li className="hidden md:block">
-              <Link to={"/shop"} className={`${currentPage === "/shop" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
+              <Link to={"/shop"} className={`${currentPage === "/shop" && "underline"} text-xxl decoration-2 leading-8 underline-offset-4 hidden md:block`}>
                 Book
               </Link>
             </li>
             <li className="hidden md:block">
               <Link to={"/lineup"} className={`${currentPage === "/lineup" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
                 Lineup
+              </Link>
+            </li>
+            <li className="hidden md:block">
+              <Link to={"/schedule"} className={`${currentPage === "/schedule" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
+                Schedule
+              </Link>
+            </li>
+            <li className="hidden md:block">
+              <Link to={"/purchases"} className={`${currentPage === "/purchases" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
+                Purchases
               </Link>
             </li>
           </ul>
@@ -110,6 +120,9 @@ function DropdownMenu() {
         </Link>
         <Link to={"/lineup"} className="w-full bg-concert-yellow text-center hover:bg-concert-pink">
           Lineup
+        </Link>
+        <Link to={"/schedule"} className="w-full bg-concert-yellow text-center hover:bg-concert-pink">
+          Schedule
         </Link>
         <Link to={"/shop"} className="w-full bg-concert-yellow text-center hover:bg-concert-pink">
           Book

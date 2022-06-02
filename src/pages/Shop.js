@@ -90,35 +90,35 @@ export function CampContainer({ userCart, setUserCart }) {
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Svartheim"
-          dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          dropText="Svartheim, unlike the Finish Black metal album, is a clean and silence camping area. This means all the campers must clean up after themselves and no music after 22 p.m."
           img="./images/camp1.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Nilfheim"
-          dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          dropText="Nilfheim is located in the forest, where some cold mornings you'll experiencing the beautiful morning frog of (insert country). The camping area is mostly designated for the more mature audience."
           img="./images/camp2.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Helheim"
-          dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          dropText="Helheim this is a camping area for special needs people, which means there are charging stations for wheelchairs and special events for the campers there in order to secure a full festival experience."
           img="./images/camp3.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Muspelheim"
-          dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          dropText="Muspelhiem is located close the stages and is one of the two camping sites where the parties and events never stops."
           img="./images/camp4.png"
         />
         <CampingLines
           userCart={userCart}
           setUserCart={setUserCart}
           accomodationArea="Alfheim"
-          dropText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          dropText="Alfheim is located next to the entrance to the stages and is one of the two camping sites where the parties and events never stops."
           img="./images/camp5.png"
         />
       </ul>
@@ -212,6 +212,26 @@ function CampingOption({ userCart, setUserCart, cartItemId, accomodationPrice, a
     accomodation.label = `${accomodationType} - ${accomodationArea}`;
     accomodation.price = accomodationPrice;
     accomodation.quantity = itemQuantity;
+
+    switch (accomodationArea) {
+      case "Svartheim":
+        accomodation.logo = "./images/svartheim.png";
+        break;
+      case "Nilfheim":
+        accomodation.logo = "./images/nilfheim.png";
+        break;
+      case "Helheim":
+        accomodation.logo = "./images/helheim.png";
+        break;
+      case "Muspelheim":
+        accomodation.logo = "./images/muspelheim.png";
+        break;
+      case "Alfheim":
+        accomodation.logo = "./images/alfheim.png";
+        break;
+      default:
+        accomodation.logo = "No value found";
+    }
     // console.log(countdown);
 
     addToCart(accomodation);

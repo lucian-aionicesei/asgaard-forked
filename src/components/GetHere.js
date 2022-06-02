@@ -9,7 +9,7 @@ export default function GetHere() {
           GET HERE <br />
           STAY HERE
         </h1>
-        <p className="text-base md:text-xl 2xl:text-2xl">
+        <p className="text-sm sm:text-base">
           We offer five locations, depending on your social and life
           preferences, as well as two types of tents.
         </p>
