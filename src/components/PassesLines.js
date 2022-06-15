@@ -59,9 +59,10 @@ export default function PassesLines({
     }
     setItemAdded(true);
 
-    const interval = setInterval(() => {
+    function interval() {
+      setInterval(() => {
       setItemAdded(false);
-    }, 5000);
+    }, 5000);}
     interval();
     clearInterval(interval);
   }
