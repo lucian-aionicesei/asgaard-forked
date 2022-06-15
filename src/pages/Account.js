@@ -53,7 +53,7 @@ export default function Account({
             (user.user.purchases !== null ? (
               <ul className="space-y-6 px-[5vw] max-w-[1200px]">
                 {user.user.purchases.tickets.map((purchasedTicket, index) => {
-                  console.log(purchasedTicket.submitted);
+                  // console.log(purchasedTicket.submitted);
                   if (purchasedTicket.submitted === true) {
                     return <Ticket
                     key={`purchasedTicked-${index}`}
@@ -158,10 +158,10 @@ export function UnsubmittedTicket({ purchasedTicket, number, user, setUser }) {
 
   function handleSubmit(event) {
     event.preventDefault(event);
-    console.log("number", number);
-    console.log("personName", event.target.personName.value);
-    console.log("personName", event.target.personNationality.value);
-    console.log("personName", event.target.personAddress.value);
+    // console.log("number", number);
+    // console.log("personName", event.target.personName.value);
+    // console.log("personName", event.target.personNationality.value);
+    // console.log("personName", event.target.personAddress.value);
 
     const ticket = Object.create(ticketDetails);
 
@@ -182,8 +182,8 @@ export function UnsubmittedTicket({ purchasedTicket, number, user, setUser }) {
     // console.log(user.user.purchases.tickets);
     const ticketsArrayCopy = user.user.purchases.tickets;
     ticketsArrayCopy[number - 1] = ticket;
-    console.log("new array", ticketsArrayCopy);
-    console.log(user);
+    // console.log("new array", ticketsArrayCopy);
+    // console.log(user);
 
     // console.log(reqBody);
     setUser((userData) => {
@@ -192,12 +192,12 @@ export function UnsubmittedTicket({ purchasedTicket, number, user, setUser }) {
       return copy;
     });
 
-    console.log(user.user.purchases);
+    // console.log(user.user.purchases);
 
     const updatedTickets = { purchases: null };
 
     updatedTickets.purchases = JSON.stringify(user.user.purchases);
-    console.log(updatedTickets);
+    // console.log(updatedTickets);
 
     setLoading(true);
 
@@ -211,7 +211,7 @@ export function UnsubmittedTicket({ purchasedTicket, number, user, setUser }) {
       data: updatedTickets,
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setLoading(false);
         setError(false);
       })

@@ -101,7 +101,7 @@ export default function Artist({ bands, schedule }) {
         const thisBandVanaheim = data.find((elem) => elem.name === bandVanaheim);
         DisplayVanaheim = [...DisplayVanaheim, thisBandVanaheim];
       });
-    console.log(DisplayVanaheim);
+    // console.log(DisplayVanaheim);
 
     data &&
       schedule &&
@@ -112,7 +112,7 @@ export default function Artist({ bands, schedule }) {
     // console.log(DisplayJotunheim);
 
     thisBand = data.find((elem) => elem.id === id);
-    console.log(thisBand);
+    // console.log(thisBand);
   }
 
   // thisBand = bands.find((elem) => elem.id === id);

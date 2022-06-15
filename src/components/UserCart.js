@@ -9,7 +9,6 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
     initialValue
   );
 
-  console.log(userCart);
   // check for tickets in the userCart array
   function checkCartStatus() {
     let totalTickets = 0;
@@ -19,7 +18,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
       userCart.map((cartItem) => {
         if (cartItem.type === "ticket"){
           totalTickets += cartItem.quantity
-          console.log(totalTickets)
+          // console.log(totalTickets)
         }
       })
     } else {
