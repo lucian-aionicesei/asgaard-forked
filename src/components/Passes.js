@@ -7,6 +7,7 @@ export default function Passes({
   setUserCart,
   countdown,
   setCountdown,
+  setTimer
 }) {
   const [toggleHidden, setToggleHidden] = useState(false);
 
@@ -25,6 +26,7 @@ export default function Passes({
           setCountdown={setCountdown}
           countdown={countdown}
           logo="./images/regularTicket.png"
+          setTimer={setTimer}
         />
 
         <PassesLines
@@ -38,6 +40,7 @@ export default function Passes({
           setCountdown={setCountdown}
           countdown={countdown}
           logo="./images/vipTicket.png"
+          setTimer={setTimer}
         />
         <PassesLines
           passName="Premium pass"
@@ -50,6 +53,7 @@ export default function Passes({
           setCountdown={setCountdown}
           countdown={countdown}
           logo="./images/premiumTicket.png"
+          setTimer={setTimer}
         />
         {toggleHidden && (
           <>
@@ -64,6 +68,7 @@ export default function Passes({
               setCountdown={setCountdown}
               countdown={countdown}
               logo="./images/blueTicket.png"
+              setTimer={setTimer}
             />
             <PassesLines
               passName="3 day pass"
@@ -76,6 +81,7 @@ export default function Passes({
               setCountdown={setCountdown}
               countdown={countdown}
               logo="./images/lGreenTicket.png"
+              setTimer={setTimer}
             />
           </>
         )}

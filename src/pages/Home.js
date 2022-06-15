@@ -15,6 +15,7 @@ export default function Home({
   setUserCart,
   countdown,
   setCountdown,
+  setTimer
 }) {
   const homePageLineup =
     "Led Zeppelin * AC/DC | Terminalist * Tool * The Who | The Beatles * Pink Floyd * Queen * Metallica | The Rolling Stones * Guns N' Roses * Nirvana | Black Sabbath * Raised Fist* Refused * Steuber Group * Simonis Inc | Halvorson, Kertzmann and Predovic * Huels, Ratke and Fritsch * A Perfect Circle | Price, Grant and Bechtelar * Erdman - Casper * Nikolaus Inc";
@@ -70,6 +71,7 @@ export default function Home({
             setUserCart={setUserCart}
             countdown={countdown}
             setCountdown={setCountdown}
+            setTimer={setTimer}
           />
         </div>
         <div>

@@ -20,13 +20,7 @@ function App() {
   const [userCart, setUserCart] = useState([]);
   const [countdown, setCountdown] = useState(false);
   const [user, setUser] = useState();
-
-  const tenMinutesInMs = 10 * 60 * 1000;
-  // const tenSeconds = 15000;
-  const nowInMilsec = new Date().getTime();
-
-  const timeAfterTenMins = nowInMilsec + tenMinutesInMs;
-  // const timeAfterTenSec = nowInMilsec + tenSeconds;
+  const [timer, setTimer] = useState(0)
 
   useEffect(() => {
     async function getProducts() {
@@ -36,6 +30,8 @@ function App() {
     }
     getProducts();
   }, []);
+
+  // console.log(timeAfterTenMins);
 
   let updatedBandList = [];
 
@@ -64,9 +60,9 @@ function App() {
 
   return (
     <div className="App bg-black font-montserrat">
-      <Header bgColor="bg-concert-pink" countdown={countdown} counterTime={timeAfterTenMins} />
+      <Header bgColor="bg-concert-pink" countdown={countdown} counterTime={timer} />
       <Routes>
-        <Route exact path="/" element={<Home userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
+        <Route exact path="/" element={<Home setTimer={setTimer} userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
         <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
         <Route path="artist/:id" element={<Artist bands={bandsList} schedule={schedule} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />

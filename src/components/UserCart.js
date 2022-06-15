@@ -9,6 +9,29 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
     initialValue
   );
 
+  console.log(userCart);
+  // check for tickets in the userCart array
+  function checkCartStatus() {
+    let totalTickets = 0;
+    // let peopleAccomodated = 0;
+
+    if (userCart.length > 0) {
+      userCart.map((cartItem) => {
+        if (cartItem.type === "ticket"){
+          totalTickets += cartItem.quantity
+          console.log(totalTickets)
+        }
+      })
+    } else {
+      setCountdown(false);
+    }
+
+    if (totalTickets === 0) {
+      setCountdown(false);
+    }
+  }
+  checkCartStatus();
+
   return (
     <section className="w-full phone:min-w-[400px] max-w-[500px] h-fit text-black bg-concert-yellowish p-6 border-[3px] border-black">
       <h3 className="text-center text-2xl font-bold">YOUR ORDER</h3>
@@ -25,6 +48,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
                   setUserCart={setUserCart}
                   countdown={countdown}
                   setCountdown={setCountdown}
+                  purchasingPhase={purchasingPhase}
                 />
               );
             } else if (item.type === "accomodation") {
@@ -37,6 +61,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
                   setUserCart={setUserCart}
                   countdown={countdown}
                   setCountdown={setCountdown}
+                  purchasingPhase={purchasingPhase}
                 />
               );
             }
@@ -81,6 +106,7 @@ function CartItem({
   setUserCart,
   countdown,
   setCountdown,
+  purchasingPhase
 }) {
   // console.log(item)
 
@@ -88,7 +114,7 @@ function CartItem({
     setUserCart((oldArray) =>
       oldArray.filter((cartItem) => cartItem.id !== item.id)
     );
-    // console.log(userCart);
+
     // (userCart.length === 0) && setCountdown(false);
   }
 
@@ -119,12 +145,12 @@ function CartItem({
           <h5 className="font-bold">{label}</h5>
           <p className="flex flex-col phone:flex-row justify-between">
             <span className="italic">DKK {item.price}</span>
-            <span
+            { !purchasingPhase && <span
               onClick={() => remove()}
               className="text-red-300 hover:text-red-500 italic text-sm font-semibold text-right cursor-pointer"
             >
               Delete
-            </span>
+            </span>}
           </p>
         </div>
         <div className="flex flex-col phone:flex-row justify-between ">

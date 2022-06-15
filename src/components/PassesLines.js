@@ -26,6 +26,7 @@ export default function PassesLines({
   countdown,
   setCountdown,
   logo,
+  setTimer
 }) {
   const [show, setShow] = useState(false);
   const [itemAdded, setItemAdded] = useState(false);
@@ -45,19 +46,17 @@ export default function PassesLines({
     ticket.quantity = itemQuantity;
     ticket.logo = logo;
     ticket.bgColor = bgPasses;
-    // console.log(countdown);
 
     addToCart(ticket);
 
     setItemQuantity(1);
-    /*useEffect(() => {
-      const interval = setInterval(() => {
-        setCountDown(countDownDate - new Date().getTime());
-      }, 1000);
-  
-      return () => clearInterval(interval);
-    }, [countDownDate]);*/
-    !countdown && setCountdown(true);
+    if (!countdown) {
+      setCountdown(true);
+      const tenMinutesInMs = 10 * 60 * 1000;
+      const nowInMilsec = new Date().getTime();
+      const timeAfterTenMins = nowInMilsec + tenMinutesInMs;
+      setTimer(timeAfterTenMins)
+    }
     setItemAdded(true);
 
     const interval = setInterval(() => {
