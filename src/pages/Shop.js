@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 // const targetDate = this;
 const targetDate = new Date("2022, 07, 20");
 
-export default function Shop({ userCart, setUserCart, countdown, setCountdown }) {
+export default function Shop({ setTimer, userCart, setUserCart, countdown, setCountdown }) {
   const [field, setDay] = useState(0);
 
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
@@ -74,7 +74,7 @@ export default function Shop({ userCart, setUserCart, countdown, setCountdown })
         </div>
       </div>
 
-      <Passes userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} id="0" />
+      <Passes setTimer={setTimer} userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} id="0" />
       <CampContainer userCart={userCart} setUserCart={setUserCart} id="1" />
       <MerchOffer id="2" />
     </Content>

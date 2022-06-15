@@ -3,10 +3,12 @@ import useCountdown from '../hooks/useCountdown';
 import DateTimeDisplay from './DateTimeDisplay';
 import { Link } from 'react-router-dom';
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = ({ targetDate, setUserCart, setCountdown }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
   if (days + hours + minutes + seconds <= 0) {
+    setUserCart([]);
+    // setCountdown(false);
     return <ExpiredNotice />;
   } else {
     return (

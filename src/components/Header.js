@@ -6,16 +6,10 @@ import { useState, useEffect } from "react";
 import useWindowDimensions from "../hooks/getWindowDimensions";
 import CountdownTimer from "../components/CountdownTimer";
 
-export default function Header({ countdown, counterTime }) {
+export default function Header({ countdown, counterTime, setUserCart,
+  setCountdown }) {
   const [dropDown, setDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
-
-  // const tenMinutesInMs = 10 * 60 * 1000;
-  // const tenSeconds = 15000;
-  // const nowInMilsec = new Date().getTime();
-
-  // const timeAfterTenMins = nowInMilsec + tenMinutesInMs;
-  // const timeAfterTenSec = nowInMilsec + tenSeconds;
 
   const location = useLocation();
   const windowWidth = useWindowDimensions().width;
@@ -101,7 +95,7 @@ export default function Header({ countdown, counterTime }) {
         {countdown && (
           <div className="w-full fidex bg-concert-redish leading-8 md:leading-10 px-8 font-bold text-lg md:text-xl sticky">
             <div className="text-center phone:text-right">
-              <CountdownTimer targetDate={counterTime} />
+              <CountdownTimer targetDate={counterTime} setUserCart={setUserCart} setCountdown={setCountdown}/>
             </div>
           </div>
         )}

@@ -60,13 +60,13 @@ function App() {
 
   return (
     <div className="App bg-black font-montserrat">
-      <Header bgColor="bg-concert-pink" countdown={countdown} counterTime={timer} />
+      <Header bgColor="bg-concert-pink" setUserCart={setUserCart} setCountdown={setCountdown} countdown={countdown} counterTime={timer} />
       <Routes>
         <Route exact path="/" element={<Home setTimer={setTimer} userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
         <Route path="lineup" element={<Lineup schedule={schedule} bands={bandsList} />} />
         <Route path="artist/:id" element={<Artist bands={bandsList} schedule={schedule} />} />
         <Route path="schedule" element={<Schedule schedule={schedule} bands={bandsList} />} />
-        <Route path="shop" element={<Shop userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
+        <Route path="shop" element={<Shop setTimer={setTimer} userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
         <Route
           path="purchases"
           element={<Purchases userCart={userCart} setUserCart={setUserCart} userAuthenticated={userAuthenticated} setUserAuthenticated={setUserAuthenticated} countdown={countdown} setCountdown={setCountdown} user={user} setUser={setUser} />}
