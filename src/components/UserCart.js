@@ -1,6 +1,6 @@
 // import { useState } from "react";
 
-export default function UserCart({ userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase, setRegisterPhase}) {
+export default function UserCart({ user, userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase, setRegisterPhase}) {
 
   const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
@@ -91,7 +91,7 @@ export default function UserCart({ userCart, setUserCart, userAuthenticated, cou
         {(userAuthenticated) ? 
           ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin setRegisterPhase={setRegisterPhase}/>}
           {purchasingPhase && <p className="font-semibold text-xs w-full">
-          You are logged in as <span className="font-bold">Christian</span>
+          You are logged in as <span className="font-bold">{user.user.username}</span>
         </p> }
       </div>
     </section>

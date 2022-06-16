@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { FaGlassCheers } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default function Purchases({
   userCart,
@@ -149,7 +150,10 @@ export function UserLogin({
           You need to be loged-in to proceed to payment
         </p>
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && 
+      <div className="p-4 w-full justify-center items-center text-center">
+        <ScaleLoader/>
+      </div>}
       {!loading && <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-bold" htmlFor="email">
@@ -257,7 +261,9 @@ export function RegisterUser({
           Please don't forget your log-in details!
         </p>
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && <div className="p-4 w-full justify-center items-center text-center">
+        <ScaleLoader/>
+      </div>}
       {!loading && <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-bold" htmlFor="username">
