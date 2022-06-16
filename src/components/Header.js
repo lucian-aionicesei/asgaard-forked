@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import useWindowDimensions from "../hooks/getWindowDimensions";
 import CountdownTimer from "../components/CountdownTimer";
 
-export default function Header({ countdown, counterTime, setUserCart,
+export default function Header({userCart, countdown, counterTime, setUserCart,
   setCountdown }) {
   const [dropDown, setDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
@@ -76,12 +76,9 @@ export default function Header({ countdown, counterTime, setUserCart,
               <p className="text-black">09:15 to complete order</p>
               <MdOutlineShoppingCart className="text-3xl phone:text-4xl" />
             </div> */}
-              <div className="flex align-ceter item-center">
+              <div className="flex align-ceter item-center relative">
                 <MdOutlineShoppingCart className="relative text-3xl phone:text-4xl" />
-
-                {/*
-                  <span className="absolute ml-6 bg-red-500 rounded h-[0.55rem] w-[0.55rem]"></span>
-          */}
+                { (userCart.length > 0) && <div className="rounded-full h-3 w-3 bg-concert-b-green absolute -right-1 -top-1"></div>}
               </div>
             </Link>
             <GiHamburgerMenu
