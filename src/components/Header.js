@@ -62,7 +62,7 @@ export default function Header({userCart, countdown, counterTime, setUserCart,
               </Link>
             </li>
             <li className="hidden md:block">
-              <Link to={"/purchases"} className={`${currentPage === "/purchases" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
+              <Link to={"/account"} className={`${currentPage === "/purchases" && "underline"} decoration-2 leading-8 underline-offset-4 hidden md:block`}>
                 Purchases
               </Link>
             </li>

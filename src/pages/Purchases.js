@@ -109,7 +109,7 @@ export function UserLogin({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("submitted");
+    // console.log("submitted");
     // console.log(typeof event.target.email.value);
     // let userEmail = event.target.email.value;
     // console.log(typeof event.target.password.value);

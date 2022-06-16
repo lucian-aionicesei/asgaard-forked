@@ -140,7 +140,7 @@ export default function Schedule({ bands }) {
       return { ...subject, ...otherSubject };
     });
 
-    console.log(mergedMidgard);
+    // console.log(mergedMidgard);
     mergedVanheim = DisplayVanaheim.map((subject) => {
       let otherSubjectVanaheim = updatedBandListVanaheim.find((element) => element.name === subject.name);
       return { ...subject, ...otherSubjectVanaheim };
