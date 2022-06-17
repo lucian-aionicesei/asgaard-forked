@@ -171,42 +171,40 @@ function Ticket({purchasedTicket, number, user, setUser}) {
           className="flex flex-wrap gap-x-4 gap-y-4 items-end w-full"
         >
           <div className="flex flex-col">
-            <label htmlFor="personName" className="font-bold">
+            <label className="font-bold">
               Ticket holder's name
             </label>
             <input
               type="text"
-              name="personName"
-              id="personName"
               className="font-semibold shadow appearance-none border border-[2px] border-black w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-8"
               value={purchasedTicket.ticketOwner}
+              pattern="[a-zA-Z'-'\s]*"
+              readOnly
               disabled
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="personNationality" className="font-bold">
+            <label className="font-bold">
               Nationality
             </label>
             <input
               type="text"
-              name="personNationality"
-              id="personNationality"
               className="font-semibold shadow appearance-none border border-[2px] border-black w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-8"
               value={purchasedTicket.nationality}
+              readOnly
               disabled
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="personAddress" className="font-bold">
+            <label className="font-bold">
               Ticket holder’s address
             </label>
             <input
-            disabled
               type="text"
-              name="personAddress"
-              id="personAddress"
               className="font-semibold shadow appearance-none border border-[2px] border-black w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-8"
-              value={purchasedTicket.address}
+              value={purchasedTicket.address} 
+            readOnly
+            disabled
             />
           </div>
           <button disabled className="bg-concert-b-green border border-[2px] border-black text-black font-bold py-2 px-4 focus:outline-none focus:shadow-outline h-fit">
@@ -234,6 +232,7 @@ function Ticket({purchasedTicket, number, user, setUser}) {
               id="personName"
               className="font-semibold shadow appearance-none border border-[2px] border-black w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-8"
               placeholder="John Smith"
+              pattern="[a-zA-Z'-'\s]*"
               required
             />
           </div>

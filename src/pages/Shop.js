@@ -15,23 +15,6 @@ export default function Shop({ setTimer, userCart, setUserCart, countdown, setCo
   const [field, setDay] = useState(0);
 
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
-  // const { loading, error, data } = useFetch("https://the-javascript-bar-project.herokuapp.com/available-spots");
-
-  function handleClick(value) {
-    setDay(value);
-    // if (value == 1) {
-    //   console.log("this is working");
-    //   const Passes = document.getElementById("1");
-    //   console.log(Passes);
-    //   // Passes.scrollIntoView();
-    // }
-    // if (value == 0) {
-    //   console.log("this ");
-    // }
-    // if (value == 2) {
-    //   console.log("this now ");
-    // }
-  }
 
   return (
     <Content>
@@ -45,29 +28,29 @@ export default function Shop({ setTimer, userCart, setUserCart, countdown, setCo
       <div className="w-full sticky top-[6rem] z-10 bg-black ">
         <div className="flex flex-row justify-between  ">
           <button
-            className={`flex basis-1/3 m-[0.5rem] ml-0 p-[0.5rem] text-[0.75rem]  justify-center  md:p-[1.25rem] md:text-[2rem] font-acier text-semibold hover:font-aciersolid text-black w-auto ${
+            className={`flex basis-1/3 m-[0.5rem] ml-0 p-[0.5rem] text-[0.75rem]  justify-center   md:text-[1.5rem] font-acier text-semibold hover:font-aciersolid text-black w-auto ${
               field === 0 ? `bg-black text-concert-pink font-aciersolid border-[2px] border-concert-pink ` : `bg-concert-pink text-black `
             } `}
             value={0}
-            onClick={(event) => handleClick(event.target.value)}
+            onClick={() => setDay(0)}
           >
             Festival Passes
           </button>
           <button
-            className={`flex basis-1/3 m-[0.5rem] p-[0.5rem] text-[0.75rem]    justify-center md:p-[1.25rem] md:text-[2rem] font-acier text-semibold hover:font-aciersolid  text-black w-auto ${
+            className={`flex basis-1/3 m-[0.5rem] p-[0.5rem] text-[0.75rem]    justify-center  md:text-[1.5rem] font-acier text-semibold hover:font-aciersolid  text-black w-auto ${
               field === 1 ? `bg-black text-concert-yellow font-aciersolid border-[2px] border-concert-yellow ` : `bg-concert-yellow text-black `
             } `}
             value={1}
-            onClick={(event) => handleClick(event.target.value)}
+            onClick={() => setDay(1)}
           >
             Camping Accomodaion
           </button>
           <button
-            className={`flex basis-1/3 m-[0.5rem] mr-0 p-[0.5rem] text-[0.75rem]   justify-center md:p-[1.25rem] md:text-[2rem] font-acier text-semibold hover:font-aciersolid  text-black w-auto ${
+            className={`flex basis-1/3 m-[0.5rem] mr-0 p-[0.5rem] text-[0.75rem]   justify-center  md:text-[1.5rem] font-acier text-semibold hover:font-aciersolid  text-black w-auto ${
               field === 2 ? `bg-black text-concert-redish font-aciersolid border-[2px] border-concert-redish ` : `bg-concert-redish text-black `
             } `}
             value={2}
-            onClick={(event) => handleClick(event.target.value)}
+            onClick={() => setDay(2)}
           >
             Merch
           </button>

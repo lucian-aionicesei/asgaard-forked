@@ -266,18 +266,6 @@ export function RegisterUser({
       </div>}
       {!loading && <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block font-bold" htmlFor="username">
-            User name
-          </label>
-          <input
-            className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            required
-            type="text"
-            placeholder="John Doe"
-          />
-        </div>
-        <div className="mb-4">
           <label className="block font-bold" htmlFor="email">
             E-mail
           </label>
@@ -287,6 +275,19 @@ export function RegisterUser({
             required
             type="email"
             placeholder="E-mail"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block font-bold" htmlFor="username">
+            User name
+          </label>
+          <input
+            className="font-semibold shadow appearance-none border border-[2px] border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            required
+            type="text"
+            placeholder="John Doe"
+            pattern="[a-zA-Z'-'\s]*"
           />
         </div>
         <div className="mb-4">
@@ -449,6 +450,7 @@ function PaymentForm({
     })
       .then((response) => {
         setUserCart([]);
+        setCountdown(false);
         setLoading(false);
         setError(false);
       })
@@ -524,6 +526,7 @@ function PaymentForm({
             placeholder="John Smith"
             type="text"
             required
+            pattern="[a-zA-Z'-'\s]*"
           />
         </div>
       </div>
