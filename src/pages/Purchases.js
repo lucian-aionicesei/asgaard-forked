@@ -2,7 +2,7 @@ import Content from "../components/Content";
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoGoogle } from "react-icons/io";
 import UserCart from "../components/UserCart";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { FaGlassCheers } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -21,6 +21,8 @@ export default function Purchases({
   const [purchasingPhase, setPurchasingPhase] = useState(false);
   const [registerPhase, setRegisterPhase] = useState(false);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [focus, setFocus] = useState(false);
+  
 
   return (
     <Content>
@@ -74,6 +76,8 @@ export default function Purchases({
                 user={user}
                 setUser={setUser}
                 setRegisterPhase={setRegisterPhase}
+                focus={focus}
+                setFocus={setFocus}
               />
             )}
 
@@ -89,6 +93,7 @@ export default function Purchases({
               user={user}
               setUser={setUser}
               setRegisterPhase={setRegisterPhase}
+              setFocus={setFocus}
             />
           </article>
         </div>
@@ -102,10 +107,17 @@ export function UserLogin({
   setRegisterPhase,
   user,
   setUser,
+  focus,
+  setFocus
 }) {
   // const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(null);
+  const inputRef = useRef();
+
+  if (focus) {
+    inputRef.current.focus()
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -165,6 +177,8 @@ export function UserLogin({
             required
             type="email"
             placeholder="E-mail"
+            ref={inputRef}
+            onBlur={()=> {setFocus(false)}}
           />
         </div>
         <div className="mb-4">
@@ -331,6 +345,11 @@ export function RegisterUser({
 //             setUser={setUser}
 
 export function UserLogedIn({ user, setUser, setUserAuthenticated }) {
+
+  const toMyTickets = () => {
+    document.querySelector("#myTickets").scrollIntoView();
+  }
+
   return (
     <section className="h-auto w-full max-w-[400px] py-6 text-black space-y-6 bg-yellow-500 px-4">
       <div>
@@ -353,9 +372,9 @@ export function UserLogedIn({ user, setUser, setUserAuthenticated }) {
       </div>
       <div className="flex justify-around items-center flex-col">
         <Link to={"/account"}>
-          <button className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+          <a href="#myTickets" onClick={toMyTickets} className="bg-black hover:bg-concert-b-green hover:text-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
             Add ticket details
-          </button>
+          </a>
         </Link>
         <p
           className="underline pt-4 font-bold cursor-pointer"

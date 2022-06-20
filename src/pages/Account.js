@@ -46,7 +46,7 @@ export default function Account({
         )}
       </div>
       {userAuthenticated && (
-        <article className="w-full h-auto bg-concert-pink text-black pb-[3vw]">
+        <article id="myTickets" className="w-full h-auto bg-concert-pink text-black pb-[3vw] scroll-mt-24">
           <h1 className="font-acier p-5 text-6xl text-black">MY Tickets</h1>
           {/* {console.log(user)} */}
           {user &&

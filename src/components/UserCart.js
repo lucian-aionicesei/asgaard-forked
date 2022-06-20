@@ -1,6 +1,6 @@
 // import { useState } from "react";
 
-export default function UserCart({ user, userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase, setRegisterPhase}) {
+export default function UserCart({ user, userCart, setUserCart, userAuthenticated, countdown, setCountdown, purchasingPhase, setPurchasingPhase, setRegisterPhase, setFocus}) {
 
   const initialValue = (userCart.length > 0) ? 99 : 0;
   const sumWithInitial = userCart.reduce(
@@ -89,7 +89,7 @@ export default function UserCart({ user, userCart, setUserCart, userAuthenticate
         </p> */}
       <div className="text-gray-900 flex justify-center items-center space-x-2 pt-6 font-semibold bg-concert">
         {(userAuthenticated) ? 
-          ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin setRegisterPhase={setRegisterPhase}/>}
+          ((userCart.length > 0) ? (!purchasingPhase && <ProceedToPayment setPurchasingPhase={setPurchasingPhase}/>) : <PurchasingDeactivated />) : <UserNotLogedin setFocus={setFocus} setRegisterPhase={setRegisterPhase}/>}
           {purchasingPhase && <p className="font-semibold text-xs w-full">
           You are logged in as <span className="font-bold">{user.user.username}</span>
         </p> }
@@ -176,9 +176,9 @@ function CartItem({
   );
 }
 
-function UserNotLogedin({setRegisterPhase}) {
+function UserNotLogedin({setRegisterPhase, setFocus}) {
   return <p className="flex flex-col phone:flex-row items-center gap-2">
-  <span onClick={() => setRegisterPhase(false)} className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+  <span onClick={() => {setRegisterPhase(false); setFocus(true)}} className="bg-black border border-[2px] border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
     LOG IN
   </span>
   <span> and proceed to payment</span>

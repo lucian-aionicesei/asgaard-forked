@@ -59,7 +59,7 @@ function App() {
   // console.log(schedule);
 
   return (
-    <div className="App bg-black font-montserrat">
+    <div className="App bg-black font-montserrat scroll-smooth">
       <Header bgColor="bg-concert-pink" userCart={userCart} setUserCart={setUserCart} setCountdown={setCountdown} countdown={countdown} counterTime={timer} />
       <Routes>
         <Route exact path="/" element={<Home setTimer={setTimer} userCart={userCart} setUserCart={setUserCart} countdown={countdown} setCountdown={setCountdown} />} />
